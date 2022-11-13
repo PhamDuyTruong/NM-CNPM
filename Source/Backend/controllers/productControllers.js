@@ -74,6 +74,37 @@ const productControllers = {
         } catch (error) {
             res.status(500).json(error);
         }
+    },
+    createProductReview: async(req, res) => {
+        const {rating, comment} = req.body;
+        const product = await Product.findById(req.params.id);
+        if(product){
+            const alreadyReview = product.reviews.find(
+                (r) => r.user.toString() === req.user.id.toString()
+              );
+            if(alreadyReview){
+                res.status(400).json("Product already reviewed !!!");
+            }
+            const review = {
+                user: req.user.id,
+                name: req.user.username,
+                rating: Number(rating),
+                comment: comment
+            };
+            product.reviews.push(review);
+            product.numReviews = product.reviews.length;
+            product.ratings =product.reviews.reduce((acc, item) => item.rating + acc, 0) / product.reviews.length;
+            try {
+                const updatedProduct = await product.save();
+                res.status(200).json(updatedProduct);
+            } catch (error) {
+                res.status(500).json(error)
+            }
+        }else {
+            res.status(404).json("Product not found !!!");
+        }
+     
+      
     }
 };
 
