@@ -54,6 +54,19 @@ const orderControllers = {
         }
        
 
+    },
+    getAllOrders: async(req, res) => {
+        try {
+            const orders = await Order.find();
+            let totalAmount = 0;
+            orders.forEach((order) => {
+                totalAmount += order.totalPrice;
+            });
+
+            res.status(200).json({orders, totalAmount});
+        } catch (error) {
+            res.status(500).json(error);
+        }
     }
 };
 
