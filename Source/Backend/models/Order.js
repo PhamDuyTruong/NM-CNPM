@@ -48,7 +48,7 @@ const orderSchema = new mongoose.Schema({
             required: true
         },
         phoneNo: {
-            type: Number,
+            type: String,
             required: true,
         },
     },
@@ -57,10 +57,6 @@ const orderSchema = new mongoose.Schema({
         type: mongoose.Schema.ObjectId,
         ref: "User",
         required: true,
-      },
-      paymentMethod: {
-        type: String,
-        required: true
       },
       paymentInfo: {
         id: {
@@ -94,9 +90,12 @@ const orderSchema = new mongoose.Schema({
         type: Date,
         required: true,
       },
+      orderStatus: {
+        type: String,
+        default: "Processing",
+      },
       isDelevered: {
         type:Boolean,
-        required:true,
         default:false
     },
     deleveredAt:{

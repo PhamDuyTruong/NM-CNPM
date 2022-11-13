@@ -1,11 +1,13 @@
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
+const ApiFeature = require("../utils/ApiFeature")
 
 
 const userControllers = {
     getAllUser: async(req, res) => {
         try {
-            const user = await User.find();
+          const userFeature = new ApiFeature(User.find(), req.query).search().filter();
+            const user = await userFeature.query;
             res.status(200).json(user);
         } catch (error) {
             res.status(500).json(error);
@@ -13,6 +15,7 @@ const userControllers = {
     },
     getUserById: async(req, res) => {
         try {
+            
             const user = await User.findById(req.params.id);
             const { password, ...others } = user._doc;
             res.status(200).json(others);

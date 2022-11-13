@@ -10,6 +10,7 @@ const path = require("path");
 const authRouter = require("./routers/auth");
 const userRouter = require("./routers/users");
 const productRouter = require("./routers/products");
+const orderRouter = require("./routers/orders");
 
 const app = express();
 dotenv.config();
@@ -22,6 +23,7 @@ app.use("/images", express.static(path.join(__dirname, "/images")));
 app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);
 app.use("/api/product", productRouter);
+app.use("/api/order", orderRouter);
 
 const PORT = process.env.PORT || 5000;
 const URI = process.env.DB_URL;
