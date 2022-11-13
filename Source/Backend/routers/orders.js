@@ -6,6 +6,8 @@ const router = require("express").Router();
 //Create order
 router.post("/", authMiddleware.verifyToken, orderControllers.createOrder);
 
+// Get order
+router.get("/:id", orderControllers.getOrderById);
 
 
 module.exports = router;
