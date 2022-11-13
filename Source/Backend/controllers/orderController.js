@@ -41,6 +41,19 @@ const orderControllers = {
         } catch (error) {
             res.status(500).json(error);
         }
+    },
+    getMyOrders: async(req, res) => {
+        try {
+            const orders = await Order.find({user: req.user.id});
+            if(!orders){
+                return res.status(404).json("Orders not found !!!");
+            }
+            res.status(200).json(orders);
+        } catch (error) {
+            res.status(500).json(error);
+        }
+       
+
     }
 };
 

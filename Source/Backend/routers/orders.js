@@ -9,6 +9,8 @@ router.post("/", authMiddleware.verifyToken, orderControllers.createOrder);
 // Get order
 router.get("/:id", orderControllers.getOrderById);
 
+// Get my order
+router.get("/orders/me", authMiddleware.verifyToken, orderControllers.getMyOrders);
 
 module.exports = router;
 
