@@ -62,6 +62,30 @@ const userControllers = {
         }else{
             res.status(401).json("You can delete only your account!");
         }
+    },
+    getUserProfile: async(req, res) => {
+        const user = await User.findById(req.user.id);
+        if(user){
+          res.status(200).json(user)
+        }else{
+          res.status(404).json('User not found')
+        }
+    },
+
+    updateProfile: async(req, res) => {
+        const user = await User.findById(req.user.id);
+        if(user){
+          user.username = req.body.username || user.username
+          user.email = req.body.email || user.email
+          if(req.body.password){
+            const salt = await bcrypt.genSalt(10);
+            req.body.password = await bcrypt.hash(req.body.password, salt);
+          }
+          const updatedUser = await user.save();
+          res.status(200).json(updatedUser);
+        }else {
+          res.status(404).json("User not found !!!");
+        }
     }
 };
 

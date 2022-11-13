@@ -1,5 +1,5 @@
 const express = require("express");
-const app = express();
+
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
@@ -11,6 +11,7 @@ const authRouter = require("./routers/auth");
 const userRouter = require("./routers/users");
 const productRouter = require("./routers/products");
 
+const app = express();
 dotenv.config();
 
 app.use(cors());
