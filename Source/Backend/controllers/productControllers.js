@@ -103,8 +103,52 @@ const productControllers = {
         }else {
             res.status(404).json("Product not found !!!");
         }
-     
-      
+    },
+    getProductReview: async(req, res) => {
+        const product = await Product.findById(req.query.id);
+        if(!product){
+            return res.status(404).json("Product not found !!!");
+        }
+        res.status(200).json({
+            reviews: product.reviews
+        })
+    },
+    deleteReview: async(req, res) => {
+        const product = await Product.findById(req.query.productId);
+        if(!product){
+            return res.status(404).json("Product not found !!!");
+        }
+        const reviews = product.reviews.filter(rev => rev._id.toString() !== req.query.id.toString());
+        let avg = 0;
+        reviews.forEach((rev) => {
+            avg += rev.rating;
+        });
+        let ratings = 0;
+
+        if (reviews.length === 0) {
+          ratings = 0;
+        } else {
+          ratings = avg / reviews.length;
+        }
+        const numReviews = reviews.length;
+        try {
+            await Product.findByIdAndUpdate(
+                req.query.productId,
+                {
+                  reviews,
+                  ratings,
+                  numReviews,
+                },
+                {
+                  new: true,
+                  runValidators: true,
+                  useFindAndModify: false,
+                }
+            );
+            res.status(200).json("Review has been deleted");
+        } catch (error) {
+            res.status(500).json(error);
+        }
     }
 };
 

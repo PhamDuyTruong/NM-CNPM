@@ -19,4 +19,11 @@ router.delete("/:id", authMiddleware.authorizeRole, productControllers.deletePro
 //Create product reviews
 router.post("/:id/review",authMiddleware.verifyToken, productControllers.createProductReview);
 
+// Get product review
+router.get("/user/reviews", authMiddleware.verifyToken, productControllers.getProductReview);
+
+// Delete product review
+router.delete("/user/review", authMiddleware.verifyToken, productControllers.deleteReview);
+
+
 module.exports = router;
