@@ -12,6 +12,7 @@ const productControllers = {
         }
     },
     getAllProducts: async(req, res) => {
+    
         try {
             const productFeature = new ApiFeature(Product.find(), req.query).search().filter();
             const product = await productFeature.query;
