@@ -4,13 +4,13 @@ const router = require("express").Router();
 
 // Get user
 router.get("/", userControllers.getAllUser);
-router.get("/:id", userControllers.getUserById);
+router.get("/:id", authMiddleware.authorizeRole, userControllers.getUserById);
 
 // Update User
-router.put("/:id", userControllers.updateUser);
+router.put("/:id", authMiddleware.authorizeRole, userControllers.updateUser);
 
 // Delete user
-router.delete("/:id", userControllers.deleteUser);
+router.delete("/:id", authMiddleware.authorizeRole, userControllers.deleteUser);
 
 // Get Profile
 router.route("/me/profile").get(authMiddleware.verifyToken, userControllers.getUserProfile);

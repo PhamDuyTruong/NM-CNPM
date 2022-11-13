@@ -20,6 +20,15 @@ const authMiddleware = {
            return res.status(401).json("You're not authenticated");
         }
     },
+    authorizeRole: (req, res, next) => {
+        authMiddleware.verifyToken(req, res, () => {
+            if(req.user.isAdmin && req.user){
+                next();
+            }else{
+                return res.status(403).json("You're not allowed to delete other")
+            }
+        })
+    }
 };
 
 
