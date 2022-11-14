@@ -1,5 +1,5 @@
 const Order = require("../models/Order");
-const User = require("../models/User");
+const Product = require("../models/Product");
 
 const orderControllers = {
     createOrder: async(req, res) => {
@@ -48,12 +48,10 @@ const orderControllers = {
             if(!orders){
                 return res.status(404).json("Orders not found !!!");
             }
-            res.status(200).json(orders);
+            res.status(200).json(orders.cart);
         } catch (error) {
             res.status(500).json(error);
         }
-       
-
     },
     getAllOrders: async(req, res) => {
         try {
@@ -67,7 +65,57 @@ const orderControllers = {
         } catch (error) {
             res.status(500).json(error);
         }
+    },
+    updateStock: async(id, quantity) => {
+        const product = await Product.findById(id);
+        if(!product.countInStock){
+            return;
+        }
+        product.countInStock -= quantity;
+        await product.save();
+    },
+
+    updateOrder: async(req, res) => {
+        try {
+            const order = await Order.findById(req.params.id);
+        if(!order){
+            return res.status(404).json("Order not found !!!");
+        }
+        if(order.orderStatus === "Delivered"){
+            return res.status(400).json("You have already delivered this order");
+        }
+        if(req.body.status === "Shipped"){
+            order.cart.forEach(async (o) => {
+                await orderControllers.updateStock(o.product, o.quantity)
+            })
+        }
+        order.orderStatus = req.body.status;
+        if (req.body.status === "Delivered") {
+            order.isDelevered = true;
+            order.deliveredAt = Date.now();
+        }
+        await order.save();
+        res.status(200).json(order);
+
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    },
+    deleteOrder: async(req, res) => {
+        try {
+            const order = await Order.findById(req.params.id);
+            if(!order){
+                return res.status(404).json("Order not found !!!");
+            }
+            await order.remove();
+            res.status(200).json({
+                message: "Order has been deleted"
+            })
+        } catch (error) {
+            res.status(500).json(error);
+        }
     }
+        
 };
 
 module.exports = orderControllers;
