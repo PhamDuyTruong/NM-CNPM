@@ -18,7 +18,8 @@ dotenv.config();
 app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
-app.use("/images", express.static(path.join(__dirname, "/images")));
+const publicPath = path.join(__dirname, "./public");
+app.use("/public", express.static(publicPath));
 
 app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);

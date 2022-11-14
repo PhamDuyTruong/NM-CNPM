@@ -89,6 +89,23 @@ const userControllers = {
         }else {
           res.status(404).json("User not found !!!");
         }
+    },
+    uploadAvatar: async (req, res) => {
+      const {file} = req;
+      const urlImage = `http://localhost:5000/${file.path}`;
+      try{
+        const userFound = await User.findOne({
+              username: req.user.username
+        });
+        if(!userFound){
+          return res.status(404).json("Wrong username !!!");
+       }
+        userFound.profilePic = urlImage;
+        await userFound.save();
+        res.status(200).json(userFound);
+      }catch(error){
+          res.status(500).json(error);
+       }
     }
 };
 
