@@ -178,7 +178,11 @@ const authControllers = {
       const {password, ...others} = user._doc;
       res.status(200).json({...others, accessToken, refreshToken});
     },
-
+    logOut: async(req, res) => {
+        res.clearCookie("refreshToken");
+        refreshTokens = refreshTokens.filter(token => token !== req.cookies.refreshToken);
+        res.status(200).json("Logged out successfully!");
+    }
     
 };
 

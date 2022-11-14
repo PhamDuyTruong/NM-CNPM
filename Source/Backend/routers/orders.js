@@ -12,10 +12,9 @@ router.get("/admin/:id", orderControllers.getOrderById);
 
 // Get my cart
 router.get("/cart/me", authMiddleware.verifyToken, orderControllers.getMyOrders);
-//Update my cart
-
 
 // Update order
+router.put("/admin/status/:id", orderControllers.updateOrderByStatus);
 router.put("/admin/:id", orderControllers.updateOrder);
 //Delete order
 router.delete("/admin/:id", orderControllers.deleteOrder);

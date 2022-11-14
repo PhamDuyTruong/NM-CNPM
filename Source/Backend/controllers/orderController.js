@@ -48,11 +48,12 @@ const orderControllers = {
             if(!orders){
                 return res.status(404).json("Orders not found !!!");
             }
-            res.status(200).json(orders.cart);
+            res.status(200).json(orders);
         } catch (error) {
             res.status(500).json(error);
         }
     },
+
     getAllOrders: async(req, res) => {
         try {
             const orders = await Order.find();
@@ -69,13 +70,13 @@ const orderControllers = {
     updateStock: async(id, quantity) => {
         const product = await Product.findById(id);
         if(!product.countInStock){
-            return;
+            product.countInStock = -1;
         }
         product.countInStock -= quantity;
         await product.save();
     },
 
-    updateOrder: async(req, res) => {
+    updateOrderByStatus: async(req, res) => {
         try {
             const order = await Order.findById(req.params.id);
         if(!order){
@@ -97,6 +98,27 @@ const orderControllers = {
         await order.save();
         res.status(200).json(order);
 
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    },
+    updateOrder: async(req, res) => {
+        try {
+            const order = await Order.findById(req.params.id);
+            if(!order){
+                return res.status(404).json("Order not found !!!");
+            }
+            const updatedOrder = await Order.findByIdAndUpdate(
+                req.params.id,
+                {
+                    itemsPrice: req.body.itemsPrice,
+                    shippingPrice: req.body.shippingPrice,
+                    taxPrice: req.body.taxPrice,
+                    orderStatus: req.body.orderStatus  
+                },
+                {new: true}
+            );
+            res.status(200).json(updatedOrder);
         } catch (error) {
             res.status(500).json(error);
         }
