@@ -117,6 +117,7 @@ const authControllers = {
             })
         }
         const resetToken = authControllers.getResetPasswordToken(user);
+        await user.save();
         const resetPasswordUrl = `${req.protocol}://${req.get(
             "host"
           )}/password/reset/${resetToken}`;
@@ -160,8 +161,9 @@ const authControllers = {
             message: "Password does not password"
         });
       }
-    
-      user.password = req.body.password;
+      const salt = await bcrypt.genSalt(10);
+      const hashedPass = await bcrypt.hash(req.body.password, salt);
+      user.password = hashedPass;
       user.resetPasswordToken = undefined;
       user.resetPasswordExpire = undefined;
     

@@ -25,7 +25,7 @@ const authMiddleware = {
             if(req.user.isAdmin && req.user){
                 next();
             }else{
-                return res.status(403).json("You're not allowed to delete other")
+                return res.status(403).json("You're not allowed to implement this feature")
             }
         })
     }
