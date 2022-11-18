@@ -52,8 +52,29 @@ const WorkData = [
       },
 ];
 
+const FeatureData = [
+    {
+        title: "Leather Jacket",
+        content:
+          "Jackets are a combination of youthful and trendy, suitable for many young people",
+        order: "01",
+      },
+      {
+        title: "Apple Watch",
+        content: "This product is guaranteed to bring quality and increase luxury",
+        order: "02",
+      },
+      {
+        title: "Books",
+        content:
+          "Includes a variety of interesting and engaging books, stimulating curiosity and discovery",
+        order: "03",
+      },
+]
+
 
 export {
     BannerData,
-    WorkData
+    WorkData,
+    FeatureData
 }
