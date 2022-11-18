@@ -1,0 +1,97 @@
+@import "../../../../assets/styles/color";
+@import "../../../../assets/styles/mixins";
+
+.home-banner{
+    height: 50rem;
+    flex-shrink: 0;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    .container-ui{
+        height: 100%;
+    }
+    @include respond(mobile) {
+        height: 30rem;
+    }
+    &__container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 60%;
+        height: 100%;
+        @include respond(mobile) {
+            text-align: center;
+            align-items: center;
+            width: 100%;
+        }
+    }
+    &__title{
+        font-size: 3rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: $white-color;
+        @include respond(mobile) {
+            font-size: 1.4rem;
+          }
+    }
+    &__description{
+        font-size: 1.5rem;
+        font-weight: 700;
+        line-height: 1.1;
+        margin: 5px 0 15px;
+        color: $white-color;
+        @include respond(mobile) {
+            font-size: 1rem;
+        }
+    }
+    .pr-red-btn &__icon {
+        margin-right: 5px;
+        width: 1.8rem;
+        height: 1.8rem;
+        
+        fill: $white-color;
+    
+        @include respond(mobile) {
+          width: 1.5rem;
+          height: 1.5rem;
+          margin-right: 3px;
+        }
+    }
+}
+.primary-btn{
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2) !important;
+    letter-spacing: 0.5px !important;
+    font-family: "Roboto", sans-serif !important;
+    border-radius: 999px !important;
+    width: max-content;
+    font-size: 1.3rem !important;
+    padding: 8px 15px !important;
+    cursor: pointer;
+  
+    @include respond(mobile) {
+      padding: 8px 13px !important;
+      font-size: 1.1rem !important;
+    }
+    & svg{
+      font-size: 1.75rem !important;
+      margin-right: 3px;
+
+    @include respond(mobile) {
+      font-size: 1.6rem !important;
+    }
+  }
+  &:hover {
+    box-shadow: 0px 5px 13px rgba(0, 0, 0, 0.25) !important;
+  }
+
+  &.red {
+    color: $white-color !important;
+    background-color: #ff514e !important;
+  }
+  @media (hover: hover) {
+    &.red:hover {
+      background-color: #c33d3b !important;
+      
+    }
+  }
+}

@@ -1,0 +1,55 @@
+@import "../../../../assets/styles/color";
+@import "../../../../assets/styles/mixins";
+
+.home-banners{
+    position: relative;
+    overflow: hidden;
+    .slides{
+        display: flex;
+        transition: 0.5s ease-in-out;
+    }
+    .dots{
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        display: flex;
+        transform: translateX(-50%);
+        .dot{
+            position: relative;
+      
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            margin: 0 10px;
+            border: 2px solid #00F5FF;
+            box-shadow: 2.5px 2px 8px rgba(0, 0, 0, 0.3);
+            transition: 0.3s ease;
+      
+            cursor: pointer;
+        }
+        .dot {
+            @include respond(mobile) {
+              width: 1.65rem;
+              height: 1.65rem;
+            }
+          }
+        .dot:before{
+            content: "";
+            position: relative;
+            right: 0;
+            bottom: 0;
+            width: calc(100% - 0.05px);
+            height: calc(100% - 0.05px);
+            border-radius: 50%;
+            transform: translate(1px, 1px) scale(0.7);
+            opacity: 0;
+            transition: 0.3s ease-in-out;
+            background-color: $yellow-color;
+        } 
+        .dot.active:before {
+            opacity: 1;
+            transform: translate(1px, 1px) scale(1);
+        } 
+    }
+    
+}
