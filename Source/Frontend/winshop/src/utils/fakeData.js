@@ -1,4 +1,4 @@
-import {BannerOne, BannerTwo, BannerThree} from './HomeImg';
+import {BannerOne, BannerTwo, BannerThree, StepOne, StepTwo, StepThree, StepFour, ArrowOne, ArrowTwo, ArrowThree} from './HomeImg';
 
 
 const BannerData = [
@@ -26,6 +26,34 @@ const BannerData = [
 ];
 
 
+const WorkData = [
+    {
+        img: StepOne,
+        step: "1",
+        content: "Choose Your Product",
+        arrow: ArrowOne,
+      },
+      {
+        img: StepTwo,
+        step: "2",
+        content: "Add To Cart",
+        arrow: ArrowTwo,
+      },
+      {
+        img: StepThree,
+        step: "3",
+        content: "We Can Delivery Anywhere",
+        arrow: ArrowThree,
+      },
+      {
+        img: StepFour,
+        step: "4",
+        content: "Cash On Delivery",
+      },
+];
+
+
 export {
     BannerData,
+    WorkData
 }
