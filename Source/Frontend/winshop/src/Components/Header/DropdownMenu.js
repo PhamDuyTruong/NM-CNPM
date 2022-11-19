@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
   qnt: {
     position: "absolute",
     bottom: "1px",
-    right: "-15px",
+    right: "-10px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
