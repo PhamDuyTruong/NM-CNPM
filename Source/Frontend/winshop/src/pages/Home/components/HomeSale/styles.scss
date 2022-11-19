@@ -1,0 +1,72 @@
+
+.banner-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap:1.5rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+
+    .banner{
+        flex:1 1 20rem;
+        overflow: hidden;
+        height: 30rem;
+        position: relative;
+
+        img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        &:hover img{
+            transform: scale(1.2);
+        }
+
+        .content-sale{
+            position: absolute;
+            top:50%; 
+            right: 2rem;
+            transform: translateY(-50%);
+            span{
+                font-size: 2rem;
+                color:#666;
+            }
+
+            h3{
+                font-size:2.5rem;
+                color:#130f40;
+                padding-top: .5rem;
+            }
+            a{
+                text-decoration: none;
+            }
+            .btn{
+                display: block;
+                margin-top: 1rem;
+                padding:.9rem 3rem;
+                border-radius: .5rem;
+                background:#eb4d4b;
+                color:#fff;
+                font-size: 1.7rem;
+                cursor: pointer;
+            
+                &:hover{
+                    background: #130f40;
+                }
+            }
+        }
+
+    }
+
+}
+
+@media  (max-width: 768px) {
+    .banner-container .banner .content-sale{
+        right: 2rem;
+
+        h3{
+            font-size: 1.5rem;
+        }
+
+    }
+}
