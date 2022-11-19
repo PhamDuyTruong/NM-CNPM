@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
   buttonHome: {
     color: "#47B5FF",
     fontWeight: "bold",
+    fontSize: "1.2rem",
     paddingRight: "10px",
     transition: "all 1s",
     "&:hover": {

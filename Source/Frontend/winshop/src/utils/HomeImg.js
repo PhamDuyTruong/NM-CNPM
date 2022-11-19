@@ -10,6 +10,10 @@ import StepFour from '../assets/images/step-4.jpg';
 import ArrowOne from '../assets/images/arrow-1.png';
 import ArrowTwo from '../assets/images/arrow-2.png';
 import ArrowThree from '../assets/images/arrow-3.png';
+
+import ReviewOne from '../assets/images/pic-1.png';
+import ReviewTwo from '../assets/images/pic-2.png';
+import ReviewThree from '../assets/images/pic-3.png';
 export {
     BannerOne,
     BannerTwo,
@@ -20,5 +24,8 @@ export {
     StepFour,
     ArrowOne,
     ArrowTwo,
-    ArrowThree
+    ArrowThree,
+    ReviewOne,
+    ReviewTwo,
+    ReviewThree
 }
