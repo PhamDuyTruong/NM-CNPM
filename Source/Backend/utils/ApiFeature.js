@@ -6,8 +6,8 @@ class ApiFeature{
 
     search(){
         const keyword = this.queryString.keyword ? {
-            name: {
-                $regex: this.queryString.keyword,
+            brand: {
+                $regex: ".*"+this.queryString.keyword+".*",
                 $options: "i"
             },
         }: {}

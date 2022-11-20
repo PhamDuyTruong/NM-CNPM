@@ -49,6 +49,9 @@ router.get("/user/reviews", authMiddleware.verifyToken, productControllers.getPr
 // Delete product review
 router.delete("/user/review", authMiddleware.verifyToken, productControllers.deleteReview);
 
+//Search product
+// router.get("/user/search", productControllers.searchProduct);
+
 //upload image product
 router.post("/admin/upload-image/:id", authMiddleware.authorizeRole, upload.single('product'), productControllers.uploadImage);
 
