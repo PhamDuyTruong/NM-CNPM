@@ -22,6 +22,15 @@ const productControllers = {
             res.status(500).json(error);
         }
     },
+    searchProductByName: async(req, res) => {
+        try {
+            const search = req.body.keyword || "";
+            const product = await Product.find({name: {$regex: ".*"+search+".*", $options: "i"}});
+            res.status(200).json(product);
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    },
     getProductById: async(req, res) => {
         try {
             const product = await Product.findById(req.params.id);
