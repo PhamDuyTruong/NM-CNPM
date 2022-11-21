@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import "./styles.scss";
 import gsap from "gsap";
 import { Container } from "@material-ui/core";
-
+import HandleImage from '../../../../utils/HandleImage';
 import SwiperCore, { Autoplay, Pagination } from "swiper/core";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.scss";
@@ -24,15 +24,6 @@ function HomeReview() {
         line.from(containerRef, { y: -20, opacity: 0, duration: 0.8 });
     }, []);
 
-    const HandleImage = (src) => {
-        const [source, setSource] = useState(null);
-        useEffect(() =>{
-          const img = new Image();
-          img.src = src;
-          img.onload = () => setSource(src);
-        }, [src])
-        return source;
-      }
     
 
   return (

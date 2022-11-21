@@ -1,5 +1,6 @@
 import React from 'react';
 import Footer from '../../Components/Footer';
+import Products from '../Products';
 import HomeBanner from './components/HomeBanner';
 import HomeFeature from './components/HomeFeature';
 import HomeReview from './components/HomeReview';
@@ -14,6 +15,7 @@ function Home() {
         <HomeWork />
         <HomeFeature />
         {/* Products */}
+        <Products />
         {/* Lastest Product */}
         <HomeSale />
         <HomeReview />

@@ -1,9 +1,11 @@
 import React, {useEffect, useRef, useState} from 'react';
 import gsap from 'gsap'
 import { Container } from "@material-ui/core";
+import HandleImage from '../../../../utils/HandleImage';
 import {WorkData} from '../../../../utils/fakeData'
 import Grid from "@material-ui/core/Grid";
 import "../../../../assets/styles/_typography.scss";
+
 import "./styles.scss"
 
 function HomeWork() {
@@ -35,16 +37,6 @@ function HomeWork() {
             .from(stepRef[2], { y: 20, opacity: 0, duration: 0.6 }, "-=0.2")
             .from(stepRef[3], { y: 20, opacity: 0, duration: 0.6 }, "-=0.2");
     }, []);
-
-    const HandleImage = (src) => {
-        const [source, setSource] = useState(null);
-        useEffect(() =>{
-          const img = new Image();
-          img.src = src;
-          img.onload = () => setSource(src);
-        }, [src])
-        return source;
-      }
 
   return (
     <section ref={(el) => containerRef = el} className="home-work">

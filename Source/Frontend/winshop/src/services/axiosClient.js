@@ -3,8 +3,10 @@ import qs from "query-string";
 import { Redirect } from "react-router-dom";
 
 const axiosClient = axios.create({
-  baseURL: "http://localhost:5000/api",
-  paramsSerializer: (param) => qs.stringify(param, { skipNulls: true }),
+  baseURL: "http://localhost:5000/",
+  headers: {
+    "content-type": "application/json",
+  },
 });
 
 axiosClient.interceptors.request.use(
