@@ -5,8 +5,8 @@ import { GmailTabs, GmailTabItem } from "@mui-treasury/components/tabs/gmail";
 import { makeStyles } from "@material-ui/core/styles";
 import SkeletonCard from './SkeletonCard';
 import ProductsCarousel from './ProductsCarousel'
-import {getProducts} from '../../actions/ProductAction';
-import {getProductByCategory} from '../../actions/ProductCategoryAction'
+
+import {getProductByCategory} from '../../../../actions/ProductCategoryAction'
 
 const useStyles = makeStyles((theme) => ({
     gmailTabs: {
@@ -67,8 +67,8 @@ function Products() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getProducts());
-    }, [getProducts]);
+        dispatch(getProductByCategory("clothes"));
+    }, [getProductByCategory]);
 
     const onFetchProduct = (cat) => {
         dispatch(getProductByCategory(cat));

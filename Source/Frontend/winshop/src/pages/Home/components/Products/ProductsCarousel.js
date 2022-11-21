@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import ProductCustom from './ProductCustom';
 import ProductCard from './ProductCard';
 import "./style.css";
 import { Grid, useMediaQuery } from "@material-ui/core";

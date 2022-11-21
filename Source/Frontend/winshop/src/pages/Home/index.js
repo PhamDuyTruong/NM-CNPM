@@ -1,6 +1,6 @@
 import React from 'react';
 import Footer from '../../Components/Footer';
-import Products from '../Products';
+import Products from './components/Products';
 import HomeBanner from './components/HomeBanner';
 import HomeFeature from './components/HomeFeature';
 import HomeReview from './components/HomeReview';
