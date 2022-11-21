@@ -1,0 +1,54 @@
+@import "../../../../assets/styles/color";
+@import "../../../../assets/styles/mixins";
+
+.home-products{
+    margin-bottom: 80px;
+    text-align: center;
+    @include respond(mobile) {
+        margin-bottom: 50px;
+      }
+     &__container{
+        display: flex;
+        margin-top: 35px;
+        @include respond(mobile) {
+            margin-top: 10px;
+          }
+     } 
+     .swiper-container {
+        padding: 20px 0 50px;
+      }
+    
+      .swiper-pagination {
+        bottom: 10px;
+      }
+    
+      .swiper-pagination-bullet {
+        content: "";
+        position: relative;
+        background-color: transparent;
+        width: 1.6rem;
+        height: 1.6rem;
+        border: 2px solid #00E7FF;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    
+        &:before {
+          content: "";
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          width: 1.35rem;
+          height: 1.35rem;
+          border-radius: 50%;
+          transform: translate(2.2px, 1.5px) scale(0.7);
+          opacity: 0;
+          transition: 0.3s ease-in-out;
+    
+          background-color: $yellow-color;
+        }
+    
+        &-active:before {
+          opacity: 1;
+          transform: translate(2.2px, 1.5px) scale(1);
+        }
+      }
+}

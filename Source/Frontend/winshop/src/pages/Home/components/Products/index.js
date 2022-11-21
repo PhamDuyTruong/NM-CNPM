@@ -90,7 +90,7 @@ function Products() {
     }
   return (
     <>
-      <h2 style={{color: "#000", fontWeight: "bold", paddingLeft: "10px"}}>Your Recomendation</h2>
+      <h2 style={{color: "#000", fontWeight: "bold", paddingLeft: "10px", textAlign: "center"}}>Your Recomendation</h2>
       <Grid container justifyContent='center' className={classes.container}>
          <GmailTabs
             value={tabNum}

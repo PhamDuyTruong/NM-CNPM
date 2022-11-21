@@ -52,7 +52,6 @@ function ProductsCarousel({productList}) {
 
   const ProductItems = ({index, productList}) => {
     let itemStart = index * totalItems;
-    console.log(index)
     let itemEnd = itemStart + totalItems;
     if(itemEnd > productsLength){
         itemEnd = productsLength;
