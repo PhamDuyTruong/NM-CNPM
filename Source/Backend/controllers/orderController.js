@@ -85,7 +85,7 @@ const orderControllers = {
         if(order.orderStatus === "Delivered"){
             return res.status(400).json("You have already delivered this order");
         }
-        if(req.body.status === "Shipped"){
+        if(req.body.status === "Delivering"){
             order.cart.forEach(async (o) => {
                 await orderControllers.updateStock(o.product, o.quantity)
             })

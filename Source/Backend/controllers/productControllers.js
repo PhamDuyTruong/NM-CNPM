@@ -15,9 +15,12 @@ const productControllers = {
     getAllProducts: async(req, res) => {
         
         try {
-            const apiFeature = new ApiFeature(Product.find(), req.query).search().filter();
-            const product = await apiFeature.query;
-            res.status(200).json(product);
+            const resultPerPage = 12;
+            const productsCount = await Product.countDocuments();
+            const pages = Math.ceil(productsCount / resultPerPage);
+            const apiFeature = new ApiFeature(Product.find(), req.query).search().filter().pagination(resultPerPage);
+            let product = await apiFeature.query;
+            res.status(200).json({product, pages});
         } catch (error) {
             res.status(500).json(error);
         }
