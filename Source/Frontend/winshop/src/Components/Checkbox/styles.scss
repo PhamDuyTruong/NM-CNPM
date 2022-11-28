@@ -1,0 +1,44 @@
+@import "../../assets/styles/color";
+
+.checkbox{
+    position: relative;
+    font-size: 1.2rem;
+    align-items: center;
+    padding: 10px 35px;
+    margin: 3px 5px;
+    cursor: pointer;
+    &__input{
+        display: none;
+        margin-right: 5px;
+    }
+    .checkmark{
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 50%;
+        border: 3px solid $grey-color;
+        transform: translateY(-50%);
+        transition: all 0.3s ease-out;
+
+    }
+    &__input:checked ~ .checkmark {
+        border-color: $red-color;
+    }
+   .checkmark:after{
+    content: "";
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    background-color: transparent;
+    transition: all 0.1s ease-out;
+   }
+   
+  &__input:checked ~ .checkmark:after {
+    background-color: $red-color;
+  }
+}

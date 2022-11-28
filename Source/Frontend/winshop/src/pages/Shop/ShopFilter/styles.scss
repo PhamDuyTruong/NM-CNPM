@@ -1,0 +1,131 @@
+@import "../../../assets/styles/color";
+@import "../../../assets/styles/mixins";
+
+.shop-filters {
+  width: 18%;
+
+  @include respond(mobile) {
+    display: none;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    padding: 8px 0;
+    margin-bottom: 10px;
+    padding-left: 12px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    margin: 3px 0;
+    border-radius: 6px;
+
+    transition: all 0.1s ease-out;
+  }
+
+  &__item.active {
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+
+  &__item:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+
+    cursor: pointer;
+  }
+
+  &__item-name {
+    font-size: 1.2rem;
+    text-transform: capitalize;
+    margin-left: 10px;
+  }
+
+  &__form {
+    padding: 0 12px;
+  }
+
+  &__label {
+    position: relative;
+
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    padding: 10px 30px;
+    margin: 3px 0;
+
+    cursor: pointer;
+  }
+
+  &__input {
+    display: none;
+    margin-right: 5px;
+  }
+
+  .checkmark {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 0;
+
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: 3px solid $grey-color;
+    transform: translateY(-50%);
+
+    transition: all 0.2s ease-out;
+  }
+
+  &__input:checked ~ .checkmark {
+    border-color: $red-color;
+  }
+
+  .checkmark:after {
+    position: absolute;
+    content: "";
+    top: 1px;
+    left: 1px;
+
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+
+    background-color: transparent;
+
+    transition: all 0.1s ease-out;
+  }
+
+  &__input:checked ~ .checkmark:after {
+    background-color: $red-color;
+  }
+
+  &__stars {
+    margin: 5px 0;
+    padding: 3px 12px;
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+  }
+
+  &__stars svg {
+    font-size: 1.2rem;
+    margin-right: 3px;
+
+    fill: $yellow-color;
+  }
+
+  &__stars span {
+    font-size: 1.2rem;
+    margin-left: 4px;
+    font-weight: 500;
+
+    transition: all 0.12s ease-out;
+  }
+
+  &__stars:hover span {
+    color: $red-color;
+  }
+}
