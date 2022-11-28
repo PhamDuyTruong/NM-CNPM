@@ -30,12 +30,13 @@ const productApi = {
         if(brand){
             url = '/api/product?brand=' + brand;
         }
-        if(price && options){
-            url = `/api/product?price[${options}]=${price}`;
-        }
         if(ratings){
             url = '/api/product?ratings=' + ratings;
         }
+        if(price && options){
+            url = `/api/product?price[${options}]=${price}`;
+        }
+       
         return axiosClient.get(url);
     }
 };

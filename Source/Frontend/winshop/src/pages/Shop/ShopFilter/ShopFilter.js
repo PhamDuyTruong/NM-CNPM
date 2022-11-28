@@ -39,9 +39,9 @@ const typeOptions = [
 ];
 
 const priceOptions = [
-    { content: 'Under $100', price: 100, option: "lte" },
-    { content: 'Above $50', price: 50, option: "gte" },
-    { content: 'Under $50', price: 50, option: "lte"},
+    { content: 'Under $100', price: 99, option: "lt" },
+    { content: 'Above $50', price: 51, option: "gte" },
+    { content: 'Under $50', price: 50, option: "lt"},
     { content: 'Above $100', price: 100, option: "gte"},
 ];
 
@@ -62,8 +62,25 @@ function ShopFilter() {
         setPrevName(params);
     };
 
-    const onFilterByPrice = (params) => {
+    const handleOptionChange = (e) =>{
+        const {setSelectedRadio} = handlePrevious();
+        setSelectedRadio(e.target.value);
+      };
 
+    const onFilterByPrice = (params, option) => {
+        const {prevPrice, setPrevPrice} = handlePrevious('price', params);
+        if(prevPrice !== params){
+            dispatch(getProductAll(curName, params, curRate, option))
+        }
+        setPrevPrice(params);
+    };
+
+    const onFilterByRate = (params) => {
+        const {prevRate, setPrevRate} = handlePrevious('rate', params);
+        if(prevRate !== params){
+            dispatch(getProductAll(curName, curPrice, params, curOp));
+        }
+        setPrevRate(params)
     }
 
   return (
@@ -89,9 +106,9 @@ function ShopFilter() {
     {priceOptions.map(({ content, price, option }) => (
       <Checkbox
         key={content}
-        //handleOptionClick={() => onFilterByPrice(range)}
+        handleOptionClick={() => onFilterByPrice(price, option)}
         checked={selectedRadio === content}
-        //handleOptionChange={handleOptionChange}
+        handleOptionChange={handleOptionChange}
         value={content}
         content={content}
       />
@@ -100,7 +117,7 @@ function ShopFilter() {
 
   <h2 className='shop-filters__title'>Rate</h2>
   <div
-    //onClick={() => onFilterByRate({ rate_like: 5 })}
+    onClick={() => onFilterByRate(5)}
     className='shop-filters__stars'>
     <StarIcon />
     <StarIcon />
@@ -110,7 +127,7 @@ function ShopFilter() {
     <span>& up</span>
   </div>
   <div
-    // onClick={() => onFilterByRate({ rate_like: 4 })}
+    onClick={() => onFilterByRate(4)}
     className='shop-filters__stars'>
     <StarIcon />
     <StarIcon />
@@ -120,11 +137,41 @@ function ShopFilter() {
     <span>& up</span>
   </div>
   <div
-   // onClick={() => onFilterByRate({ rate_like: 3 })}
+   onClick={() => onFilterByRate(3)}
     className='shop-filters__stars'>
     <StarIcon />
     <StarIcon />
     <StarIcon />
+    <StarBorderIcon />
+    <StarBorderIcon />
+    <span>& up</span>
+  </div>
+  <div
+   onClick={() => onFilterByRate(2)}
+    className='shop-filters__stars'>
+    <StarIcon />
+    <StarIcon />
+    <StarBorderIcon />
+    <StarBorderIcon />
+    <StarBorderIcon />
+    <span>& up</span>
+  </div>
+  <div
+   onClick={() => onFilterByRate(1)}
+    className='shop-filters__stars'>
+    <StarIcon />
+    <StarBorderIcon />
+    <StarBorderIcon />
+    <StarBorderIcon />
+    <StarBorderIcon />
+    <span>& up</span>
+  </div>
+  <div
+   onClick={() => onFilterByRate("0")}
+    className='shop-filters__stars'>
+    <StarBorderIcon />
+    <StarBorderIcon />
+    <StarBorderIcon />
     <StarBorderIcon />
     <StarBorderIcon />
     <span>& up</span>
