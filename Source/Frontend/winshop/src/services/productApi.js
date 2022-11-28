@@ -10,7 +10,7 @@ const productApi = {
         };
         return axiosClient.get("/api/product?category="+params.maDanhMuc)
     },
-    getProductAll: (brand, price, ratings) => {
+    getProductAll: (brand, price, ratings, options) => {
         let url = "";
         if(brand === "" && price === "" && ratings=== ""){
            url = "/api/product/";
@@ -18,8 +18,8 @@ const productApi = {
         if(brand && price && ratings){
             url = 'api/product?brand='+brand+'&price='+price+'&ratings='+ratings;
         }
-        if(brand && price){
-            url = '/api/product?brand='+brand+'&price='+price;
+        if(brand && price && options){
+            url = '/api/product?brand='+brand+'&price[' + options + ']=' +price;
         }
         if(brand && ratings){
             url = '/api/product?brand='+brand+'&ratings='+ratings;
@@ -30,8 +30,8 @@ const productApi = {
         if(brand){
             url = '/api/product?brand=' + brand;
         }
-        if(price){
-            url = '/api/product?price=' + price;
+        if(price && options){
+            url = `/api/product?price[${options}]=${price}`;
         }
         if(ratings){
             url = '/api/product?ratings=' + ratings;

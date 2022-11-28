@@ -11,7 +11,7 @@ function ProductList() {
 
     useEffect(() => {
         dispatch(getProductAll());
-    }, [getProductAll]);
+    }, []);
 
   return (
     <>

@@ -22,11 +22,11 @@ const typeOptions = [
       },
       {
         name: 'Fiction',
-        type: 'Fiction',
+        type: 'Fiction,Historical',
       },
       {
         name: 'Mystery',
-        type: 'Mystery',
+        type: 'Mystery,Crime,Thriller',
       },
       {
         name: 'Novel',
@@ -34,15 +34,15 @@ const typeOptions = [
       },
       {
         name: 'Personal Development',
-        type: 'Personal Development',
+        type: 'Science,Pesonal Development',
       },
 ];
 
 const priceOptions = [
-    { content: 'Under $100', range: { price_lte: 100 } },
-    { content: '$50 to $100', range: { price_gte: 50, price_lte: 100 } },
-    { content: 'Under $50', range: { price_lte: 50 } },
-    { content: 'Above $100', range: { price_gte: 100 } },
+    { content: 'Under $100', price: 100, option: "lte" },
+    { content: 'Above $50', price: 50, option: "gte" },
+    { content: 'Under $50', price: 50, option: "lte"},
+    { content: 'Above $100', price: 100, option: "gte"},
 ];
 
 
@@ -51,15 +51,29 @@ function ShopFilter() {
     const {handlePrevious} = useContext(PrevFilterContext);
     const dispatch = useDispatch();
     const {selectedRadio, nameActive} = handlePrevious();
+    let curName = "", curPrice = "", curRate ="", curOp = "";
+    const onFilterByName =(params) => {
+        const {prevName, setPrevName, setSelectedRadio, setNameActive} = handlePrevious('name', params);
+        if(params !== prevName){
+            dispatch(getProductAll(params));
+            setSelectedRadio(null);
+        }
+        setNameActive(params);
+        setPrevName(params);
+    };
+
+    const onFilterByPrice = (params) => {
+
+    }
 
   return (
     <div className='shop-filters'>
     <h2 className='shop-filters__title'>Popular</h2>
     <ul className='shop-filters__list'>
-     {typeOptions.map(({ img, name, type }) => (
+     {typeOptions.map(({ name, type }) => (
       <li
         key={name}
-        //onClick={() => onFilterByName(type)}
+        onClick={() => onFilterByName(type)}
         className={
           type === nameActive
             ? 'shop-filters__item active'
@@ -72,7 +86,7 @@ function ShopFilter() {
 
    <h2 className='shop-filters__title'>Price</h2>
    <form className='shop-filters__form'>
-    {priceOptions.map(({ content, range }) => (
+    {priceOptions.map(({ content, price, option }) => (
       <Checkbox
         key={content}
         //handleOptionClick={() => onFilterByPrice(range)}

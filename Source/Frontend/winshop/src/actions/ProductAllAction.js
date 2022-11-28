@@ -1,11 +1,11 @@
 import {GET_PRODUCTS_ALL_FAILURE, GET_PRODUCTS_ALL_SUCCESS, GET_PRODUCTS_ALL_REQUEST, SHOP_PRODUCTS_VIEW} from '../constants/ProductAllConstant';
 import productApi from '../services/productApi';
 
-export function getProductAll(brand="", price="", ratings=""){
+export function getProductAll(brand="", price="", ratings="", options=""){
     return async (dispatch) =>{
        dispatch({type: GET_PRODUCTS_ALL_REQUEST})
        try{
-            const {data} = await productApi.getProductAll(brand, price, ratings);
+            const {data} = await productApi.getProductAll(brand, price, ratings, options);
             dispatch({ type: GET_PRODUCTS_ALL_SUCCESS, payload: data});
        } catch(error){
          dispatch({
