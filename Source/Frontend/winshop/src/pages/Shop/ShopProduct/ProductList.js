@@ -7,6 +7,8 @@ import ProductCard from '../../../Components/ProductCard'
 
 function ProductList() {
     const [noOfEle, setNoOfEle] = useState(9);
+    const [keyword, setKeyword] = useState(null);
+    const [isShow, setIsShow] = useState(false);
 
     const dispatch = useDispatch();
     const {shopProducts} = useSelector((state) => state.getProductList);
@@ -34,7 +36,7 @@ function ProductList() {
             ))}
           
         </div>
-        <button className='btn btn-dark d-block w-100' onClick={() => handleLoadMore()}>
+        <button className='btn btn-primary d-block w-100' onClick={() => handleLoadMore()}>
               View more
         </button>
     </>

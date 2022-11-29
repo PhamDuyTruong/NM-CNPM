@@ -38,6 +38,13 @@ const productApi = {
         }
        
         return axiosClient.get(url);
+    },
+    searchProduct: (keyword) => {
+        let url;
+        if(keyword){
+            url = "/api/product?keyword=" + keyword
+        }
+        return axiosClient.get(url);
     }
 };
 

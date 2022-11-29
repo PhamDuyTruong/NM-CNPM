@@ -1,4 +1,4 @@
-import {GET_PRODUCTS_ALL_FAILURE, GET_PRODUCTS_ALL_SUCCESS, GET_PRODUCTS_ALL_REQUEST, SHOP_PRODUCTS_VIEW, FILTER_PRODUCT_SORT} from '../constants/ProductAllConstant';
+import {GET_PRODUCTS_ALL_FAILURE, GET_PRODUCTS_ALL_SUCCESS, GET_PRODUCTS_ALL_REQUEST, SHOP_PRODUCTS_VIEW, FILTER_PRODUCT_SORT, SEARCH_PRODUCT} from '../constants/ProductAllConstant';
 import productApi from '../services/productApi';
 
 export function getProductAll(brand="", price= "", ratings="", options=""){
@@ -26,5 +26,13 @@ export function filterProductBySort(str){
 export function getProductView(str){
     return (dispatch) => {
         dispatch({type: SHOP_PRODUCTS_VIEW, payload: str})
+    }
+}
+
+
+export function searchProduct(keyword){
+    return async(dispatch) => {
+        const {data} = await productApi.searchProduct(keyword);
+        dispatch({type: SEARCH_PRODUCT, payload: data})
     }
 }

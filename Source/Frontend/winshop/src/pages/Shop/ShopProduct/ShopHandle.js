@@ -2,10 +2,15 @@ import React, {useEffect, useContext, useState, useRef} from 'react';
 import "./ShopHandle.scss";
 import {useDispatch, useSelector} from 'react-redux';
 import {PrevFilterContext} from '../../../context/PrevFilterContext';
-import {filterProductBySort, getProductView} from '../../../actions/ProductAllAction'
+import {filterProductBySort, searchProduct} from '../../../actions/ProductAllAction';
+import {Link} from 'react-router-dom';
+import {Divider} from "@material-ui/core";
 import SearchIcon from '@material-ui/icons/Search';
-import ViewList from '@material-ui/icons/ViewList';
-import ViewModuleIcon from '@material-ui/icons/ViewModule';
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import ListItemAvatar from "@material-ui/core/ListItemAvatar";
+import Avatar from "@material-ui/core/Avatar";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const dataFake = [
@@ -28,14 +33,14 @@ const dataFake = [
 ];
 
 function ShopHandle() {
-    const [inputValue, setInputValue] = useState('');
     const [isDrop, setIsDrop] = useState(false);
-  
+    const [keyWord, setKeyWord] = useState('');
+    const [show, setShow] = useState(false);
     const ref = useRef();
-  
+    const {searchProducts} = useSelector((state) => state.getProductList)
     const dispatch = useDispatch();
     const {handlePrevious} = useContext(PrevFilterContext);
-    const { selectedDrop, setSelectedDrop, setPrevSearch } = handlePrevious();
+    const { selectedDrop, setSelectedDrop } = handlePrevious();
 
     // useEffect(() =>{
     //     const handleClickDrop = (e) =>{
@@ -51,6 +56,9 @@ function ShopHandle() {
     
     //     return window.removeEventListener('click', handleClickDrop);
     //   }, []);
+    useEffect(() => {
+        dispatch(searchProduct(keyWord))
+    }, [searchProduct, keyWord])
 
       const handleClickDrop = (e) =>{
         const el = ref.current;
@@ -69,12 +77,21 @@ function ShopHandle() {
         setSelectedDrop(value);
     }
 
+    const handleKeyWord = (key) =>{
+      setTimeout(() =>{
+         setKeyWord(key);
+         setShow(true);
+      }, 1000)
+   }
+
+
   return (
+    <>
     <div className='shop-handle'>
         <form className="shop-handle__search">
              <input 
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
+                value={keyWord}
+                onChange={(e) => handleKeyWord(e.target.value)}
                 placeholder="Search your products"
              />
              <button className='shop-handle__search-btn'>
@@ -103,7 +120,31 @@ function ShopHandle() {
                 ))}
             </ul>
         </div>
+       
   </div>
+  {show && keyWord && searchProducts && searchProducts.length > 0 ? (
+        <List className='shop-handle__searchResult'>
+          {searchProducts.map((product) => (
+            <Link
+              key={product._id}
+              to={""}
+              className="shop-handle__searchLink"
+              onClick={() => setShow(false)}
+            >
+              <ListItem>
+                <ListItemAvatar>
+                  <Avatar>
+                    <img src={product.image} alt={product.name} />
+                  </Avatar>
+                </ListItemAvatar>
+                <ListItemText primary={product.name} />
+              </ListItem>
+              <Divider />
+            </Link>
+          ))}
+        </List>
+      ) : null}
+  </>
   )
 }
 

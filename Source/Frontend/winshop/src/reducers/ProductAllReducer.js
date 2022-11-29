@@ -1,8 +1,8 @@
-import {GET_PRODUCTS_ALL_FAILURE, GET_PRODUCTS_ALL_SUCCESS, GET_PRODUCTS_ALL_REQUEST, SHOP_PRODUCTS_VIEW, FILTER_PRODUCT_SORT} from '../constants/ProductAllConstant';
+import {GET_PRODUCTS_ALL_FAILURE, GET_PRODUCTS_ALL_SUCCESS, GET_PRODUCTS_ALL_REQUEST, FILTER_PRODUCT_SORT, SEARCH_PRODUCT} from '../constants/ProductAllConstant';
 
 const initialState = {
     shopProducts: [],
-    shopProductsView: localStorage.getItem(SHOP_PRODUCTS_VIEW) ?? "",
+    searchProducts: [],
     isLoading: false,
     error: null
 }
@@ -15,9 +15,6 @@ function productAllReducer(state=initialState, action){
             return {...state, isLoading: false, shopProducts: action.payload}
         case GET_PRODUCTS_ALL_FAILURE:
             return {...state, isLoading: false, error: action.error}
-        case SHOP_PRODUCTS_VIEW:
-            localStorage.setItem(SHOP_PRODUCTS_VIEW, action.payload);
-            return {...state, shopProductsView: action.payload}
         case FILTER_PRODUCT_SORT:
             switch(action.payload){
                 case "price_lth":
@@ -31,6 +28,8 @@ function productAllReducer(state=initialState, action){
                 default: 
                     return state;
             }
+        case SEARCH_PRODUCT:
+            return {...state, shopProducts: [], searchProducts: action.payload, isLoading: false, error: null}
         default:
             return state;
     }
