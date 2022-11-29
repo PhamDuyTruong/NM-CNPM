@@ -5,7 +5,6 @@ import Logo from "../../assets/images/WinShop Logo.png";
 import { AppBar, Toolbar } from "@material-ui/core";
 import { Hidden } from "@material-ui/core";
 import { Button, IconButton, Typography } from "@material-ui/core";
-import ChevronRightRoundedIcon from "@material-ui/icons/ChevronRightRounded";
 import ChevronLeftRoundedIcon from "@material-ui/icons/ChevronLeftRounded";
 import DropdownMenu from "./DropdownMenu";
 
@@ -71,16 +70,7 @@ function Header() {
       <AppBar className={classes.containerBar}>
         <Toolbar className={classes.toolbar} disableGutters>
           <Hidden xsDown>
-            <Typography style={{color: "#47B5FF"}} variant="h5">Winshop</Typography>
-            <IconButton
-              className={classes.iconHome}
-              aria-label="open drawer"
-              onClick={""}
-              edge="start"
-            >
-              <ChevronRightRoundedIcon />
-            </IconButton>
-           
+            <Typography style={{color: "#47B5FF", cursor: "pointer"}} variant="h5">Winshop</Typography>
           </Hidden>
           <Hidden xsUp>
             <img src={Logo} alt="logo" width={50} height={50} />
@@ -97,14 +87,14 @@ function Header() {
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center"}}>
                 <img style={{paddingLeft: "10px"}} src={Logo} alt="logo" width={70} height={70} />
               <Button className={classes.buttonHome} 
-              //component={Link} to={"/"}
+              component={Link} to={"/"}
               >
                 Home
               </Button>
               <Button
                 className={classes.buttonHome}
-                // component={Link}
-                //to={"/shop"}
+                component={Link}
+                to={"/shop"}
               >
                 Shop
               </Button>

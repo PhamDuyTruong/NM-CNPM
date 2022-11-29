@@ -90,6 +90,7 @@ function ShopHandle() {
                  className={
                     isDrop ? 'shop-handle__drop-list drop' : 'shop-handle__drop-list'
                   }
+                  style={{listStyleType: "none"}}
             >
                 {dataFake.map((item, index) =>(
                     <li

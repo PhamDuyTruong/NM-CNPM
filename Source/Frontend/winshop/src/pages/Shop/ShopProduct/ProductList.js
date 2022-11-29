@@ -6,12 +6,18 @@ import ShopEmpty from './ShopEmpty';
 import ProductCard from '../../../Components/ProductCard'
 
 function ProductList() {
+    const [noOfEle, setNoOfEle] = useState(9);
+
     const dispatch = useDispatch();
     const {shopProducts} = useSelector((state) => state.getProductList);
-
+    const dataSlice = shopProducts.slice(0, noOfEle);
     useEffect(() => {
         dispatch(getProductAll());
     }, []);
+
+    const handleLoadMore = () => {
+      setNoOfEle(noOfEle + noOfEle)
+    }
 
   return (
     <>
@@ -23,10 +29,14 @@ function ProductList() {
               'shop-products'
           }
         >
-            {shopProducts && shopProducts.map((item) => (
+            {shopProducts && dataSlice.map((item) => (
                 <ProductCard  key={item.id} {...item}/>
             ))}
+          
         </div>
+        <button className='btn btn-dark d-block w-100' onClick={() => handleLoadMore()}>
+              View more
+        </button>
     </>
   )
 }
