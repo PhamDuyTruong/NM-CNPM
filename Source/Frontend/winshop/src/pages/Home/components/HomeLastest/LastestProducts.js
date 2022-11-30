@@ -1,5 +1,6 @@
 import React from 'react';
 import "./LastestProduct.scss";
+import {Link} from 'react-router-dom'
 import HandleImage from '../../../../utils/HandleImage'
 
 function LastestProducts(props) {
@@ -13,9 +14,11 @@ function LastestProducts(props) {
                  alt="Home product"
                  height={240}
               />
-              <button className='btn'>
+              <Link to="/shop">
+                <button className='btn'>
                   <span>Best deal</span>
-              </button>
+                </button>
+              </Link>
           </div>
           <div className='home-product__content'>
               <h3 className='home-product__name'>{name.length > 20 ? name.substring(0, 20) + "..." : name}</h3>

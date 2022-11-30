@@ -11,7 +11,7 @@ function HomeSale() {
         <div className="content-sale">
           <span>Special offer</span>
           <h3>Upto 50% off</h3>
-          <a href="/" className="btn">
+          <a href="/shop" className="btn">
             Shop now
           </a>
         </div>
@@ -21,7 +21,7 @@ function HomeSale() {
         <div className="content-sale">
             <span>Special offer</span>
           <h3>Upto 50% off</h3>
-          <a href="/" className="btn">
+          <a href="/shop" className="btn">
             Shop now
           </a>
         </div>

@@ -7,8 +7,6 @@ import ProductCard from '../../../Components/ProductCard'
 
 function ProductList() {
     const [noOfEle, setNoOfEle] = useState(9);
-    const [keyword, setKeyword] = useState(null);
-    const [isShow, setIsShow] = useState(false);
 
     const dispatch = useDispatch();
     const {shopProducts} = useSelector((state) => state.getProductList);

@@ -42,20 +42,6 @@ function ShopHandle() {
     const {handlePrevious} = useContext(PrevFilterContext);
     const { selectedDrop, setSelectedDrop } = handlePrevious();
 
-    // useEffect(() =>{
-    //     const handleClickDrop = (e) =>{
-    //             const el = ref.current;
-                
-    //       if (el && el.contains(e.target)) {
-    //         setIsDrop(!isDrop);
-    //       } else {
-    //         setIsDrop(false);
-    //       }
-    //     };
-    //     window.addEventListener("click", handleClickDrop);
-    
-    //     return window.removeEventListener('click', handleClickDrop);
-    //   }, []);
     useEffect(() => {
         dispatch(searchProduct(keyWord))
     }, [searchProduct, keyWord])
@@ -78,10 +64,8 @@ function ShopHandle() {
     }
 
     const handleKeyWord = (key) =>{
-      setTimeout(() =>{
-         setKeyWord(key);
-         setShow(true);
-      }, 1000)
+      setKeyWord(key)
+      setShow(true)
    }
 
 
