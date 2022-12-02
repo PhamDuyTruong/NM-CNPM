@@ -24,47 +24,38 @@ const userControllers = {
           }
     },
     updateUser: async(req, res) => {
-        try {
-            if (req.body.userId === req.params.id) {
-                if (req.body.password) {
-                  const salt = await bcrypt.genSalt(10);
-                  req.body.password = await bcrypt.hash(req.body.password, salt);
-                }
-                try {
-                  const updatedUser = await User.findByIdAndUpdate(
-                    req.params.id,
-                    {
-                      $set: req.body,
-                    },
-                    { new: true }
-                  );
-                  res.status(200).json(updatedUser);
-                } catch (err) {
-                  res.status(500).json(err);
-                }
-              } else {
-                res.status(401).json("You can update only your account!");
-              }
-        } catch (error) {
-            res.status(500).json(error)
-        }
+      const user = await User.findById(req.params.id)
+    if(user){
+       user.name = req.body.name || user.name,
+       user.email = req.body.email  || user.email
+       user.phone = req.body.phone || user.phone
+       user.isAdmin = req.body.isAdmin
+       const updatedUser = await user.save()
+       res.status(200).json({
+        name:updatedUser.name,
+        email:updatedUser.email,
+        phone: updatedUser.phone,
+        isAdmin:updatedUser.isAdmin,
+      })
+    }else{
+      res.status(404)
+      throw new Error('User not found')
+      }
     },
     deleteUser: async(req, res) => {
-        if (req.body.userId === req.params.id) {
-            try {
                 const user = await User.findById(req.params.id);
+                if(!user){
+                  return res.status(404).json({
+                      success: false,
+                      message: "User not found !!!"
+                  })
+              }
                 try {
                     await User.findByIdAndDelete(req.params.id);
                     res.status(200).json("User has been deleted...");
                 } catch (error) {
                     res.status(500).json(err);
                 }
-            } catch (error) {
-                res.status(404).json("User not found!");
-            }
-        }else{
-            res.status(401).json("You can delete only your account!");
-        }
     },
     getUserProfile: async(req, res) => {
         const user = await User.findById(req.user.id);
