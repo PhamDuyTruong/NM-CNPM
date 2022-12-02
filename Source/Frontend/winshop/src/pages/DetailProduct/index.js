@@ -8,6 +8,8 @@ import bannerImg from '../../assets/images/banner_detail.jpg';
 import { Container } from '@material-ui/core';
 import { Grid } from '@material-ui/core';
 
+import DetailMain from './DetailMain';
+
 function DetailProduct() {
     const {detailProduct, isLoading} = useSelector((state) => state.getDetailProduct);
     const {id} = useParams();
@@ -28,7 +30,7 @@ function DetailProduct() {
                         {/* <DetailImage product={detailProduct}/> */}
                     </Grid>
                     <Grid item xs={12} md={6}>
-                          {/* <DetailMain product={selectedProduct}/> */}
+                          <DetailMain product={detailProduct}/>
                     </Grid>
                 </Grid>
             </section>

@@ -1,5 +1,6 @@
 import React from 'react';
-import "./DetailContent.scss"
+import "./DetailContent.scss";
+import Checkbox from '../../../Components/Checkbox'
 import { Button } from "@material-ui/core";
 import StarIcon from "@material-ui/icons/Star";
 import AddIcon from "@material-ui/icons/Add";
@@ -22,11 +23,118 @@ function DetailContent(props) {
   } = props;
   const { name, size, color, description, ratings } = product ? product : "";
   const { handleOptionChange, handleIncreaseQnt, handleDecreaseQnt } = handleFuncs;
-
+  
+  const onHandleOptionChange = (e, percent) => {
+    handleOptionChange(e, percent);
+  };
   return (
-    <div>
-        
+    <>
+    <div className="detail-content">
+      <h2 className="detail-content__title">
+        {name}
+      </h2>
+      <div className="detail-content__rate">
+        <div className="detail-content__stars">
+          <StarIcon />
+          <StarIcon />
+          <StarIcon />
+          <StarIcon />
+          {ratings === 5 ? <StarIcon /> : <StarBorderIcon />}
+        </div>
+
+        <div className="detail-content__reviews">
+          <span className="detail-content__reviews-qnt">
+            {/* {comments.length} */}
+          </span>
+          <span>Reviews</span>
+        </div>
+      </div>
+
+      <div className="detail-content__price">
+        <strong>${price}</strong>
+      </div>
+
+      <div className="detail-content__tags">
+        <div className="detail-content__tag">
+          <span className="detail-content__tag-label">Size:</span>
+          <span className="detail-content__tag-detail category">
+            {size}
+          </span>
+        </div>
+        <div className="detail-content__tag">
+          <span className="detail-content__tag-label">Color</span>
+          <span className="detail-content__tag-detail">{color}</span>
+        </div>
+      </div>
+
+      <p className="detail-content__description">{description}</p>
+
+      <form className="detail-content__form">
+        <div className="detail-content__form-title">Choose your options</div>
+        {dataOptions.map((item) => (
+          <Checkbox
+            key={item.content}
+            checked={selectedRadio === item.content}
+            content={item.content}
+            value={item.content}
+            handleOptionChange={(e) =>
+              onHandleOptionChange(e, item.percentOff)
+            }
+          ></Checkbox>
+        ))}
+      </form>
+
+      <div className="detail-content__btns">
+        <div className="detail-content__btn-handle">
+          <Button
+            onClick={handleDecreaseQnt}
+            className="detail-content__btn-inc btn-circle"
+          >
+            <RemoveIcon />
+          </Button>
+          <span className="detail-content__btn-qnt">{qnt}</span>
+          <Button
+            onClick={handleIncreaseQnt}
+            className="detail-content__btn-dec btn-circle"
+          >
+            <AddIcon />
+          </Button>
+        </div>
+
+        <div
+          //onClick={() => onHandleAddToFirestore("success", product)}
+          className="detail-content__add"
+        >
+          <Button className='primary-btn red'>
+            <AddShoppingCartOutlinedIcon />
+            <span>Add to cart</span>
+          </Button>
+        </div>
+        <Button
+          // onClick={() => onHandleAddToFirestore("wishlist", product)}
+          className="detail-content__btn-like btn-circle"
+        >
+          <FavoriteBorderIcon />
+        </Button>
+      </div>
+
+      <div className="detail-content__commits">
+        <div className="detail-content__commit">
+          <LocalShippingOutlinedIcon />
+          <span>Free global shipping on all orders</span>
+        </div>
+        <div className="detail-content__commit">
+          <EventAvailableOutlinedIcon />
+          <span>2 hours easy returns if you change your mind</span>
+        </div>
+        <div className="detail-content__commit">
+          <LocalOfferOutlinedIcon />
+          <span>Order before noon for same day dispatch</span>
+        </div>
+      </div>
     </div>
+
+  </>
   )
 }
 
