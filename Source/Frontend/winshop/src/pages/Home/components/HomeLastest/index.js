@@ -16,7 +16,6 @@ SwiperCore.use([Autoplay, Pagination])
 
 function HomeLastest() {
     const {products, isLoading} = useSelector((state) => state.getProducts);
-    console.log(products);
     let containerRef = useRef(null);
     let captionRef = useRef(null);
     let headingRef = useRef(null);

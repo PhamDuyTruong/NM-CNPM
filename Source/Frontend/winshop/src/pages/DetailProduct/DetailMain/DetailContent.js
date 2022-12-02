@@ -23,7 +23,7 @@ function DetailContent(props) {
   } = props;
   const { name, size, color, description, ratings } = product ? product : "";
   const { handleOptionChange, handleIncreaseQnt, handleDecreaseQnt } = handleFuncs;
-  
+
   const onHandleOptionChange = (e, percent) => {
     handleOptionChange(e, percent);
   };
@@ -62,7 +62,7 @@ function DetailContent(props) {
           </span>
         </div>
         <div className="detail-content__tag">
-          <span className="detail-content__tag-label">Color</span>
+          <span className="detail-content__tag-label">Color: </span>
           <span className="detail-content__tag-detail">{color}</span>
         </div>
       </div>
