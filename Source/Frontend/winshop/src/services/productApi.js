@@ -10,6 +10,9 @@ const productApi = {
         };
         return axiosClient.get("/api/product?category="+params.maDanhMuc)
     },
+    getDetailProduct: (productId) => {
+        return axiosClient.get("/api/product/" + productId)
+    },
     getProductAll: (brand, price, ratings, options) => {
         let url = "";
         if(brand === "" && price === "" && ratings=== ""){

@@ -25,19 +25,19 @@ const userControllers = {
     },
     updateUser: async(req, res) => {
       const user = await User.findById(req.params.id)
-    if(user){
-       user.name = req.body.name || user.name,
-       user.email = req.body.email  || user.email
-       user.phone = req.body.phone || user.phone
-       user.isAdmin = req.body.isAdmin
-       const updatedUser = await user.save()
-       res.status(200).json({
+      if(user){
+        user.name = req.body.name || user.name,
+        user.email = req.body.email  || user.email
+        user.phone = req.body.phone || user.phone
+        user.isAdmin = req.body.isAdmin
+        const updatedUser = await user.save()
+        res.status(200).json({
         name:updatedUser.name,
         email:updatedUser.email,
         phone: updatedUser.phone,
         isAdmin:updatedUser.isAdmin,
       })
-    }else{
+      }else{
       res.status(404)
       throw new Error('User not found')
       }
@@ -71,6 +71,7 @@ const userControllers = {
         if(user){
           user.username = req.body.username || user.username
           user.email = req.body.email || user.email
+          user.phone = req.body.phone || user.phone
           if(req.body.password){
             const salt = await bcrypt.genSalt(10);
             req.body.password = await bcrypt.hash(req.body.password, salt);

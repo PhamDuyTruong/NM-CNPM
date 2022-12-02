@@ -1,0 +1,20 @@
+@import "../../assets/styles/mixins";
+
+
+.banner{
+    width: 100%;
+    margin-bottom: 80px;
+    @include respond(mobile) {
+        margin-bottom: 30px;
+    }
+}
+
+.detail {
+  &__container {
+    margin-top: 100px;
+
+    @include respond(mobile) {
+      margin-top: 80px;
+    }
+  }
+}

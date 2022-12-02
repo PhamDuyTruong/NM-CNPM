@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
+import {Link} from 'react-router-dom'
 import {
   Card,
   CardMedia,
@@ -45,7 +46,7 @@ function ProductCard({product}) {
   }
   return (
     <Card className={classes.container}>
-    <CardActionArea>
+    <CardActionArea component={Link} to={`/shop/${product._id}`}>
        <CardMedia className={classes.media} image={product.image} title={product.name}/>
       <CardContent>
          <Typography className={classes.title} gutterBottom variant='subtitle2' component="h5">
