@@ -10,6 +10,7 @@ import { Grid } from '@material-ui/core';
 
 import DetailMain from './DetailMain';
 import DetailImage from './DetailImage'
+import DetailReview from './DetailReview';
 
 function DetailProduct() {
     const {detailProduct, isLoading} = useSelector((state) => state.getDetailProduct);
@@ -37,6 +38,7 @@ function DetailProduct() {
             </section>
             {/* <DetailTab />
             <DetailProducts /> */}
+            <DetailReview />
         </Container>
     </div>
   )
