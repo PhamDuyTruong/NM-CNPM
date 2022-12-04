@@ -5,7 +5,12 @@ import { Avatar } from "@material-ui/core";
 
 // material ui icons
 import StarIcon from "@material-ui/icons/Star";
+import DetailPost from './DetailPost';
 
+const colors = {
+  yellow: "#fbb403",
+  blur: "#FDDA81"
+};
 
 function DetailComment() {
   return (
@@ -13,6 +18,7 @@ function DetailComment() {
         <div className='detail-tab-comment__container'>
 
         </div>
+        <DetailPost colors={colors}/>
     </div>
   )
 }
