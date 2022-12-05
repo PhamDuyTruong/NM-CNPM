@@ -37,7 +37,7 @@ function DetailMain({product}) {
             case 25:
               setQnt(3);
               break;
-            case 50:
+            case 40:
               setQnt(5);
               break;
             default:

@@ -1,13 +1,18 @@
-import React, {useState} from 'react';
-import "./DetailPost.scss"
+import React, {useState, useEffect} from 'react';
+import "./DetailPost.scss";
+import {useParams} from 'react-router';
+import {useSelector, useDispatch} from 'react-redux';
+import {createReviewProduct} from '../../../actions/ReviewAction'
 import { Avatar } from '@material-ui/core';
 import StarIcon from '@material-ui/icons/Star';
 
 function DetailPost({colors}) {
-  const [areaValue, setAreaValue] = useState('');
+  const [areaValue, setAreaValue] = useState("");
   const [selectedStar, setSelectedStar] = useState(0);
   const [hoveredStar, setHoveredStar] = useState(0);
-  
+  const {id} = useParams();
+  const dispatch = useDispatch();
+
 
   const handleSelectedStar = (pos) => {
     setSelectedStar(pos);
@@ -17,6 +22,25 @@ function DetailPost({colors}) {
     setHoveredStar(pos);
   };
 
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!areaValue.trim()) return;
+    if(areaValue === "") return;
+    const obj = {
+      rating: selectedStar,
+      comment: areaValue
+    };
+    
+    dispatch(createReviewProduct(obj, id));
+    setAreaValue('');
+    setSelectedStar(0);
+
+    // window.scrollTo({
+    //   top: commentRef.current.offsetTop - 200,
+    //   behavior: 'smooth',
+    // });
+  }
 
 
 
@@ -28,7 +52,7 @@ function DetailPost({colors}) {
           alt='Avatar'
         />
 
-        <form className='detail-tab-user__form'>
+        <form onSubmit={handleSubmit} className='detail-tab-user__form'>
           <div className='detail-tab-user__row'>
             <div className='detail-tab-user__rate'>
               {Array(5)

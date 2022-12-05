@@ -36,8 +36,6 @@ function DetailProduct() {
                     </Grid>
                 </Grid>
             </section>
-            {/* <DetailTab />
-            <DetailProducts /> */}
             <DetailReview />
         </Container>
     </div>

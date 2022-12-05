@@ -89,7 +89,8 @@ const productControllers = {
         }
     },
     createProductReview: async(req, res) => {
-        const {rating, comment} = req.body;
+        const rating = req.body.rating;
+        const comment = req.body.comment
         const product = await Product.findById(req.params.id);
         if(product){
             const alreadyReview = product.reviews.find(
@@ -101,12 +102,19 @@ const productControllers = {
             const review = {
                 user: req.user.id,
                 name: req.user.username,
-                rating: Number(rating),
+                rating: rating,
                 comment: comment
             };
             product.reviews.push(review);
             product.numReviews = product.reviews.length;
-            product.ratings =product.reviews.reduce((acc, item) => item.rating + acc, 0) / product.reviews.length;
+            let avg = 0;
+
+             product.reviews.forEach((rev) => {
+                avg += rev.rating;
+            });
+            if(product.reviews.length > 0){
+               product.ratings = avg / product.reviews.length;
+            }
             try {
                 const updatedProduct = await product.save();
                 res.status(200).json(updatedProduct);
