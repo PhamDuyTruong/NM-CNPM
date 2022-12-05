@@ -1,5 +1,6 @@
 import React from 'react';
 import style from "./Footer.module.css";
+import {Link} from 'react-router-dom'
 
 function Footer() {
   return (
@@ -12,15 +13,15 @@ function Footer() {
                         Company
                     </h2>
                     <div className={style.LinksContainer}>
-                        <a className={`${style.Link} ${style.TextLink}`} to="/about">
+                        <Link className={`${style.Link} ${style.TextLink}`} to="/about">
                             About Us
-                        </a>
-                        <a className={`${style.Link} ${style.TextLink}`} to="/faq">
+                        </Link>
+                        <Link className={`${style.Link} ${style.TextLink}`} to="/FAQ">
                             FAQ
-                        </a>
-                        <a className={`${style.Link} ${style.TextLink}`} href="mailto:no-mail@email.com">
+                        </Link>
+                        <Link className={`${style.Link} ${style.TextLink}`} href="mailto:no-mail@email.com">
                             Contact Us
-                        </a>
+                        </Link>
                     </div>
                 </div>
 
@@ -29,15 +30,15 @@ function Footer() {
                         Legal
                     </h2>
                     <div className={style.LinksContainer}>
-                        <a className={`${style.Link} ${style.TextLink}`} href="/term">
+                        <Link className={`${style.Link} ${style.TextLink}`} to="/term">
                             Terms & Conditions
-                        </a>
-                        <a className={`${style.Link} ${style.TextLink}`} href="/privacy">
+                        </Link>
+                        <Link className={`${style.Link} ${style.TextLink}`} to="/privacy">
                             Privacy Policy
-                        </a>
-                        <a className={`${style.Link} ${style.TextLink}`} href="/dis">
+                        </Link>
+                        <Link className={`${style.Link} ${style.TextLink}`} to="/dis">
                             Disclaimer
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

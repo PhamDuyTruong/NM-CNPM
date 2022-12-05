@@ -5,6 +5,8 @@ import PrevFilterContext from './context/PrevFilterContext';
 import DetailProduct from './pages/DetailProduct';
 import Home from './pages/Home';
 import Shop from './pages/Shop';
+import FAQ from './Components/FAQ';
+
 function App() {
   return (
     <BrowserRouter>
@@ -19,6 +21,9 @@ function App() {
           </Route>
           <Route path="/shop">
             <Shop />
+          </Route>
+          <Route path="/FAQ">
+              <FAQ />
           </Route>
         </Switch>
      </PrevFilterContext>
