@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
   buttonHome: {
     color: "#47B5FF",
     fontWeight: "bold",
-    fontSize: "1.2rem",
+    fontSize: "1.3rem",
     paddingRight: "10px",
     transition: "all 1s",
     "&:hover": {
@@ -70,10 +70,10 @@ function Header() {
       <AppBar className={classes.containerBar}>
         <Toolbar className={classes.toolbar} disableGutters>
           <Hidden xsDown>
-            <Typography style={{color: "#47B5FF", cursor: "pointer"}} variant="h5">Winshop</Typography>
+            <Typography style={{color: "#47B5FF", cursor: "pointer", fontSize: "2rem"}} variant="h4">Winshop</Typography>
           </Hidden>
           <Hidden xsUp>
-            <img src={Logo} alt="logo" width={50} height={50} />
+            <img src={Logo} alt="logo" width={70} height={70} />
             <IconButton
               className={classes.iconHome}
               aria-label="open drawer"

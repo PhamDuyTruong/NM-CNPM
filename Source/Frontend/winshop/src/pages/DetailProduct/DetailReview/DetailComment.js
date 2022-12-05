@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import "./DetailComment.scss"
 // material ui core
 import { Avatar } from "@material-ui/core";
@@ -18,7 +18,7 @@ function DetailComment() {
   return (
     <div className="detail-tab__comment">
         <div  className='detail-tab-comment__container'>
-        {reviewData.reviews.map(({ name, comment, rating}, index) => (
+        {reviewData.reviews && reviewData.reviews.map(({ name, comment, rating}, index) => (
           <div key={index} className="detail-tab-comment__customer">
             <Avatar
               className="detail-tab-comment__customer-avatar"

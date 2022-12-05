@@ -1,8 +1,10 @@
 import React, {useEffect, useState, useRef} from 'react'
 import DetailComment from './DetailComment';
+import  {useSelector} from 'react-redux'
 import "./styles.scss"
 
 function DetailReview() {
+    const { reviewData} = useSelector((state) => state.getReviewProduct);
     const [isActive, setIsActive] = useState(true);
     const [offsetLeft, setOffsetLeft] = useState(0);
     const [offsetWidth, setOffsetWidth] = useState(0);
@@ -56,7 +58,7 @@ function DetailReview() {
                className={!isActive ? "detail-tab__btn active" : "detail-tab__btn"}
             >
                 <span>Reviews</span>
-                <span>(0)</span>
+                <span>({reviewData.reviews ? reviewData.reviews.length : 0})</span>
             </div>
             <div 
                style={{ left: offsetLeft, width: offsetWidth }}

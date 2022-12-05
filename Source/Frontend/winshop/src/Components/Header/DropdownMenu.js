@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
   buttonLogIn: {
     textTransform: "none",
     fontWeight: "700",
+    fontSize: "1.1rem",
     backgroundColor: "#47B5FF",
     "&:hover": {
       color: "#FFE15D",
@@ -35,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
     //  width: "90px",
     border: "1px solid #F05454",
     fontWeight: "700",
+    fontSize: "1.1rem",
     transition: "all .5s",
     "&:hover": {
       color: "#FFF",
@@ -48,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
   cart: {
     position: "relative",
     padding: "5px",
+    fontSize: "1.2rem",
     marginRight: "20px",
     cursor: "pointer",
   },

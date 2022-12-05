@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import HandleImage from '../../../../utils/HandleImage'
 
 function LastestProducts(props) {
-    const {img, name, desc, price} = props
+    const {img, name, desc, price, id} = props
     return (
       <div className='home-product'>
           <div className='home-product__wrapper'>
@@ -14,7 +14,7 @@ function LastestProducts(props) {
                  alt="Home product"
                  height={240}
               />
-              <Link to="/shop">
+              <Link to={`/shop/${id}`}>
                 <button className='btn'>
                   <span>Best deal</span>
                 </button>

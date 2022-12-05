@@ -21,19 +21,6 @@ function HomeLastest() {
     let headingRef = useRef(null);
     let cardRef = useRef(null);
     const dispatch = useDispatch();
-  
-    useEffect(() =>{
-        //   const line = gsap.timeline({
-        //       scrollTrigger: {
-        //           trigger: containerRef,
-        //           start: "60% bottom"
-        //       }
-        //   });
-        //   line.from(captionRef, { x: 20, opacity: 0, duration: 0.8 }, "-=0.2")
-        //   .from(headingRef, { x: -20, opacity: 0, duration: 0.8 }, "-=0.2")
-        //   .from(cardRef, { y: 20, opacity: 0, duration: 0.8 }, "-=0.2");
-
-    },[]);
 
     useEffect(() => {
         dispatch(getProducts());
@@ -80,13 +67,14 @@ function HomeLastest() {
                     },
                   }}
                 >
-                        {products.map(({image, name, description, price}, index) =>(
+                        {products.map(({image, name, description, price, _id}, index) =>(
                         <SwiperSlide key={index}>
                                 <LastestProducts
                                    img={image}
                                    name={name}
                                    desc={description}
                                    price={price}
+                                   id={_id}
                                 >
                                 </LastestProducts>
                         </SwiperSlide>
