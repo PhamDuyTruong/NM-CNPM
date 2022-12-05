@@ -6,6 +6,9 @@ import DetailProduct from './pages/DetailProduct';
 import Home from './pages/Home';
 import Shop from './pages/Shop';
 import FAQ from './Components/FAQ';
+import Disclaimer from './Components/Disclaimer';
+import Privacy from './Components/Privacy';
+import Terms from './Components/Terms';
 
 function App() {
   return (
@@ -24,6 +27,15 @@ function App() {
           </Route>
           <Route path="/FAQ">
               <FAQ />
+          </Route>
+          <Route path="/dis">
+              <Disclaimer />
+          </Route>
+          <Route path="/privacy">
+              <Privacy />
+          </Route>
+          <Route path="/term">
+              <Terms />
           </Route>
         </Switch>
      </PrevFilterContext>
