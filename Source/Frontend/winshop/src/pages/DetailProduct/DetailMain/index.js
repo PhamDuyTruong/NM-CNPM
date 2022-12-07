@@ -60,7 +60,7 @@ function DetailMain({product}) {
                 setFixedPrice(price || 0 *qnt);
                 setSelectedRadio(null);
             }else if(qnt >= 5){
-                setFixedPrice((price * qnt - price * 5 * 0.5).toFixed(2));
+                setFixedPrice((price * qnt - price * 5 * 0.6).toFixed(2));
                 setSelectedRadio('Buy 5 get 50 percent off');
             }else if(qnt === 3){
                 setFixedPrice((price * 3 * 0.75).toFixed(2));

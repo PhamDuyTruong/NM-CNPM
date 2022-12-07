@@ -1,4 +1,4 @@
-import {OPEN_SIDEBAR, DRAW_SIDEBAR_OPEN, DRAW_SIDEBAR_CLOSE} from '../constants/SidebarConstant';
+import {OPEN_SIDEBAR, DRAW_SIDEBAR_OPEN, DRAW_SIDEBAR_CLOSE, IS_SHOW_CART} from '../constants/SidebarConstant';
 
 export const openSidebar = () =>{
     return {
@@ -15,5 +15,12 @@ export const drawSidebarOpen = () =>{
 export const drawSidebarClose = () =>{
     return {
         type: DRAW_SIDEBAR_CLOSE
+    }
+};
+
+export const getShowCart = (str) => {
+    return {
+        type: IS_SHOW_CART,
+        payload: str
     }
 }

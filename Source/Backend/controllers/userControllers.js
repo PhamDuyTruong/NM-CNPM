@@ -29,7 +29,7 @@ const userControllers = {
         user.name = req.body.name || user.name,
         user.email = req.body.email  || user.email
         user.phone = req.body.phone || user.phone
-        user.isAdmin = req.body.isAdmin
+        user.isAdmin = req.body.isAdmin || user.isAdmin;
         const updatedUser = await user.save()
         res.status(200).json({
         name:updatedUser.name,
@@ -71,7 +71,7 @@ const userControllers = {
         if(user){
           user.username = req.body.username || user.username
           user.email = req.body.email || user.email
-          user.phone = req.body.phone || user.phone
+          user.phone = req.body.phone || user.phone;
           if(req.body.password){
             const salt = await bcrypt.genSalt(10);
             req.body.password = await bcrypt.hash(req.body.password, salt);

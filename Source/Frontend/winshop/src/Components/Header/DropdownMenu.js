@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import {useDispatch, useSelector} from 'react-redux';
 import { makeStyles } from "@material-ui/core/styles";
 import { Menu, Box, useMediaQuery } from "@material-ui/core";
 import { Button, ButtonGroup, IconButton } from "@material-ui/core";
@@ -8,6 +9,9 @@ import LocalMallOutlinedIcon from '@material-ui/icons/LocalMallOutlined';
 import LoyaltyOutlinedIcon from "@material-ui/icons/LoyaltyOutlined";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import DarkmodeButton from './DarkmodeButton';
+import {getShowCart} from '../../actions/SidebarAction';
+import Cart from "../Cart";
+
 const useStyles = makeStyles((theme) => ({
   moreIcon: {
     color: "#000",
@@ -95,9 +99,15 @@ const useStyles = makeStyles((theme) => ({
 
 function DropdownMenu() {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(false);
+  const dispatch = useDispatch();
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const match = useMediaQuery("(min-width: 960px)");
   const classes = useStyles();
+  const toggleCart = () => {
+    const action = getShowCart(true);
+     dispatch(action);
+  };
+
   const renderMenu = (
     <Box
       display="flex"
@@ -107,7 +117,7 @@ function DropdownMenu() {
       minWidth={match ? 0 : 180}
     >
       <Box m={match ? 0 : 1} className={classes.Hide1}>
-        <div className={classes.cart} onClick={""}>
+        <div className={classes.cart} onClick={toggleCart}>
             <ShoppingCartIcon style={{fontSize: "2rem", color: "#47B5FF"}}/>
             <div className={classes.qnt}>0</div>
         </div>
@@ -116,21 +126,14 @@ function DropdownMenu() {
       <Box flexDirection="column" className={classes.Hide}>
         <ul style={{ listStyleType: "none", textAlign: "center"}}>
           <li>
-            <a
-              href="#"
-              className={classes.button}
-              style={{ textDecoration: "none"}}
-            >
-               
-                <div className={classes.cart} onClick={""}>
+                <div className={classes.cart} onClick={toggleCart}>
                     <ShoppingCartIcon style={{fontSize: "1.2rem", color: "#47B5FF", paddingTop: "5px"}}/>
                      Cart
                 </div>
-            </a>
           </li>
           <li>
             <a
-              href="#"
+              href="/shop"
               className={classes.button}
               style={{ textDecoration: "none" }}
             >
@@ -188,6 +191,7 @@ function DropdownMenu() {
       >
         {renderMenu}
       </Menu>
+      <Cart />
     </>
   );
 }
