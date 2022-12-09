@@ -9,6 +9,7 @@ import FAQ from './Components/FAQ';
 import Disclaimer from './Components/Disclaimer';
 import Privacy from './Components/Privacy';
 import Terms from './Components/Terms';
+import Signup from './Components/Signup';
 
 function App() {
   return (
@@ -24,6 +25,9 @@ function App() {
           </Route>
           <Route path="/shop">
             <Shop />
+          </Route>
+          <Route path="/sign-up">
+              <Signup />
           </Route>
           <Route path="/FAQ">
               <FAQ />

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {useDispatch, useSelector} from 'react-redux';
+import {Link} from 'react-router-dom'
 import { makeStyles } from "@material-ui/core/styles";
 import { Menu, Box, useMediaQuery } from "@material-ui/core";
 import { Button, ButtonGroup, IconButton } from "@material-ui/core";
@@ -150,7 +151,7 @@ function DropdownMenu() {
       <ButtonGroup disableElevation variant="contained" size="medium">
         <Button
           color="primary"
-          //   component={Link}
+           //component={Link}
           //   to={"/sign-in"}
           className={classes.buttonLogIn}
         >
@@ -158,8 +159,8 @@ function DropdownMenu() {
         </Button>
         <Button
           variant="outlined"
-          //   coponent={Link}
-          //   to={"/sign-up"}
+          component={Link}
+          to={"/sign-up"}
           className={classes.buttonSignUp}
         >
           Sign Up
