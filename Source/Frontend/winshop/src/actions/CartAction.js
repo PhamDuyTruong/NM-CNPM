@@ -14,4 +14,10 @@ export const addToCart = (productId, qnt) => {
       }
       dispatch({type: ADD_CART_ITEM, payload: cart})
    }
-} 
+}
+
+export const removeFromCart = (id) => {
+   return (dispatch) => {
+      dispatch({type: REMOVE_CART_ITEM, payload: id})
+   }
+}

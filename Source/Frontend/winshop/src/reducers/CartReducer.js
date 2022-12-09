@@ -21,6 +21,11 @@ function cartReducer(state=initialState, action){
             }
           
         }
+        case REMOVE_CART_ITEM: {
+            const newCart = state.cartItems.filter(x => x.product !== action.payload);
+            localStorage.setItem("cart", JSON.stringify(newCart));
+            return {...state, cartItems: newCart}
+        }
         default: 
            return state
         

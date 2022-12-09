@@ -1,12 +1,12 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import "./CartItem.scss";
 import { Button } from "@material-ui/core";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
-import AddIcon from "@material-ui/icons/Add";
-import RemoveIcon from "@material-ui/icons/Remove";
-import HandleImage from '../../../utils/HandleImage'
-function CartItem({productCart}) {
+import HandleImage from '../../../utils/HandleImage';
+
+function CartItem({productCart, handleRemoveCart}) {
     const {product, image,  name, price, qnt, countInStock} = productCart;
+    
   return (
     <div id={product} className='cart-item'>
     <div className='cart-item__img'>
@@ -17,16 +17,10 @@ function CartItem({productCart}) {
         <div className='cart-item__price'>${price}</div>
         <div className='cart-item__count'>In Stock: {countInStock}</div>
         <div className='cart-item__handle'>
-            <Button>
-                <RemoveIcon />
-            </Button>
-            <span className='cart-item__qnt'>{qnt}</span>
-            <Button>
-                <AddIcon />
-            </Button>
+            <span className='cart-item__qnt'>Number: {qnt}</span>
         </div>
     </div>
-    <Button className='cart-item__rm'>
+    <Button className='cart-item__rm' onClick={handleRemoveCart}>
         <DeleteOutlineIcon />
     </Button>
 </div>
