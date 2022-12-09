@@ -151,8 +151,8 @@ function DropdownMenu() {
       <ButtonGroup disableElevation variant="contained" size="medium">
         <Button
           color="primary"
-           //component={Link}
-          //   to={"/sign-in"}
+           component={Link}
+          to={"/sign-in"}
           className={classes.buttonLogIn}
         >
           Sign in
