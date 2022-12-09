@@ -79,7 +79,8 @@
         font-size: 1.8rem;
         text-transform: capitalize;
         font-weight: bold;
-    
+        color: black !important;
+        
         @include respond(phone) {
           font-size: 1.65rem;
         }
@@ -87,7 +88,7 @@
     &__price{
         font-size: 2.2rem;
         font-weight: bold;
-        color: $red-color;
+        color: $red-color !important;
         @include respond(phone) {
             font-size: 1.8rem;
         }
@@ -117,7 +118,7 @@
     &__detail-title{
         font-size: 1.8rem;
        margin-bottom: 12px;
-
+       color: $black-color !important;
       @include respond(phone) {
       font-size: 1.65rem;
       }
@@ -129,10 +130,11 @@
     }
     &__label{
         font-size: 1.4rem;
-        color: $grey-color;
+        color: black !important;
     }
     &__content{
         font-size: 1.4rem;
         font-weight: 500;
+        color: $black-color !important;
     }
 }

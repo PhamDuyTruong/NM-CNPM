@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import "./styles.scss";
 import {getShowCart} from '../../actions/SidebarAction';
 import CartHandle from './CartHandle/CartHandle';
-
+import EmptyCartImg from '../../assets/images/empty-cart.png'
 
 function Cart() {
     const {isShowCart} = useSelector((state) => state.sidebar);
     const {cartItems} = useSelector((state) => state.cart);
+    console.log(cartItems)
     const dispatch = useDispatch();
     const closeCart = () =>{
         const action = getShowCart(false);
@@ -22,6 +23,12 @@ function Cart() {
                 <h2>Shopping Cart</h2>
                 <div className={!isShowCart ? 'cart__close active' : 'cart__close'} onClick={closeCart}></div>
             </div>
+            {cartItems.length <= 0 && (
+                <>
+                    <img src={EmptyCartImg} width={200} height={200} style={{margin: "0 auto"}}></img>
+                </> 
+            )}
+
             <CartHandle />
         </div>
     </div>

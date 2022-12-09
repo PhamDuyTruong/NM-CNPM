@@ -1,6 +1,7 @@
 import React from 'react';
 import "./DetailContent.scss";
-import Checkbox from '../../../Components/Checkbox'
+import Checkbox from '../../../Components/Checkbox';
+import {useDispatch} from 'react-redux'
 import { Button } from "@material-ui/core";
 import StarIcon from "@material-ui/icons/Star";
 import AddIcon from "@material-ui/icons/Add";
@@ -11,8 +12,10 @@ import EventAvailableOutlinedIcon from "@material-ui/icons/EventAvailableOutline
 import LocalOfferOutlinedIcon from "@material-ui/icons/LocalOfferOutlined";
 import AddShoppingCartOutlinedIcon from "@material-ui/icons/AddShoppingCartOutlined";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
+import {addToCart} from '../../../actions/CartAction'
 
 function DetailContent(props) {
+  const dispatch = useDispatch();
   const {
     product,
     dataOptions,
@@ -21,12 +24,15 @@ function DetailContent(props) {
     price,
     qnt,
   } = props;
-  const { name, size, color, description, ratings } = product ? product : "";
+  const { name, size, color, description, ratings, countInStock, _id } = product ? product : "";
   const { handleOptionChange, handleIncreaseQnt, handleDecreaseQnt } = handleFuncs;
 
   const onHandleOptionChange = (e, percent) => {
     handleOptionChange(e, percent);
   };
+  const handleAddToCart = (id, qnt) => {
+      dispatch(addToCart(id, qnt))
+  }
   return (
     <>
     <div className="detail-content">
@@ -102,10 +108,10 @@ function DetailContent(props) {
         </div>
 
         <div
-          //onClick={() => onHandleAddToFirestore("success", product)}
+          onClick={() => handleAddToCart(_id, qnt)}
           className="detail-content__add"
         >
-          <Button className='primary-btn red'>
+          <Button className='primary-btn red' disabled={countInStock === 0}>
             <AddShoppingCartOutlinedIcon />
             <span>Add to cart</span>
           </Button>

@@ -15,7 +15,7 @@ function useTotalPrice() {
         ).toFixed(2);
 
         setTotalPrice(fixedTotalPrice);
-        setDiscount(totalPrice - Number(fixedTotalPrice).toFixed(2));
+        setDiscount((totalPrice - Number(fixedTotalPrice)).toFixed(2));
     }, [cartItems]);
 
     return {totalPrice, discount}; 
