@@ -24,8 +24,6 @@ function ProductList() {
         {shopProducts.length <= 0 && <ShopEmpty />}
         <div
            className={
-           // shopProductsView === 'list'
-             //? 'shop-products display-flex'
               'shop-products'
           }
         >

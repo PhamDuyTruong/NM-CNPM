@@ -7,7 +7,6 @@ import useTotalPrice from '../../../utils/customPrice'
 import { Button } from '@material-ui/core';
 
 function CartHandle() {
-    const [isActive, setIsActive] = useState(false);
     const {totalPrice, discount} = useTotalPrice();
   
   return (

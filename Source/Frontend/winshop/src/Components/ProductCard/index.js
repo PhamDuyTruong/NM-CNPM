@@ -1,16 +1,31 @@
 import React from 'react';
 import "./styles.scss";
+import {useHistory} from 'react-router-dom';
+import {useDispatch} from 'react-redux'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import StarIcon from '@material-ui/icons/Star';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import {addToCart} from '../../actions/CartAction'
 
 function ProductCard(props) {
-    const {name, brand, price, image, ratings} = props
+    const dispatch = useDispatch();
+    const {name, brand, price, image, ratings, _id} = props;
+    const history = useHistory();
+
+    const handleToDetail = (id) => {
+        history.push(`/shop/${id}`);
+    };
+
+
+    const handleAddToCart = (id, qnt) => {
+        dispatch(addToCart(id, qnt))
+    }
+
   return (
     <div  className="shop-product">
-        <div  className='shop-product__img-wrapper'>
+        <div onClick={() => handleToDetail(_id)}  className='shop-product__img-wrapper'>
         <LazyLoadImage  
            effect='blur'
            src={image}
@@ -38,7 +53,7 @@ function ProductCard(props) {
         <div  className='shop-product__btn'>
             <FavoriteBorderIcon />
         </div>
-        <div  className='shop-product__btn'>
+        <div onClick={() => handleAddToCart(_id, 1)}  className='shop-product__btn'>
             <ShoppingCartOutlinedIcon />
         </div>
     </div>
