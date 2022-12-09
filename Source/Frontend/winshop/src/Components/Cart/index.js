@@ -4,11 +4,11 @@ import "./styles.scss";
 import {getShowCart} from '../../actions/SidebarAction';
 import CartHandle from './CartHandle/CartHandle';
 import EmptyCartImg from '../../assets/images/empty-cart.png'
+import CartItems from './CartItems';
 
 function Cart() {
     const {isShowCart} = useSelector((state) => state.sidebar);
     const {cartItems} = useSelector((state) => state.cart);
-    console.log(cartItems)
     const dispatch = useDispatch();
     const closeCart = () =>{
         const action = getShowCart(false);
@@ -28,7 +28,7 @@ function Cart() {
                     <img src={EmptyCartImg} width={200} height={200} style={{margin: "0 auto"}}></img>
                 </> 
             )}
-
+            <CartItems />
             <CartHandle />
         </div>
     </div>

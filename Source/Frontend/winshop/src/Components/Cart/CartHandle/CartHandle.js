@@ -12,7 +12,7 @@ function CartHandle() {
   
   return (
     <div className='cart-handle'>
-         <h3 className="cart-handle__detail-title" style={{textAlign: "center"}}>Information</h3>
+      <h3 className="cart-handle__detail-title" style={{textAlign: "center"}}>Information</h3>
        <div className='cart-handle__row'>
              <span className='cart-handle__label' style={{color: "black"}}>Discount</span>
              <span className='cart-handle__content'>${discount}</span>

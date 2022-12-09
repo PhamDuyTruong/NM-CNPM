@@ -1,0 +1,15 @@
+@import "../../../assets/styles/color";
+@import "../../../assets/styles/mixins";
+
+.cart-items{
+    padding: 20px 15px;
+    margin-bottom: auto;
+    overflow-y: auto;
+    & {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+     }
+     &::-webkit-scrollbar {
+        display: none;
+      }
+}

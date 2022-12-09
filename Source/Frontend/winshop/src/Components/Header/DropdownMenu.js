@@ -6,8 +6,6 @@ import { Button, ButtonGroup, IconButton } from "@material-ui/core";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import LocalMallOutlinedIcon from '@material-ui/icons/LocalMallOutlined';
-import LoyaltyOutlinedIcon from "@material-ui/icons/LoyaltyOutlined";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import DarkmodeButton from './DarkmodeButton';
 import {getShowCart} from '../../actions/SidebarAction';
 import Cart from "../Cart";
@@ -99,6 +97,7 @@ const useStyles = makeStyles((theme) => ({
 
 function DropdownMenu() {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(false);
+  const {cartItems} = useSelector((state) => state.cart)
   const dispatch = useDispatch();
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const match = useMediaQuery("(min-width: 960px)");
@@ -119,7 +118,7 @@ function DropdownMenu() {
       <Box m={match ? 0 : 1} className={classes.Hide1}>
         <div className={classes.cart} onClick={toggleCart}>
             <ShoppingCartIcon style={{fontSize: "2rem", color: "#47B5FF"}}/>
-            <div className={classes.qnt}>0</div>
+            <div className={classes.qnt}>{cartItems.length > 0 ? cartItems.length : 0}</div>
         </div>
       </Box>
       
