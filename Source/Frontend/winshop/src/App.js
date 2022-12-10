@@ -11,6 +11,7 @@ import Privacy from './Components/Privacy';
 import Terms from './Components/Terms';
 import Signup from './Components/Signup';
 import Signin from './Components/Signin';
+import Checkout from './pages/Checkout';
 
 function App() {
   return (
@@ -32,6 +33,9 @@ function App() {
           </Route>
           <Route path="/sign-in">
               <Signin />
+          </Route>
+          <Route path="/checkout">
+              <Checkout />
           </Route>
           <Route path="/FAQ">
               <FAQ />
