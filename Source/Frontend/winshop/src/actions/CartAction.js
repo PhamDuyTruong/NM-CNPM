@@ -1,4 +1,4 @@
-import {ADD_CART_ITEM, REMOVE_CART_ITEM} from '../constants/CartConstant';
+import {ADD_CART_ITEM, REMOVE_CART_ITEM, SAVE_SHIPPING_ADDRESS} from '../constants/CartConstant';
 import productApi from '../services/productApi'
 
 export const addToCart = (productId, qnt) => {
@@ -20,4 +20,10 @@ export const removeFromCart = (id) => {
    return (dispatch) => {
       dispatch({type: REMOVE_CART_ITEM, payload: id})
    }
+};
+
+export const saveShippingAddress = (data) => {
+     return (dispatch) => {
+      dispatch({type: SAVE_SHIPPING_ADDRESS, payload: data})
+     }
 }

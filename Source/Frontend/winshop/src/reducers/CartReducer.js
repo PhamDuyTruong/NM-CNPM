@@ -1,7 +1,8 @@
-import {ADD_CART_ITEM, REMOVE_CART_ITEM} from '../constants/CartConstant';
+import {ADD_CART_ITEM, REMOVE_CART_ITEM, SAVE_SHIPPING_ADDRESS} from '../constants/CartConstant';
 
 const initialState = {
-    cartItems: []
+    cartItems: [],
+    shippingAdress: {}
 }
 
 function cartReducer(state=initialState, action){
@@ -25,6 +26,11 @@ function cartReducer(state=initialState, action){
             const newCart = state.cartItems.filter(x => x.product !== action.payload);
             localStorage.setItem("cart", JSON.stringify(newCart));
             return {...state, cartItems: newCart}
+        }
+        case SAVE_SHIPPING_ADDRESS: {
+            const newShip = action.payload;
+            localStorage.setItem("ship", JSON.stringify(newShip))
+            return {...state, shippingAdress: newShip}
         }
         default: 
            return state

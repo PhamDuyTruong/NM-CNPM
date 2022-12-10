@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import "./CheckoutShipping.scss";
-import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import CheckoutFromField from './CheckoutFromField';
 import CheckoutLoading from './CheckoutLoading';
-import { Button } from "@material-ui/core";
+import {useSelector, useDispatch} from 'react-redux'
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import {saveShippingAddress} from '../../../actions/CartAction'
 
 const schema = yup.object().shape({
     address: yup
@@ -29,9 +29,10 @@ const schema = yup.object().shape({
   
 
 function CheckoutShipping(props) {
-    const { setIsCheckoutSuccess } = props;
+    const { setIsCheckoutSuccess, setIsPurchased, setIsPayment } = props;
     const [isLoading, setIsLoading] = useState(false);
     const cartItems = useSelector((state) => state.cart);
+    const dispatch = useDispatch();
     const history = useHistory();
     const {
         register,
@@ -43,7 +44,7 @@ function CheckoutShipping(props) {
         resolver: yupResolver(schema),
         mode: "onChange",
       });
-
+ 
 
       useEffect(() => {
         cartItems.length <= 0 ?? setIsCheckoutSuccess(false);
@@ -54,8 +55,24 @@ function CheckoutShipping(props) {
       }
 
       const onSubmit = (value) => {
-        console.log(value)
-      }
+         const shipping = {
+            address: value.address,
+            city: value.city,
+            country: value.country,
+            pinCode: value.pinCode,
+            phoneNo: value.phoneNo
+         }
+         dispatch(saveShippingAddress(shipping));
+         setIsCheckoutSuccess(true);
+         setIsPayment(true);
+         setIsPurchased(true)
+
+         setTimeout(() => {
+            setIsCheckoutSuccess(false);
+            setIsPurchased(false)
+         }, 2000)
+      };
+
 
   return (
     <>
@@ -103,7 +120,7 @@ function CheckoutShipping(props) {
             <span>Return to shop</span>
          </div>
          <button type="submit" className='primary-btn red'>
-             <span>Checkout</span>
+             <span>Continue</span>
          </button>
       </div>
     </form>

@@ -6,7 +6,7 @@ import ListAltIcon from "@material-ui/icons/ListAlt";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 
 function CheckoutProgress(props) {
-    const {isCheckoutSuccess} = props;
+    const {isCheckoutSuccess, isPayment} = props;
   return (
     <div className="checkout-progress">
     <div className="checkout-progress__node active">
@@ -24,13 +24,13 @@ function CheckoutProgress(props) {
     </div>
     <span
       className={
-        isCheckoutSuccess
+        isPayment
           ? "checkout-progress__line active"
           : "checkout-progress__line"
       }
     ></span>
       <div className="checkout-progress__node">
-      <div className="checkout-progress__icon">
+      <div className={isPayment ? "checkout-progress__icon active" : "checkout-progress__icon"}>
         <ListAltIcon />
       </div>
       <span className="checkout-progress__description">Payment</span>
@@ -45,9 +45,9 @@ function CheckoutProgress(props) {
     <div className="checkout-progress__node">
       <div
         className={
-          isCheckoutSuccess
-            ? "checkout-progress__icon active"
-            : "checkout-progress__icon"
+          //isCheckoutSuccess
+          //  ? "checkout-progress__icon active"
+           "checkout-progress__icon"
         }
       >
         <ThumbUpIcon />
