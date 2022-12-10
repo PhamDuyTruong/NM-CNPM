@@ -1,0 +1,66 @@
+@import "../../../assets/styles/color";
+@import "../../../assets/styles/mixins";
+
+.checkout-form {
+  flex: 1;
+
+  &__fields {
+    display: flex;
+    flex-direction: column;
+
+    & > *:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__title {
+    font-size: 2.8rem;
+    margin-bottom: 25px;
+
+    @include respond(mobile) {
+      font-size: 2.2rem;
+    }
+  }
+
+  &__row {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+
+    & > *:first-child {
+      margin-right: 20px;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+
+  &__return {
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+  }
+
+  &__return span {
+    font-size: 1.3rem;
+    font-weight: bold;
+
+    color: $red-color;
+  }
+
+  &__return svg {
+    font-size: 1.8rem;
+
+    fill: $red-color;
+  }
+
+  button[type="submit"] {
+    background-color: transparent;
+  }
+
+}
