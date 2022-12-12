@@ -12,6 +12,7 @@ import Terms from './Components/Terms';
 import Signup from './Components/Signup';
 import Signin from './Components/Signin';
 import Checkout from './pages/Checkout';
+import CheckoutSuccess from './pages/Payment/CheckoutSuccess';
 
 function App() {
   return (
@@ -48,6 +49,9 @@ function App() {
           </Route>
           <Route path="/term">
               <Terms />
+          </Route>
+          <Route path="/pay">
+            <CheckoutSuccess />
           </Route>
         </Switch>
      </PrevFilterContext>

@@ -1,8 +1,9 @@
-import {ADD_CART_ITEM, REMOVE_CART_ITEM, SAVE_SHIPPING_ADDRESS} from '../constants/CartConstant';
+import {ADD_CART_ITEM, REMOVE_CART_ITEM, SAVE_PAYMENT_METHOD, SAVE_SHIPPING_ADDRESS} from '../constants/CartConstant';
 
 const initialState = {
-    cartItems: [],
-    shippingAdress: {}
+    cartItems: JSON.parse(localStorage.getItem("cart")) || [],
+    shippingAdress: {},
+    paymentMethod: "",
 }
 
 function cartReducer(state=initialState, action){
@@ -31,6 +32,11 @@ function cartReducer(state=initialState, action){
             const newShip = action.payload;
             localStorage.setItem("ship", JSON.stringify(newShip))
             return {...state, shippingAdress: newShip}
+        }
+        case SAVE_PAYMENT_METHOD: {
+            const newPayment = action.payload;
+            localStorage.setItem("payment", JSON.stringify(newPayment))
+            return {...state, paymentMethod: newPayment}
         }
         default: 
            return state

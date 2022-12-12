@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const cartSchema = new mongoose.Schema({
+    countInStock: {
+      type: Number,
+      required: true
+    },
     name: {
         type: String,
         required: true,
@@ -13,7 +17,7 @@ const cartSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    quantity: {
+    qnt: {
         type: Number,
         required: true
     },

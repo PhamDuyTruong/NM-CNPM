@@ -65,14 +65,7 @@ function CheckoutShipping(props) {
          dispatch(saveShippingAddress(shipping));
          setIsCheckoutSuccess(true);
          setIsPayment(true);
-         setIsPurchased(true)
-
-         setTimeout(() => {
-            setIsCheckoutSuccess(false);
-            setIsPurchased(false)
-         }, 2000)
-      };
-
+    }
 
   return (
     <>

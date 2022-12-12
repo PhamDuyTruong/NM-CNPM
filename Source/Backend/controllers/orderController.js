@@ -6,7 +6,7 @@ const orderControllers = {
         const {
             shippingInfo,
             cart,
-            paymentInfo,
+            paymentMethod,
             itemsPrice,
             shippingPrice,
             taxPrice,
@@ -17,7 +17,7 @@ const orderControllers = {
                 shippingInfo,
                 cart,
                 user: req.user.id,
-                paymentInfo,
+                paymentMethod,
                 itemsPrice,
                 shippingPrice,
                 taxPrice,

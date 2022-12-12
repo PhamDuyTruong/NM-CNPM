@@ -6,6 +6,7 @@ import detailProductReducer from "./DetailProductReducer";
 import reviewReducer from "./ReviewReducer";
 import cartReducer from "./CartReducer";
 import  addSidebarReducer from './SidebarReducer'
+import orderReducer from './OrderReducer'
 
 const rootReducer = combineReducers({
    getProducts: productsReducer,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
    getDetailProduct: detailProductReducer,
    getReviewProduct:  reviewReducer,
    cart: cartReducer,
+   order: orderReducer,
    sidebar: addSidebarReducer
 });
 

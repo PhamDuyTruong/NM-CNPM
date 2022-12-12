@@ -5,16 +5,16 @@ import useTotalPrice from '../../../utils/customPrice'
 import EmptyCart from '../../../assets/images/empty-cart.png';
 
 function CheckoutAside() {
-    const cartItems = useSelector((state) => state.cart);
+    const cartItems = JSON.parse(localStorage.getItem("cart"));
     const { totalPrice, discount } = useTotalPrice();
   return (
     <aside>
     {cartItems.length > 0 ? (
       <ul className="checkout-products">
-        {cartItems.map(({ id, name, img, qnt, price }) => (
+        {cartItems.map(({ id, name, image, qnt, price }) => (
           <li key={id} className="checkout-product">
             <div className="checkout-product__img">
-              <img src={img} alt="Checkout product" />
+              <img src={image} alt="Checkout product" />
               <span className="checkout-product__qnt">{qnt}</span>
             </div>
             <div className="checkout-product__content">

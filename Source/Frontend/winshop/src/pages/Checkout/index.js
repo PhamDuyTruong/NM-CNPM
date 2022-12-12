@@ -19,7 +19,7 @@ function Checkout() {
     </section>
     <div className='checkout-content' style={{overflowX: "hidden"}}>
           <div className='checkout-content__left'>
-                <CheckoutProgress isCheckoutSuccess={isCheckoutSuccess} isPayment={isPayment}/>
+                <CheckoutProgress isCheckoutSuccess={isCheckoutSuccess} isPayment={isPayment} isPurchased={isPurchased}/>
                 <CheckoutShipping  setIsCheckoutSuccess={setIsCheckoutSuccess} setIsPurchased={setIsPurchased} setIsPayment={setIsPayment}/>
                 {isPayment ? <CheckoutPayment  setIsCheckoutSuccess={setIsCheckoutSuccess} setIsPurchased={setIsPurchased}/>: (<div style={{fontSize: "1.7rem", fontWeight: "500"}}>No Payment !!!</div>)}
           </div>

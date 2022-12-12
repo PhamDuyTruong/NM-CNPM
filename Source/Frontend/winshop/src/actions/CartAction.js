@@ -1,4 +1,4 @@
-import {ADD_CART_ITEM, REMOVE_CART_ITEM, SAVE_SHIPPING_ADDRESS} from '../constants/CartConstant';
+import {ADD_CART_ITEM, REMOVE_CART_ITEM, SAVE_SHIPPING_ADDRESS, SAVE_PAYMENT_METHOD} from '../constants/CartConstant';
 import productApi from '../services/productApi'
 
 export const addToCart = (productId, qnt) => {
@@ -26,4 +26,10 @@ export const saveShippingAddress = (data) => {
      return (dispatch) => {
       dispatch({type: SAVE_SHIPPING_ADDRESS, payload: data})
      }
+};
+
+export const savePaymentMethod = (data) => {
+   return (dispatch) => {
+      dispatch({type: SAVE_PAYMENT_METHOD, payload: data})
+   }
 }

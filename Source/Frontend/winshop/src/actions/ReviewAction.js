@@ -14,7 +14,7 @@ export function createReviewProduct(review, productId){
             let url = `/product/${productId}/review`;
             const headers = {
                 "Content-Type": "application/json",
-                token: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzNiOTU0OWI4NmI0N2IwZWFkMzFiMCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY3MDIyNDU2NiwiZXhwIjoxNjcwMzEwOTY2fQ.6f5U9igxctCw8zdtjZvc5eUKix2hWYTUKSYoOjQ0CZM`,
+                token: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzNiOTU0OWI4NmI0N2IwZWFkMzFiMCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY3MDg0NjM5MSwiZXhwIjoxNjcwOTMyNzkxfQ.NxpMAvvNYW9zuDH8N8ipGhuxmM5QUWRdpfyixmIXlxs`,
             }
             
             await axios({ url, method, data, headers }).then((response) => {
