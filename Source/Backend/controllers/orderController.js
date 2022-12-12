@@ -87,7 +87,7 @@ const orderControllers = {
         }
         if(req.body.status === "Delivering"){
             order.cart.forEach(async (o) => {
-                await orderControllers.updateStock(o.product, o.quantity)
+                await orderControllers.updateStock(o.product, o.qnt)
             })
         }
         order.orderStatus = req.body.status;

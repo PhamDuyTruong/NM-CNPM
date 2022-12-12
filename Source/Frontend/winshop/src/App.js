@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+
 import Header from './Components/Header/Header';
 import PrevFilterContext from './context/PrevFilterContext';
 import DetailProduct from './pages/DetailProduct';
@@ -16,6 +17,7 @@ import CheckoutSuccess from './pages/Payment/CheckoutSuccess';
 
 function App() {
   return (
+
     <BrowserRouter>
      <PrevFilterContext>
         <Header />
