@@ -1,18 +1,34 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { PayPalButtons, PayPalScriptProvider} from "@paypal/react-paypal-js";
 import useTotalPrice from '../../utils/customPrice';
-import {useHistory} from 'react-router-dom'
+import {useHistory} from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux';
+import {getProfile} from '../../actions/UserAction';
+import {payOrder} from '../../actions/OrderAction'
 
 function PaypalCheckoutButton(props) {
   const {orderList, setIsPaid} = props;
+  console.log(orderList)
   const [error, setError] = useState(null);
+  const {profile, isLoading} = useSelector((state) => state.userProfile);
   const history = useHistory();
-  const { totalPrice, discount } = useTotalPrice();
+  const dispatch = useDispatch();
+  const { totalPrice } = useTotalPrice();
+
+  useEffect(() => {
+    dispatch(getProfile())
+  }, [getProfile])
 
   const handleApprove = (orderId) => {
-
+    const paymentInfo = {
+      status: orderList.orderStatus,
+      update_time: new Date(Date.now()).toLocaleDateString('en-US'),
+      email_address: profile.email
+    };
+    dispatch(payOrder(orderList, paymentInfo))
     setIsPaid(true)
-  }
+  };
+
   return (
     <PayPalScriptProvider options={{ "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID }}>
     <PayPalButtons 
@@ -40,7 +56,7 @@ function PaypalCheckoutButton(props) {
         return actions.order.create({
           purchase_units: [
             {
-              address: orderList.shippingAddress.address,
+              description: "Thank you for buying our product",
               amount: {
                 value: totalPrice
               }
@@ -56,7 +72,7 @@ function PaypalCheckoutButton(props) {
         handleApprove(data.orderID);
       }}
       onCancel={() => {
-         history.push("/cart")
+         history.push("/")
       }}
       onError={(err) => {
         setError(err);

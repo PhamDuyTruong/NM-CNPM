@@ -82,7 +82,7 @@ const orderControllers = {
         if(!order){
             return res.status(404).json("Order not found !!!");
         }
-        if(order.orderStatus === "Delivered"){
+        if(order.orderStatus === "Shipped"){
             return res.status(400).json("You have already delivered this order");
         }
         if(req.body.status === "Delivering"){
@@ -91,7 +91,7 @@ const orderControllers = {
             })
         }
         order.orderStatus = req.body.status;
-        if (req.body.status === "Delivered") {
+        if (req.body.status === "Shipped") {
             order.isDelevered = true;
             order.deliveredAt = Date.now();
         }

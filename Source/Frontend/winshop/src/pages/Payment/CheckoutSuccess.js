@@ -5,17 +5,25 @@ import "./CheckoutSuccess.scss";
 import saleOff from '../../assets/images/saleOff.png';
 import HandleImage from '../../utils/HandleImage';
 import CheckoutAside from '../Checkout/components/CheckoutAside';
-import {updateStatusOrder} from '../../actions/OrderAction'
+import {updateStatusOrder} from '../../actions/OrderAction';
+import {useHistory} from 'react-router-dom'
 function CheckoutSuccess() {
   const {orderList} = useSelector((state) => state.order);
   const [isPaid, setIsPaid] = useState(false);
   const dispatch = useDispatch();
+  const history = useHistory();
   const shippingAddress = JSON.parse(localStorage.getItem("ship"));
   const paymentMethod = JSON.parse(localStorage.getItem("payment"));
   const cart = JSON.parse(localStorage.getItem("cart"));
   const handleStatus = () => {
-        dispatch(updateStatusOrder(orderList, "Delivered"))
+        dispatch(updateStatusOrder(orderList, "Shipped"))
+  };
+
+  const handleCod = () => {
+    dispatch(updateStatusOrder(orderList, "Delivering"))
+    history.push("/shop")
   }
+
   return (
     <>
     <section className='banner'>
@@ -33,18 +41,25 @@ function CheckoutSuccess() {
             <h2>Payment method</h2>
             <p  style={{fontSize: "1.3rem"}}>Method: {paymentMethod}</p>
             {isPaid ? (<p  style={{fontSize: "1.3rem"}}>
-                Paid on: {orderList.paidAt}
+                Paid on: {new Date(orderList.paidAt).toLocaleDateString('en-US')}
             </p>) : (<p  style={{fontSize: "1.3rem"}}>
                Paid on: Not Paid
             </p>)}
             <h2>Checkout</h2>
-            {paymentMethod === "COD" ? (<button>
+            {paymentMethod === "COD" ? (<button className='primary-btn red' onClick={handleCod}>
                 Buy
             </button>) : (<PaypalCheckoutButton 
                 orderList = {orderList}
                 setIsPaid = {setIsPaid}
             />)}
-            <button className='primary-btn red' onClick={handleStatus}>Mark As Delivered</button>
+            {isPaid ? (<button className='primary-btn red' onClick={handleStatus}>Mark As Delivered</button>) : (<></>)}
+            {isPaid ? (
+            <h2 className='checkout-success__title'>
+                Your purchase was successfull !!!
+           </h2>
+         ): (<>
+         
+         </>)}
          </div>
          <div className='checkout-content__right' style={{ paddingTop: "60px"}}>
                <CheckoutAside />

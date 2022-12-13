@@ -5,7 +5,8 @@ import { Redirect } from "react-router-dom";
 const axiosClient = axios.create({
   baseURL: "http://localhost:5000/",
   headers: {
-    "content-type": "application/json",
+    "Content-Type": "application/json",
+    token: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzNiOTU0OWI4NmI0N2IwZWFkMzFiMCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY3MDg0NjM5MSwiZXhwIjoxNjcwOTMyNzkxfQ.NxpMAvvNYW9zuDH8N8ipGhuxmM5QUWRdpfyixmIXlxs`
   },
 });
 

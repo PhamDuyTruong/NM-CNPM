@@ -60,7 +60,13 @@ const userControllers = {
     getUserProfile: async(req, res) => {
         const user = await User.findById(req.user.id);
         if(user){
-          res.status(200).json(user)
+          res.status(200).json({
+            name: user.username,
+            email: user.email,
+            profilePic: user.profilePic,
+            phone: user.phone,
+            isAdmin: user.isAdmin
+          })
         }else{
           res.status(404).json('User not found')
         }
