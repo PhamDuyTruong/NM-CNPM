@@ -12,7 +12,7 @@ function CheckoutSuccess() {
   const dispatch = useDispatch();
   const shippingAddress = JSON.parse(localStorage.getItem("ship"));
   const paymentMethod = JSON.parse(localStorage.getItem("payment"));
-
+  const cart = JSON.parse(localStorage.getItem("cart"));
   const handleStatus = () => {
         dispatch(updateStatusOrder(orderList, "Delivered"))
   }
