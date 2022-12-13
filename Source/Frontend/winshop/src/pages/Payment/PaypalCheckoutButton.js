@@ -27,6 +27,8 @@ function PaypalCheckoutButton(props) {
     };
     dispatch(payOrder(orderList, paymentInfo))
     setIsPaid(true)
+    localStorage.removeItem("cart");
+    localStorage.removeItem("payment")
   };
 
   return (
