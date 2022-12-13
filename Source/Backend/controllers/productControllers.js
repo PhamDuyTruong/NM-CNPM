@@ -49,6 +49,15 @@ const productControllers = {
         }
     },
     updateProduct: async(req, res) => {
+        const {
+            name,
+            description,
+            price,
+            image,
+            brand,
+            category,
+            countInStock
+        } = req.body;
         const product = await Product.findById(req.params.id);
         if(!product){
             return res.status(404).json({
@@ -57,14 +66,14 @@ const productControllers = {
             })
         }
         try {
-            const updatedProduct = await Product.findByIdAndUpdate(
-                req.params.id,
-                {
-                    $set: req.body,
-                  },
-                  { new: true, runValidators: true }
-            );
-
+            product.name = name;
+            product.price = price;
+            product.description = description;
+            product.image = image;
+            product.brand = brand;
+            product.category = category;
+            product.countInStock = countInStock;
+            const updatedProduct = await product.save();
             res.status(200).json(updatedProduct);
         } catch (error) {
             res.status(500).json(error);
