@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
 import "./styles.css";
+import { useDispatch, useSelector } from "react-redux";
 import zxcvbn from 'zxcvbn';
 import * as Yup from 'yup';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
-import SignupImage from '../../assets/images/registration-form.jpg'
+import SignupImage from '../../assets/images/registration-form.jpg';
+import {registerUser} from '../../actions/AuthAction'
 
 const PasswordStr = props => {
     var strColor;
@@ -57,12 +59,12 @@ function Signup(props) {
         confirmPassword: '',
         acceptTerms: false,
       };
-    
+      
       const [user, setUser] = useState(props.user || {});
       const [score, setScore] = useState(props.score || 0);
       const [pwBtn, setPwBtn] = useState(props.pwBtn || 'show');
       const [type, setType] = useState(props.type || 'password');
-    
+      const dispatch = useDispatch();
 
       const validationSchema = () => {
         return Yup.object().shape({
@@ -120,9 +122,15 @@ function Signup(props) {
         setPwBtn(pwBtn === "show" ? "hide" : "show");
       }
     
-      const handleSubmit = (data) => {
+      const handleSubmit = (value) => {
         // Code in server goes here
-        console.log(JSON.stringify({ user: user, score: score, pwBtn: pwBtn, type: type }, null, 2));
+        const data = {
+          username: value.username,
+          email: value.email,
+          phone: value.phone,
+          password: value.password,
+        }
+        dispatch(registerUser(data));
       }
 
 

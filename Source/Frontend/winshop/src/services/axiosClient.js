@@ -5,18 +5,20 @@ import { Redirect } from "react-router-dom";
 const axiosClient = axios.create({
   baseURL: "http://localhost:5000/",
   headers: {
-    "Content-Type": "application/json",
-    token: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzNiOTU0OWI4NmI0N2IwZWFkMzFiMCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY3MDg0NjM5MSwiZXhwIjoxNjcwOTMyNzkxfQ.NxpMAvvNYW9zuDH8N8ipGhuxmM5QUWRdpfyixmIXlxs`
-  },
+    "Content-Type": "application/json"
+  }
 });
 
 axiosClient.interceptors.request.use(
   (config) => {
     // const userInfo = localStorage.getItem("user");
-    // if (userInfo) {
-    //   const { accessToken } = JSON.parse(userInfo);
-    //config.headers.token = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzNiOTU0OWI4NmI0N2IwZWFkMzFiMCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY3MDIwMzM0NiwiZXhwIjoxNjcwMjg5NzQ2fQ.1qY7j4KX_1sPksZ_n6S_torRILt8OwT82bQgjsj20l4`;
-    // }
+    const userInfo = JSON.parse(localStorage.getItem("user"));
+
+    if (userInfo) {
+      const { accessToken } = userInfo;
+      config.headers.token = `Bearer ${accessToken}`;
+    }
+
     return config;
   },
   (error) => {
