@@ -13,12 +13,12 @@ const colors = {
 };
 
 function DetailComment() {
-  const { reviewData, isLoadingReview} = useSelector((state) => state.getReviewProduct);
-  
+  const {detailProduct, isLoading} = useSelector((state) => state.getDetailProduct);
+  const userInfo = JSON.parse(localStorage.getItem("user"))
   return (
     <div className="detail-tab__comment">
         <div  className='detail-tab-comment__container'>
-        {reviewData.reviews && reviewData.reviews.map(({ name, comment, rating}, index) => (
+        {detailProduct.reviews && detailProduct.reviews.map(({ name, comment, rating}, index) => (
           <div key={index} className="detail-tab-comment__customer">
             <Avatar
               className="detail-tab-comment__customer-avatar"
@@ -45,7 +45,9 @@ function DetailComment() {
           </div>
         ))}
         </div>
-        <DetailPost colors={colors}/>
+        {userInfo ? (<DetailPost colors={colors}/>) : (
+          <h2>You must be login to comment !!!</h2>
+        )}
     </div>
   )
 }

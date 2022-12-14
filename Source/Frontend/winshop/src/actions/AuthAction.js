@@ -12,7 +12,7 @@ export const registerUser  = (value) => {
             Swal.fire(
                 "Sign up successfully!",
                 "Return back to signin page!",
-                "success"
+                "Success"
               ).then((result) => {
                 if (result.isConfirmed) {
                   window.location.href = "/sign-in";
@@ -34,7 +34,7 @@ export const loginUser = (value) => {
             Swal.fire(
                 "Sign in successfully !!!",
                 "Wish you have a good experience at Winshop",
-                "success"
+                "Success"
               ).then((result) => {
                 if (result.isConfirmed) {
                   window.location.href = "/";
@@ -52,7 +52,7 @@ export const logout = () => {
     dispatch({type: LOG_OUT})
     Swal.fire(
         "Log out successfully!",
-        "success"
+        "Success"
       ).then((result) => {
         if (result.isConfirmed) {
           window.location.href = "/";

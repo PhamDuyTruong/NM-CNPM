@@ -140,7 +140,7 @@ const renderMenu =  userInfo ?   (
     <Box flexDirection="column" className={classes.Hide}>
         <ul style={{ listStyleType: "none", textAlign: "center"}}>
           <li>
-                <div className={classes.cart} onClick={toggleCart}>
+                <div className={classes.cart} onClick={toggleCart} style={{fontWeight: "600"}}>
                     <ShoppingCartIcon style={{fontSize: "1.2rem", color: "#47B5FF", paddingTop: "5px"}}/>
                      Cart
                 </div>
