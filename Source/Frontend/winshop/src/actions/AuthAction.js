@@ -1,4 +1,4 @@
-import {REGISTER_FAILURE, REGISTER_SUCCESS, REGISTER_REQUEST, LOGIN_FAILURE, LOGIN_SUCCESS, LOGIN_REQUEST} from '../constants/AuthContstant';
+import {REGISTER_FAILURE, REGISTER_SUCCESS, REGISTER_REQUEST, LOGIN_FAILURE, LOGIN_SUCCESS, LOGIN_REQUEST, LOG_OUT} from '../constants/AuthContstant';
 import authApi from '../services/authApi';
 import Swal from "sweetalert2";
 
@@ -35,9 +35,28 @@ export const loginUser = (value) => {
                 "Sign in successfully !!!",
                 "Wish you have a good experience at Winshop",
                 "success"
-              );
+              ).then((result) => {
+                if (result.isConfirmed) {
+                  window.location.href = "/";
+                }
+              });
         } catch (error) {
             dispatch({type: LOGIN_FAILURE, payload: error})
         }
     }
+};
+
+export const logout = () => {
+   return (dispatch) => {
+    localStorage.removeItem("user");
+    dispatch({type: LOG_OUT})
+    Swal.fire(
+        "Log out successfully!",
+        "success"
+      ).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = "/";
+        }
+      });
+   }
 }

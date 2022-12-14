@@ -8,7 +8,7 @@ import cartReducer from "./CartReducer";
 import  addSidebarReducer from './SidebarReducer'
 import orderReducer from './OrderReducer'
 import getUserProfile from "./UserProfileReducer";
-import { loginReducer, registerReducer } from "./AuthReducer";
+import { loginReducer, logoutReducer, registerReducer } from "./AuthReducer";
 
 
 const rootReducer = combineReducers({
@@ -22,7 +22,8 @@ const rootReducer = combineReducers({
    sidebar: addSidebarReducer,
    userProfile: getUserProfile,
    register: registerReducer,
-   login: loginReducer
+   login: loginReducer,
+   logout: logoutReducer
 });
 
 

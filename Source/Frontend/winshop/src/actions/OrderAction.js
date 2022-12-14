@@ -44,9 +44,13 @@ export const updateStatusOrder = (order, status) => {
             }
             const method = "put";
             let url = `/order/status/${order._id}`;
+            const userInfo = JSON.parse(localStorage.getItem("user"))
             const headers = {
                 "Content-Type": "application/json",
-                token: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzNiOTU0OWI4NmI0N2IwZWFkMzFiMCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY3MDg0NjM5MSwiZXhwIjoxNjcwOTMyNzkxfQ.NxpMAvvNYW9zuDH8N8ipGhuxmM5QUWRdpfyixmIXlxs`,
+            }
+            if(userInfo){
+                const {accessToken} = userInfo
+                headers.token = `Bearer ${accessToken}`
             }
             
             await axios({ url, method, data, headers }).then((response) => {
@@ -70,9 +74,14 @@ export const payOrder = (order, paymentInfo) => {
             }
             const method = "put";
             let url = `/order/pay/${order._id}`;
+            const userInfo = JSON.parse(localStorage.getItem("user"));
             const headers = {
                 "Content-Type": "application/json",
-                token: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzNiOTU0OWI4NmI0N2IwZWFkMzFiMCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY3MDg0NjM5MSwiZXhwIjoxNjcwOTMyNzkxfQ.NxpMAvvNYW9zuDH8N8ipGhuxmM5QUWRdpfyixmIXlxs`,
+            }
+
+            if(userInfo){
+                const {accessToken} = userInfo
+                headers.token = `Bearer ${accessToken}`
             }
             
             await axios({ url, method, data, headers }).then((response) => {

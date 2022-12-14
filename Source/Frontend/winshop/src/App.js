@@ -14,6 +14,7 @@ import Signup from './Components/Signup';
 import Signin from './Components/Signin';
 import Checkout from './pages/Checkout';
 import CheckoutSuccess from './pages/Payment/CheckoutSuccess';
+import LogOut from './pages/Logout';
 
 function App() {
   return (
@@ -54,6 +55,9 @@ function App() {
           </Route>
           <Route path="/pay">
             <CheckoutSuccess />
+          </Route>
+          <Route path="/logout">
+              <LogOut />
           </Route>
         </Switch>
      </PrevFilterContext>

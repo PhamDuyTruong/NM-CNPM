@@ -7,7 +7,9 @@ import { Button, ButtonGroup, IconButton } from "@material-ui/core";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import LocalMallOutlinedIcon from '@material-ui/icons/LocalMallOutlined';
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import DarkmodeButton from './DarkmodeButton';
+import Avatar from './Avatar'
 import {getShowCart} from '../../actions/SidebarAction';
 import Cart from "../Cart";
 
@@ -98,7 +100,10 @@ const useStyles = makeStyles((theme) => ({
 
 function DropdownMenu() {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(false);
-  const {cartItems} = useSelector((state) => state.cart)
+  const {cartItems} = useSelector((state) => state.cart);
+  const userInfo = JSON.parse(localStorage.getItem("user"));
+  //const {accessToken} = userInfo;
+  //let isAuth = (accessToken !==  null) ? accessToken : "";
   const dispatch = useDispatch();
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const match = useMediaQuery("(min-width: 960px)");
@@ -108,8 +113,63 @@ function DropdownMenu() {
      dispatch(action);
   };
 
-  const renderMenu = (
-    <Box
+const renderMenu =  userInfo ?   (
+    <Box display="flex" flexDirection={match ? "row": "column"} alignItems="center" m={match ? 0 : 1} minWidth={match ? 0 : 180}>
+       <Box m={match ? 0 : 1} className={classes.Hide1}>
+        <div className={classes.cart} onClick={toggleCart}>
+            <ShoppingCartIcon style={{fontSize: "2rem", color: "#47B5FF"}}/>
+            <div className={classes.qnt}>{cartItems.length > 0 ? cartItems.length : 0}</div>
+        </div>
+    </Box>
+    
+    <Box m={match ? 0 : 1}>
+        <Button
+           disableElevation
+           variant="contained"
+           size="small"
+           startIcon={<ExitToAppIcon />}
+           className={classes.buttonLogIn}
+           component={Link}
+           to={"/logout"}
+           style={{color: "#fff"}}
+        >
+          Log out
+        </Button>
+    </Box>
+  
+    <Box flexDirection="column" className={classes.Hide}>
+        <ul style={{ listStyleType: "none", textAlign: "center"}}>
+          <li>
+                <div className={classes.cart} onClick={toggleCart}>
+                    <ShoppingCartIcon style={{fontSize: "1.2rem", color: "#47B5FF", paddingTop: "5px"}}/>
+                     Cart
+                </div>
+          </li>
+          <li>
+            <a
+              href="/shop"
+              className={classes.button}
+              style={{ textDecoration: "none" }}
+            >
+              <div className={classes.cart} style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
+                 <LocalMallOutlinedIcon style={{fontSize: "1.2rem", color: "#47B5FF", paddingTop: "5px"}}/>
+                 Shop
+              </div>
+            </a>
+          </li>
+        </ul>
+      </Box>
+    <Box m={match ? 0 : 1}>
+      <DarkmodeButton />
+    </Box>
+   <Box m={match ? 0 : 1}>
+    <IconButton disableRipple style={{ padding: 0 }}>
+      <Avatar />
+     </IconButton>
+   </Box>
+ </Box>
+  ) : (
+  <Box
       display="flex"
       flexDirection={match ? "row" : "column"}
       alignItems="center"

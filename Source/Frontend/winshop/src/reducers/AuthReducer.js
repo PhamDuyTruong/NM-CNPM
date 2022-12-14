@@ -1,4 +1,4 @@
-import {REGISTER_FAILURE, REGISTER_SUCCESS, REGISTER_REQUEST, LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS} from '../constants/AuthContstant';
+import {REGISTER_FAILURE, REGISTER_SUCCESS, REGISTER_REQUEST, LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, LOG_OUT} from '../constants/AuthContstant';
 
 const registerState = {
     registerUser: [],
@@ -10,6 +10,10 @@ const loginState = {
     userInfo: [],
     isLoading: false,
     error: null 
+};
+
+const initialState = {
+    success: null,
 }
 
 export function registerReducer(state = registerState, action){
@@ -42,4 +46,13 @@ export function loginReducer(state = loginState, action){
         default:
             return state
     }
-}
+};
+
+ export function logoutReducer(state = initialState, action){
+    switch(action.type){
+        case LOG_OUT:
+            return {...state, success: "Log out successfully"}
+        default:
+            return state;
+    }
+ }
