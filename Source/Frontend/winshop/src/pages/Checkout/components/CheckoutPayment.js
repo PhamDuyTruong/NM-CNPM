@@ -7,7 +7,6 @@ import {useHistory} from 'react-router-dom'
 function CheckoutPayment(props) {
     const { setIsCheckoutSuccess, setIsPurchased } = props;
     const {cartItems, shippingAdress} = useSelector((state) => state.cart);
-    console.log(cartItems)
     const dispatch = useDispatch();
     const [paymentMethod, setPaymentMethod] = useState("Paypal");
     const { totalPrice, discount } = useTotalPrice();

@@ -7,7 +7,7 @@ import reviewReducer from "./ReviewReducer";
 import cartReducer from "./CartReducer";
 import  addSidebarReducer from './SidebarReducer'
 import orderReducer from './OrderReducer'
-import getUserProfile from "./UserProfileReducer";
+import {getUserProfile, updateProfile} from "./UserProfileReducer";
 import { loginReducer, logoutReducer, registerReducer } from "./AuthReducer";
 
 
@@ -23,7 +23,8 @@ const rootReducer = combineReducers({
    userProfile: getUserProfile,
    register: registerReducer,
    login: loginReducer,
-   logout: logoutReducer
+   logout: logoutReducer,
+   updateProfile: updateProfile
 });
 
 

@@ -163,9 +163,11 @@ const renderMenu =  userInfo ?   (
       <DarkmodeButton />
     </Box>
    <Box m={match ? 0 : 1}>
-    <IconButton disableRipple style={{ padding: 0 }}>
-      <Avatar />
-     </IconButton>
+    <Link to="/profile">
+      <IconButton disableRipple style={{ padding: 0 }}>
+        <Avatar />
+      </IconButton>
+     </Link>
    </Box>
  </Box>
   ) : (

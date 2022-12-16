@@ -46,7 +46,7 @@ function DetailComment() {
         ))}
         </div>
         {userInfo ? (<DetailPost colors={colors}/>) : (
-          <h2>You must be login to comment !!!</h2>
+          <h2 style={{marginTop: "15px"}}>You must be login to comment !!!</h2>
         )}
     </div>
   )

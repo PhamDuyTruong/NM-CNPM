@@ -15,6 +15,7 @@ import Signin from './Components/Signin';
 import Checkout from './pages/Checkout';
 import CheckoutSuccess from './pages/Payment/CheckoutSuccess';
 import LogOut from './pages/Logout';
+import Profile from './pages/Profile';
 
 function App() {
   return (
@@ -38,6 +39,9 @@ function App() {
           <Route path="/sign-in">
               <Signin />
           </Route>
+          <Route path="/profile" exact>
+             <Profile />
+          </Route>
           <Route path="/checkout">
               <Checkout />
           </Route>
@@ -59,6 +63,7 @@ function App() {
           <Route path="/logout">
               <LogOut />
           </Route>
+          
         </Switch>
      </PrevFilterContext>
     </BrowserRouter>

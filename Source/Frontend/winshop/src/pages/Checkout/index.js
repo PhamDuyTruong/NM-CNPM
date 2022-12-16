@@ -11,17 +11,23 @@ function Checkout() {
     const [isCheckoutSuccess, setIsCheckoutSuccess] = useState(false);
     const [isPurchased, setIsPurchased] = useState(false);
     const [isPayment, setIsPayment] = useState(false);
-
+    const userInfo = JSON.parse(localStorage.getItem("user"))
   return (
     <>
      <section className='banner'>
           <img src={HandleImage(saleOff)} alt="Hinh anh" style={{marginTop: "3.5rem"}} width="100%" height="150"/>
     </section>
     <div className='checkout-content' style={{overflowX: "hidden"}}>
+
           <div className='checkout-content__left'>
-                <CheckoutProgress isCheckoutSuccess={isCheckoutSuccess} isPayment={isPayment} isPurchased={isPurchased}/>
+                  {userInfo ? <>
+                  <CheckoutProgress isCheckoutSuccess={isCheckoutSuccess} isPayment={isPayment} isPurchased={isPurchased}/>
                 <CheckoutShipping  setIsCheckoutSuccess={setIsCheckoutSuccess} setIsPurchased={setIsPurchased} setIsPayment={setIsPayment}/>
                 {isPayment ? <CheckoutPayment  setIsCheckoutSuccess={setIsCheckoutSuccess} setIsPurchased={setIsPurchased}/>: (<div style={{fontSize: "1.7rem", fontWeight: "500"}}>No Payment !!!</div>)}
+                  </> : (
+                       <h2 style={{marginTop: "15px"}}>You must be login to checkout !!!</h2>  
+                  )}
+               
           </div>
           <div className='checkout-content__right' style={{ paddingTop: "60px"}}>
                 <CheckoutAside />

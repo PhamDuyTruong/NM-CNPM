@@ -65,7 +65,7 @@ const userControllers = {
             email: user.email,
             profilePic: user.profilePic,
             phone: user.phone,
-            isAdmin: user.isAdmin
+            isAdmin: user.isAdmin,
           })
         }else{
           res.status(404).json('User not found')
@@ -78,12 +78,19 @@ const userControllers = {
           user.username = req.body.username || user.username
           user.email = req.body.email || user.email
           user.phone = req.body.phone || user.phone;
+          user.profilePic = req.body.profilePic || user.profilePic
           if(req.body.password){
             const salt = await bcrypt.genSalt(10);
             req.body.password = await bcrypt.hash(req.body.password, salt);
           }
           const updatedUser = await user.save();
-          res.status(200).json(updatedUser);
+          res.status(200).json({
+            username: updatedUser.username,
+            email: updatedUser.email,
+            profilePic: updatedUser.profilePic,
+            phone: updatedUser.phone,
+            isAdmin: updatedUser.isAdmin,
+          });
         }else {
           res.status(404).json("User not found !!!");
         }
@@ -92,15 +99,9 @@ const userControllers = {
       const {file} = req;
       const urlImage = `http://localhost:5000/${file.path}`;
       try{
-        const userFound = await User.findOne({
-              username: req.user.username
+        res.status(200).json({
+          profilePic: urlImage
         });
-        if(!userFound){
-          return res.status(404).json("Wrong username !!!");
-       }
-        userFound.profilePic = urlImage;
-        await userFound.save();
-        res.status(200).json(userFound);
       }catch(error){
           res.status(500).json(error);
        }

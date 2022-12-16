@@ -7,7 +7,7 @@ const registerState = {
 };
 
 const loginState = {
-    userInfo: [],
+    userLogin: [],
     isLoading: false,
     error: null 
 };
@@ -38,7 +38,7 @@ export function loginReducer(state = loginState, action){
             return {...state, isLoading: true, error: null}
         }
         case LOGIN_SUCCESS: {
-            return {...state, isLoading: false, userInfo: action.payload}
+            return {...state, isLoading: false, userLogin: action.payload}
         }
         case LOGIN_FAILURE: {
             return {...state, isLoading: false, error: action.payload}

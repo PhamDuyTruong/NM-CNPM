@@ -140,7 +140,7 @@ function Signup(props) {
       <img src={SignupImage} alt="sign-up" className='signup-img' />
     </div>
     <div className='signup-form'>
-      <h3>Sign Up</h3>
+      <h3 style={{textAlign: "center", marginBottom: "15px"}}>Sign Up</h3>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}

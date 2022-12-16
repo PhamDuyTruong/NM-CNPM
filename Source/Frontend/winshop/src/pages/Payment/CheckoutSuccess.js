@@ -14,7 +14,8 @@ function CheckoutSuccess() {
   const history = useHistory();
   const shippingAddress = JSON.parse(localStorage.getItem("ship"));
   const paymentMethod = JSON.parse(localStorage.getItem("payment"));
-  const cart = JSON.parse(localStorage.getItem("cart"));
+  const userInfo = JSON.parse(localStorage.getItem("user"))
+
   const handleStatus = () => {
         dispatch(updateStatusOrder(orderList, "Shipped"))
   };
@@ -31,7 +32,9 @@ function CheckoutSuccess() {
    </section>
    <div className='checkout-content' style={{overflowX: "hidden"}}>
          <div className='checkout-content__left'>
-            <h2>Shipping address</h2>
+              {userInfo ? (
+                  <>
+              <h2>Shipping address</h2>
             <p style={{fontSize: "1.3rem"}}>Address: {shippingAddress.address}, {shippingAddress.city}, {shippingAddress.pinCode}, {shippingAddress.country}</p>
             {orderList.isDelevered ? (<p  style={{fontSize: "1.3rem"}}>
                 Deliveried on: {(new Date(Date.now())).toLocaleDateString('en-US')}
@@ -58,8 +61,11 @@ function CheckoutSuccess() {
                 Your purchase was successfull !!!
            </h2>
          ): (<>
-         
          </>)}
+            </>
+              ): (
+                <h2 style={{marginTop: "15px"}}>You must be login to payment !!!</h2>
+              )}
          </div>
          <div className='checkout-content__right' style={{ paddingTop: "60px"}}>
                <CheckoutAside />

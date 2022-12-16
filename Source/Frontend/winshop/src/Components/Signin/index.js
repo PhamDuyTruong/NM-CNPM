@@ -13,6 +13,7 @@ function Signin(props) {
     password: '',
   };
   const [user, setUser] = useState(props.user || {});
+  const {userLogin} = useSelector((state) => state.login);
     const history = useHistory();
     const dispatch = useDispatch();
     const userInfo = JSON.parse(localStorage.getItem("user"))
@@ -43,6 +44,9 @@ function Signin(props) {
         }
         dispatch(loginUser(data));
         history.push("/")
+        if(userLogin.length === 0){
+          history.push("/sign-in")
+        }
     };
 
     if(userInfo){
@@ -66,6 +70,7 @@ function Signin(props) {
         {({ errors, touched }) => (
 
           <Form>
+            <h3 style={{textAlign: "center", marginBottom: "15px"}}>Sign in</h3>
             <div className="form-holder singup-active">
               <Field
                 name="username"

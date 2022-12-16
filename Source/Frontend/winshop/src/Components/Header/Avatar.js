@@ -39,6 +39,8 @@ const useStyles = makeStyles((theme) => ({
 }))
 const AvatarItem = () => {
   const classes = useStyles();
+  const userInfo = JSON.parse(localStorage.getItem("user"));
+  
   return (
     <div className={classes.container}>
         <StyledBadges
@@ -50,7 +52,7 @@ const AvatarItem = () => {
           variant="dot"
          // onClick={onSideOpen}
         >
-          <Avatar alt="Avatar" src="https://i.pravatar.cc/150?img=56" />
+          <Avatar alt="Avatar" src={userInfo.profilePic ? userInfo.profilePic : "https://i.pravatar.cc/150?img=56"} />
         </StyledBadges>
     </div>
   )

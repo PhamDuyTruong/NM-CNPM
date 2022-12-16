@@ -8,13 +8,13 @@ const storage = multer.diskStorage({
         cb(null, "./public/images/avatars")
     },
     filename: function(req, file, cb){
-        cb(null, Date.now() + "_" +  file.originalname) // dặt lại tên cho file
+        cb(null,  Date.now() + "_" + file.originalname) // dặt lại tên cho file
     }
 })
 const upload = multer({
     storage: storage,
     fileFilter: function(req, file, cb){
-        const extensionImageList = [".png", ".jpg", "jpeg"];
+        const extensionImageList = [".png", ".jpg", ".jpeg"];
         const extension = file.originalname.slice(-4);
         const check = extensionImageList.includes(extension);
         if(check){
@@ -26,7 +26,7 @@ const upload = multer({
 });
 
 //Upload image
-router.post("/upload-avatar",authMiddleware.verifyToken, upload.single('avatar'), userControllers.uploadAvatar);
+router.post("/upload-avatar", upload.single('avatar'), userControllers.uploadAvatar);
 
 // Get user
 router.get("/admin",authMiddleware.authorizeRole, userControllers.getAllUser);
