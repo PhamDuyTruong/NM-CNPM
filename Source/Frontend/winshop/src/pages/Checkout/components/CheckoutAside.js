@@ -5,7 +5,7 @@ import useTotalPrice from '../../../utils/customPrice'
 import EmptyCart from '../../../assets/images/empty-cart.png';
 
 function CheckoutAside() {
-    const cartItems = JSON.parse(localStorage.getItem("cart"));
+    const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
     const { totalPrice, discount } = useTotalPrice();
   return (
     <aside>

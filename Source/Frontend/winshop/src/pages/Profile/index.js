@@ -3,6 +3,7 @@ import "./settings.css";
 import {useHistory} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux';
 import  {updateUserProfile} from '../../actions/UserAction';
+import {getMyOrder} from '../../actions/OrderAction'
 import axios from "../../services/axios";
 import saleOff from '../../assets/images/saleOff.png';
 import HandleImage from '../../utils/HandleImage';
@@ -15,15 +16,15 @@ function Profile() {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState(false);
+  const {myOrder} = useSelector((state) => state.myOrder);
+  console.log(myOrder)
   const dispatch = useDispatch();
   const history = useHistory();
   const userInfo = JSON.parse(localStorage.getItem("user"));
 
   useEffect(() => {
-    if(!userInfo){
-      history.push('/sign-in')
-    }
-  }, [userInfo])
+   dispatch(getMyOrder())
+  },[])
 
   const handleSubmit = async(e) => {
     e.preventDefault();

@@ -9,6 +9,7 @@ function CheckoutPayment(props) {
     const {cartItems, shippingAdress} = useSelector((state) => state.cart);
     const dispatch = useDispatch();
     const [paymentMethod, setPaymentMethod] = useState("Paypal");
+    console.log(paymentMethod)
     const { totalPrice, discount } = useTotalPrice();
     const history = useHistory();
     // const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
@@ -19,6 +20,7 @@ function CheckoutPayment(props) {
     };
 
     const handleToPay = () => {
+        dispatch(savePaymentMethod(paymentMethod));
         const orderData = {
             shippingInfo: shippingAdress || JSON.parse(localStorage.getItem("ship")),
             cart: cartItems,

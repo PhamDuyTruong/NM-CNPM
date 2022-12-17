@@ -1,4 +1,7 @@
-import {CREATE_ORDER_FAILURE, CREATE_ORDER_SUCCESS, CREATE_ORDER_REQUEST, ORDER_STATUS_FAILURE, ORDER_STATUS_SUCCESS, ORDER_STATUS_REQUEST, ORDER_PAY_FAILURE, ORDER_PAY_REQUEST, ORDER_PAY_SUCCESS} from '../constants/OrderConstant';
+import {CREATE_ORDER_FAILURE, CREATE_ORDER_SUCCESS, CREATE_ORDER_REQUEST, ORDER_STATUS_FAILURE, ORDER_STATUS_SUCCESS, ORDER_STATUS_REQUEST, ORDER_PAY_FAILURE, ORDER_PAY_REQUEST, ORDER_PAY_SUCCESS,
+    MY_ORDER_FAILURE, MY_ORDER_SUCCESS,MY_ORDER_REQUEST
+
+} from '../constants/OrderConstant';
 import axios from '../services/axios';
 
 export const createOrder = (order) => {
@@ -91,4 +94,27 @@ export const payOrder = (order, paymentInfo) => {
             dispatch({type: ORDER_PAY_FAILURE, payload: error})
         }
     }
+};
+
+export const getMyOrder = () => {
+    return async(dispatch) => {
+        dispatch({type: MY_ORDER_REQUEST});
+        try {
+            let url = "/order/cart/me"
+            const userInfo = JSON.parse(localStorage.getItem("user"));
+            const headers = {
+                "Content-Type": "application/json",
+            }
+
+            if(userInfo){
+                const {accessToken} = userInfo
+                headers.token = `Bearer ${accessToken}`
+            }
+            const {data} = await axios.get(url, headers);
+            dispatch({type: MY_ORDER_SUCCESS, payload: data})
+        } catch (error) {
+                dispatch({type: MY_ORDER_FAILURE, payload: error})
+        }
+    }
 }
+
