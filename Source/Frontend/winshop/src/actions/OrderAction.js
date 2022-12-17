@@ -3,6 +3,7 @@ import {CREATE_ORDER_FAILURE, CREATE_ORDER_SUCCESS, CREATE_ORDER_REQUEST, ORDER_
 
 } from '../constants/OrderConstant';
 import axios from '../services/axios';
+import axiosClient from '../services/axiosClient';
 
 export const createOrder = (order) => {
     return async(dispatch) => {
@@ -100,17 +101,8 @@ export const getMyOrder = () => {
     return async(dispatch) => {
         dispatch({type: MY_ORDER_REQUEST});
         try {
-            let url = "/order/cart/me"
-            const userInfo = JSON.parse(localStorage.getItem("user"));
-            const headers = {
-                "Content-Type": "application/json",
-            }
-
-            if(userInfo){
-                const {accessToken} = userInfo
-                headers.token = `Bearer ${accessToken}`
-            }
-            const {data} = await axios.get(url, headers);
+            let url = "/api/order/cart/me"
+            const {data} = await axiosClient.get(url);
             dispatch({type: MY_ORDER_SUCCESS, payload: data})
         } catch (error) {
                 dispatch({type: MY_ORDER_FAILURE, payload: error})

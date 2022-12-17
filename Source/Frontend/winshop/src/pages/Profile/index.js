@@ -10,14 +10,12 @@ import HandleImage from '../../utils/HandleImage';
 
 function Profile() {
   const [file, setFile] = useState("");
-  console.log(file)
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState(false);
   const {myOrder} = useSelector((state) => state.myOrder);
-  console.log(myOrder)
   const dispatch = useDispatch();
   const history = useHistory();
   const userInfo = JSON.parse(localStorage.getItem("user"));
@@ -117,6 +115,39 @@ function Profile() {
         )}
       </form>
     </div>
+  </div>
+  <div className='container-fluid'>
+      <h2 style={{color: "lightcoral"}}>My Order</h2>
+      <table className='table table-hover table-striped'>
+          <thead>
+             <tr>
+                 <th>ID</th>
+                 <th>Date</th>
+                 <th>Total</th>
+                 <th>Paid</th>
+                 <th>Deliveried</th>
+             </tr>
+          </thead>
+          <tbody>
+             {myOrder.map((item) => (
+              <tr key={item._id}>
+                    <td>{item._id}</td>
+                  <td>{new Date(item.createdAt).toLocaleDateString("en-US")}</td>
+                  <td>{item.totalPrice}</td>
+                  <td>
+                    {new Date(item.paidAt).toLocaleDateString('en-US')}
+                  </td>
+                  <td>
+                    {item.isDelevered ? (
+                      new Date(item.deliveredAt).toLocaleDateString('en-US')
+                    ) : (
+                      <i className="fas fa-times" style={{ color: "red" }}></i>
+                    )}
+                  </td>
+              </tr>
+             ))}
+          </tbody>
+      </table>
   </div>
   </>
   )
