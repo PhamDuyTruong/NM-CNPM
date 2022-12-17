@@ -1,6 +1,5 @@
 import React, {useEffect} from "react";
-import { BrowserRouter, Route, Switch, useHistory } from "react-router-dom";
-import Swal from "sweetalert2";
+import { BrowserRouter, Route, Switch} from "react-router-dom";
 import PrevFilterContext from "./context/PrevFilterContext";
 import DetailProduct from "./pages/DetailProduct";
 import Home from "./pages/Home";

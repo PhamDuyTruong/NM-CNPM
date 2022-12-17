@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {useDispatch, useSelector} from 'react-redux';
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import { makeStyles } from "@material-ui/core/styles";
 import { Menu, Box, useMediaQuery } from "@material-ui/core";
 import { Button, ButtonGroup, IconButton } from "@material-ui/core";
@@ -105,6 +105,7 @@ function DropdownMenu() {
   //const {accessToken} = userInfo;
   //let isAuth = (accessToken !==  null) ? accessToken : "";
   const dispatch = useDispatch();
+  const history = useHistory();
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const match = useMediaQuery("(min-width: 960px)");
   const classes = useStyles();
@@ -113,10 +114,15 @@ function DropdownMenu() {
      dispatch(action);
   };
 
+  const handletoDashboard = () => {
+    history.push("/admin/dashboard")
+  }
+
+
 const renderMenu =  userInfo ?   (
     <Box display="flex" flexDirection={match ? "row": "column"} alignItems="center" m={match ? 0 : 1} minWidth={match ? 0 : 180}>
        {userInfo.isAdmin ? (
-           <Box m={match ? 0 : 1}>
+           <Box m={match ? 0 : 1} className={classes.Hide1}>
            <Button
               disableElevation
               variant="contained"
@@ -128,7 +134,7 @@ const renderMenu =  userInfo ?   (
            >
              Dashboard
            </Button>
-       </Box>
+        </Box>
        ): (
         <Box m={match ? 0 : 1} className={classes.Hide1}>
           <div className={classes.cart} onClick={toggleCart}>
@@ -157,10 +163,17 @@ const renderMenu =  userInfo ?   (
     <Box flexDirection="column" className={classes.Hide}>
         <ul style={{ listStyleType: "none", textAlign: "center"}}>
           <li>
+               {userInfo.isAdmin ? (
+                  <div className={classes.cart} onClick={handletoDashboard} style={{fontWeight: "600"}}>
+                     Dashboard
+                </div>
+               ): (
                 <div className={classes.cart} onClick={toggleCart} style={{fontWeight: "600"}}>
-                    <ShoppingCartIcon style={{fontSize: "1.2rem", color: "#47B5FF", paddingTop: "5px"}}/>
+                  <ShoppingCartIcon style={{fontSize: "1.2rem", color: "#47B5FF", paddingTop: "5px"}}/>
                      Cart
                 </div>
+               )}
+               
           </li>
           <li>
             <a

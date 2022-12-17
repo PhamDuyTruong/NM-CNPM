@@ -70,14 +70,13 @@ function Header() {
       <AppBar className={classes.containerBar}>
         <Toolbar className={classes.toolbar} disableGutters>
           <Hidden xsDown>
-            <Typography style={{color: "#47B5FF", cursor: "pointer", fontSize: "2rem"}} variant="h4">Winshop</Typography>
+            <Typography component={Link} to={"/"} style={{color: "#47B5FF", cursor: "pointer", fontSize: "2rem", textDecoration: "none"}} variant="h4">Winshop</Typography>
           </Hidden>
           <Hidden xsUp>
             <img src={Logo} alt="logo" width={70} height={70} />
             <IconButton
               className={classes.iconHome}
               aria-label="open drawer"
-              onClick={""}
               edge="start"
             >
               <ChevronLeftRoundedIcon />
@@ -85,7 +84,7 @@ function Header() {
           </Hidden>
           <Typography className={classes.title} variant="h5" noWrap>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center"}}>
-                <img style={{paddingLeft: "10px"}} src={Logo} alt="logo" width={70} height={70} />
+              <img style={{paddingLeft: "10px"}} src={Logo} alt="logo" width={70} height={70} />
               <Button className={classes.buttonHome} 
               component={Link} to={"/"}
               >
