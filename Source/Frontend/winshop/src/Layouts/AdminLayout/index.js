@@ -1,8 +1,18 @@
-import React from 'react'
+import React from 'react';
+import "./admin.css";
+import AdminHeader from '../../Components/Admin/AdminHeader';
+import AdminSidebar from '../../Components/Admin/AdminSidebar'
 
-function AdminLayout() {
+
+function AdminLayout({children}) {
   return (
-    <div>AdminLayout</div>
+    <div className='adminpage'>
+        <AdminSidebar />
+        <div className='headerAndContent'>
+            <AdminHeader />
+            {children}
+        </div>
+    </div>
   )
 }
 

@@ -1,7 +1,6 @@
-import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-
-import Header from "./Components/Header/Header";
+import React, {useEffect} from "react";
+import { BrowserRouter, Route, Switch, useHistory } from "react-router-dom";
+import Swal from "sweetalert2";
 import PrevFilterContext from "./context/PrevFilterContext";
 import DetailProduct from "./pages/DetailProduct";
 import Home from "./pages/Home";
@@ -18,59 +17,99 @@ import LogOut from "./pages/Logout";
 import Profile from "./pages/Profile";
 import PageNotFound from "./pages/PageNotFound";
 import AppLayout from "./Layouts/AppLayout";
+import AdminLayout from "./Layouts/AdminLayout";
+import AdminRoute from "./Route/AdminRoute";
+import Dashboard from "./Components/Admin/Dashboard";
+
 
 function App() {
+  const userInfo = localStorage.getItem("user")
+  ? JSON.parse(localStorage.getItem("user"))
+  : null;
   return (
     <BrowserRouter>
       <Switch>
         <Route path="/">
           <PrevFilterContext>
-            <AppLayout>
               <Switch>
                 <Route path="/" exact>
-                  <Home />
+                  <AppLayout>
+                      <Home />
+                  </AppLayout>
+                </Route>
+                <Route path="/admin">
+                  <AdminRoute path="/admin/dashboard" exact>
+                      <AdminLayout>
+                          <Dashboard />
+                      </AdminLayout>
+                  </AdminRoute>
+
                 </Route>
                 <Route path="/shop/:id" exact>
-                  <DetailProduct />
+                  <AppLayout>
+                    <DetailProduct />
+                  </AppLayout>
                 </Route>
                 <Route path="/shop">
-                  <Shop />
+                  <AppLayout>
+                      <Shop />
+                  </AppLayout>
                 </Route>
                 <Route path="/sign-up">
-                  <Signup />
+                  <AppLayout>
+                      <Signup />
+                  </AppLayout>
                 </Route>
                 <Route path="/sign-in">
-                  <Signin />
+                  <AppLayout>
+                      <Signin />
+                  </AppLayout>
                 </Route>
                 <Route path="/profile" exact>
-                  <Profile />
+                  <AppLayout>
+                      <Profile />
+                  </AppLayout>
                 </Route>
                 <Route path="/checkout">
-                  <Checkout />
+                  <AppLayout>
+                      <Checkout />
+                  </AppLayout>
                 </Route>
                 <Route path="/FAQ">
-                  <FAQ />
+                  <AppLayout>
+                      <FAQ />
+                  </AppLayout>
                 </Route>
                 <Route path="/dis">
-                  <Disclaimer />
+                  <AppLayout>
+                      <Disclaimer />
+                  </AppLayout>
                 </Route>
                 <Route path="/privacy">
-                  <Privacy />
+                  <AppLayout>
+                    <Privacy />
+                  </AppLayout>
                 </Route>
                 <Route path="/term">
-                  <Terms />
+                  <AppLayout>
+                      <Terms />
+                  </AppLayout>
                 </Route>
                 <Route path="/pay">
-                  <CheckoutSuccess />
+                  <AppLayout>
+                      <CheckoutSuccess />
+                  </AppLayout>
                 </Route>
                 <Route path="/logout">
-                  <LogOut />
+                  <AppLayout>
+                      <LogOut />
+                  </AppLayout>
                 </Route>
                 <Route path="*">
                   <PageNotFound />
                 </Route>
               </Switch>
-            </AppLayout>
+            
           </PrevFilterContext>
         </Route>
       </Switch>

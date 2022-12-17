@@ -115,12 +115,29 @@ function DropdownMenu() {
 
 const renderMenu =  userInfo ?   (
     <Box display="flex" flexDirection={match ? "row": "column"} alignItems="center" m={match ? 0 : 1} minWidth={match ? 0 : 180}>
-       <Box m={match ? 0 : 1} className={classes.Hide1}>
-        <div className={classes.cart} onClick={toggleCart}>
+       {userInfo.isAdmin ? (
+           <Box m={match ? 0 : 1}>
+           <Button
+              disableElevation
+              variant="contained"
+              size="small"
+              className={classes.buttonLogIn}
+              component={Link}
+              to={"/admin/dashboard"}
+              style={{color: "#fff", marginRight: "15px"}}
+           >
+             Dashboard
+           </Button>
+       </Box>
+       ): (
+        <Box m={match ? 0 : 1} className={classes.Hide1}>
+          <div className={classes.cart} onClick={toggleCart}>
             <ShoppingCartIcon style={{fontSize: "2rem", color: "#47B5FF"}}/>
             <div className={classes.qnt}>{cartItems.length > 0 ? cartItems.length : 0}</div>
-        </div>
-    </Box>
+          </div>
+      </Box>
+       )}
+       
     
     <Box m={match ? 0 : 1}>
         <Button

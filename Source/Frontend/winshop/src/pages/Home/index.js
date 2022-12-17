@@ -1,5 +1,4 @@
 import React from 'react';
-import Footer from '../../Components/Footer';
 import Products from './components/Products';
 import HomeBanner from './components/HomeBanner';
 import HomeFeature from './components/HomeFeature';
@@ -22,7 +21,6 @@ function Home() {
         <HomeLastest />
         <hr />
         <HomeReview />
-        <Footer />
     </>
   )
 }
