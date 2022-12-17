@@ -14,7 +14,7 @@ function LastestProducts(props) {
                  alt="Home product"
                  height={240}
               />
-              <Link to={`/shop/${id}`}>
+              <Link to={`/shop/${id}`} style={{textDecoration: "none"}}>
                 <button className='btn'>
                   <span>Best deal</span>
                 </button>

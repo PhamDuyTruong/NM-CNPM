@@ -28,7 +28,7 @@ function ProductList() {
           }
         >
             {shopProducts && dataSlice.map((item) => (
-                <ProductCard  key={item.id} {...item}/>
+                <ProductCard  key={item._id} {...item}/>
             ))}
           
         </div>

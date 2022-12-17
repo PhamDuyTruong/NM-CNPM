@@ -16,6 +16,7 @@ import Checkout from './pages/Checkout';
 import CheckoutSuccess from './pages/Payment/CheckoutSuccess';
 import LogOut from './pages/Logout';
 import Profile from './pages/Profile';
+import PageNotFound from './pages/PageNotFound';
 
 function App() {
   return (
@@ -63,7 +64,9 @@ function App() {
           <Route path="/logout">
               <LogOut />
           </Route>
-          
+          <Route path="*">
+              <PageNotFound />
+          </Route>
         </Switch>
      </PrevFilterContext>
     </BrowserRouter>

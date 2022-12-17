@@ -7,7 +7,7 @@ function DarkmodeButton() {
   return (
     <div>
         <Tooltip title="Dark Mode">
-            <Switch checked={isTheme} onChange={""}>
+            <Switch checked={isTheme}>
             </Switch>
         </Tooltip>
     </div>

@@ -44,13 +44,12 @@ const AvatarItem = () => {
   return (
     <div className={classes.container}>
         <StyledBadges
-          overlap="circle"
+          overlap="circular"
           anchorOrigin={{
             vertical: "bottom",
             horizontal: "right",
           }}
           variant="dot"
-         // onClick={onSideOpen}
         >
           <Avatar alt="Avatar" src={userInfo.profilePic ? userInfo.profilePic : "https://i.pravatar.cc/150?img=56"} />
         </StyledBadges>

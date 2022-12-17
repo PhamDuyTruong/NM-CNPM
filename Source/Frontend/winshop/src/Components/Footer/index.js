@@ -19,9 +19,9 @@ function Footer() {
                         <Link className={`${style.Link} ${style.TextLink}`} to="/FAQ">
                             FAQ
                         </Link>
-                        <Link className={`${style.Link} ${style.TextLink}`} href="mailto:no-mail@email.com">
+                        <button style={{border: "none"}}  className={`${style.Link} ${style.TextLink}`} data-toggle="tooltip" data-placement="bottom" title="0919618623">
                             Contact Us
-                        </Link>
+                        </button>
                     </div>
                 </div>
 

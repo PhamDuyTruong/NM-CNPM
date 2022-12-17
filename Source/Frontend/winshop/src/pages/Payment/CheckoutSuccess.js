@@ -6,7 +6,8 @@ import saleOff from '../../assets/images/saleOff.png';
 import HandleImage from '../../utils/HandleImage';
 import CheckoutAside from '../Checkout/components/CheckoutAside';
 import {updateStatusOrder} from '../../actions/OrderAction';
-import {useHistory} from 'react-router-dom'
+import {useHistory} from 'react-router-dom';
+import Swal from "sweetalert2";
 function CheckoutSuccess() {
   const {orderList} = useSelector((state) => state.order);
   const [isPaid, setIsPaid] = useState(false);
@@ -22,7 +23,15 @@ function CheckoutSuccess() {
 
   const handleCod = () => {
     dispatch(updateStatusOrder(orderList, "Delivering"))
-    history.push("/shop")
+    Swal.fire(
+      "Cart is being shipped! Thank you !!!",
+      "Return back to shop page!",
+      "Success"
+    ).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = "/shop";
+      }
+    });
   }
 
   return (

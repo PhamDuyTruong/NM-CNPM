@@ -39,7 +39,7 @@ function DetailReview() {
 
         window.addEventListener("resize", handleResize);
 
-        return window.addEventListener("resize", handleResize);
+        return window.removeEventListener("resize", handleResize);
     }, [firsBtntRef, btnElement]);
 
   return (

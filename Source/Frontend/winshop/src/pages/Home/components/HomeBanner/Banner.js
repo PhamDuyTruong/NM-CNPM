@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {Link} from 'react-router-dom'
 import gsap from 'gsap'
-import { Container } from "@material-ui/core";
+import { Container, Button } from "@material-ui/core";
 import HandleImage from '../../../../utils/HandleImage';
 import LocalMallOutlinedIcon from '@material-ui/icons/LocalMallOutlined';
 import "./Banner.scss";
@@ -38,11 +38,11 @@ function Banner(props) {
                     <strong>{strong}</strong>
                 </div>
                 <div ref={(el) => (btnRef = el)}>
-                    <Link to="/shop">
-                      <button className="primary-btn red">
+                    <Link to="/shop" style={{textDecoration: "none"}}>
+                      <Button className="primary-btn red">
                         <LocalMallOutlinedIcon className="home-banner__icon" />
                            Shop now
-                       </button>
+                       </Button>
                     </Link>
                  </div>
             </div>

@@ -7,6 +7,7 @@ const HandleImage = (src) => {
     const img = new Image();
     img.src = src;
     img.onload = () => setSource(src);
+    return () => {setSource(null)}
   }, [src])
   return source;
 }

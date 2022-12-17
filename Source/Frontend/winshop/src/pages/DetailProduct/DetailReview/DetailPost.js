@@ -59,6 +59,7 @@ function DetailPost({colors}) {
                 .fill()
                 .map((_, index) => (
                   <StarIcon
+                    key={index}
                     onClick={() => handleSelectedStar(index + 1)}
                     onMouseOver={() => handleHoveredStar(index + 1)}
                     onMouseLeave={() => handleHoveredStar(0)}
