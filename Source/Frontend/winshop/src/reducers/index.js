@@ -9,6 +9,8 @@ import  addSidebarReducer from './SidebarReducer'
 import {myOrderList, orderReducer} from './OrderReducer'
 import {getUserProfile, updateProfile} from "./UserProfileReducer";
 import { loginReducer, logoutReducer, registerReducer } from "./AuthReducer";
+import UsersReducer from "./AdminUserReducer";
+import AdminProductReducer from "./AdminProductReducer";
 
 
 const rootReducer = combineReducers({
@@ -25,7 +27,10 @@ const rootReducer = combineReducers({
    login: loginReducer,
    logout: logoutReducer,
    updateProfile: updateProfile,
-   myOrder: myOrderList
+   myOrder: myOrderList,
+   AdminUser: UsersReducer,
+   AdminProduct: AdminProductReducer,
+   
 });
 
 

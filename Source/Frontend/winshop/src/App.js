@@ -1,5 +1,6 @@
-import React, {useEffect} from "react";
+import React, {useState} from "react";
 import { BrowserRouter, Route, Switch} from "react-router-dom";
+
 import PrevFilterContext from "./context/PrevFilterContext";
 import DetailProduct from "./pages/DetailProduct";
 import Home from "./pages/Home";
@@ -19,30 +20,23 @@ import AppLayout from "./Layouts/AppLayout";
 import AdminLayout from "./Layouts/AdminLayout";
 import AdminRoute from "./Route/AdminRoute";
 import Dashboard from "./Components/Admin/Dashboard";
+import UsersPage from "./pages/Admin/UsersManagement/UsersPage";
+import ProductsPage from "./pages/Admin/ProductsManagement/ProductsPage";
 
 
 function App() {
-  const userInfo = localStorage.getItem("user")
-  ? JSON.parse(localStorage.getItem("user"))
-  : null;
+ 
   return (
     <BrowserRouter>
       <Switch>
         <Route path="/">
+        
           <PrevFilterContext>
               <Switch>
                 <Route path="/" exact>
                   <AppLayout>
                       <Home />
                   </AppLayout>
-                </Route>
-                <Route path="/admin">
-                  <AdminRoute path="/admin/dashboard" exact>
-                      <AdminLayout>
-                          <Dashboard />
-                      </AdminLayout>
-                  </AdminRoute>
-
                 </Route>
                 <Route path="/shop/:id" exact>
                   <AppLayout>
@@ -103,6 +97,23 @@ function App() {
                   <AppLayout>
                       <LogOut />
                   </AppLayout>
+                </Route>
+                <Route path="/admin">
+                  <AdminRoute path="/admin/dashboard" exact>
+                      <AdminLayout>
+                          <Dashboard />
+                      </AdminLayout>
+                  </AdminRoute>
+                  <AdminRoute path="/admin/users" exact>
+                      <AdminLayout>
+                           <UsersPage/>
+                      </AdminLayout>
+                  </AdminRoute>
+                  <AdminRoute path="/admin/products" exact>
+                      <AdminLayout>
+                           <ProductsPage />
+                      </AdminLayout>
+                  </AdminRoute>
                 </Route>
                 <Route path="*">
                   <PageNotFound />

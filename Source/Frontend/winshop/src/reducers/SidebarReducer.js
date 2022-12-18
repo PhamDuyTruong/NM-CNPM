@@ -1,9 +1,10 @@
-import {OPEN_SIDEBAR, DRAW_SIDEBAR_OPEN, DRAW_SIDEBAR_CLOSE, IS_SHOW_CART} from '../constants/SidebarConstant';
+import {OPEN_SIDEBAR, DRAW_SIDEBAR_OPEN, DRAW_SIDEBAR_CLOSE, IS_SHOW_CART, DARK_THEME} from '../constants/SidebarConstant';
 
 const initialState = {
     sideOpen: false,
     sideDraw: false,
-    isShowCart: false
+    isShowCart: false,
+    darkTheme: null
 }
 
 function addSidebarReducer(state= initialState, action){
@@ -16,6 +17,9 @@ function addSidebarReducer(state= initialState, action){
             return {...state, sideDraw: false};
         case IS_SHOW_CART:
             return {...state, isShowCart: action.payload}
+        case DARK_THEME:
+            localStorage.setItem("theme", JSON.stringify(action.payload));
+            return {...state, darkTheme: action.payload}
         default:
             return state;
     }

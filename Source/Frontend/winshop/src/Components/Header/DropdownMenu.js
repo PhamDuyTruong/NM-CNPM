@@ -101,6 +101,7 @@ const useStyles = makeStyles((theme) => ({
 function DropdownMenu() {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(false);
   const {cartItems} = useSelector((state) => state.cart);
+  
   const userInfo = JSON.parse(localStorage.getItem("user"));
   //const {accessToken} = userInfo;
   //let isAuth = (accessToken !==  null) ? accessToken : "";
@@ -109,6 +110,7 @@ function DropdownMenu() {
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const match = useMediaQuery("(min-width: 960px)");
   const classes = useStyles();
+
   const toggleCart = () => {
     const action = getShowCart(true);
      dispatch(action);
