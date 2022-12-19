@@ -16,6 +16,12 @@ function Profile() {
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState(false);
   const {myOrder} = useSelector((state) => state.myOrder);
+  const {darkTheme} = useSelector((state) => state.sidebar);
+  const ThemeInLocal = JSON.parse(localStorage.getItem("theme"))
+  let isTheme = darkTheme;
+  if(!darkTheme){
+      isTheme = ThemeInLocal
+  }
   const dispatch = useDispatch();
   const history = useHistory();
   const userInfo = JSON.parse(localStorage.getItem("user"));
@@ -73,7 +79,7 @@ function Profile() {
        <section className='banner'>
           <img src={HandleImage(saleOff)} alt="Hinh anh" style={{marginTop: "3.5rem"}} width="100%" height="150"/>
     </section>
-    <div className="settings">
+    <div className="settings" style={{ background: `${isTheme ? "#1A120B" : ""}`, color: `${isTheme ? "#fff": ""}`}}>
       <div className="settingsWrapper">
         <div className="settingsTitle">
           <span className="settingsTitleUpdate">Update Your Account</span>
@@ -117,9 +123,9 @@ function Profile() {
       </form>
     </div>
   </div>
-  <div className='container-fluid'>
+  <div className='container-fluid' style={{ background: `${isTheme ? "#1A120B" : ""}`, color: `${isTheme ? "#fff": ""}`}}>
       <h2 style={{color: "lightcoral"}}>My Order</h2>
-      <table className='table table-hover table-striped'>
+      <table className="table table-hover" style={{ background: `${isTheme ? "#1A120B" : ""}`, color: `${isTheme ? "#fff": ""}`}}>
           <thead>
              <tr>
                  <th>ID</th>
@@ -129,7 +135,7 @@ function Profile() {
                  <th>Deliveried</th>
              </tr>
           </thead>
-          <tbody>
+          <tbody style={{ background: `${isTheme ? "#1A120B" : ""}`, color: `${isTheme ? "#fff": ""}`}}>
              {myOrder.map((item) => (
               <tr key={item._id}>
                     <td>{item._id}</td>

@@ -13,6 +13,12 @@ function CheckoutSuccess() {
   const [isPaid, setIsPaid] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
+  const {darkTheme} = useSelector((state) => state.sidebar);
+  const ThemeInLocal = JSON.parse(localStorage.getItem("theme"))
+  let isTheme = darkTheme;
+  if(!darkTheme){
+      isTheme = ThemeInLocal
+  }
   const shippingAddress = JSON.parse(localStorage.getItem("ship"));
   const paymentMethod = JSON.parse(localStorage.getItem("payment"));
   const userInfo = JSON.parse(localStorage.getItem("user"))
@@ -39,7 +45,7 @@ function CheckoutSuccess() {
     <section className='banner'>
          <img src={HandleImage(saleOff)} alt="Hinh anh" style={{marginTop: "3.5rem"}} width="100%" height="150"/>
    </section>
-   <div className='checkout-content' style={{overflowX: "hidden"}}>
+   <div className='checkout-content' style={{overflowX: "hidden",  background: `${isTheme ? "#1A120B" : ""}`, color: `${isTheme ? "#fff": ""}`}}>
          <div className='checkout-content__left'>
               {userInfo ? (
                   <>

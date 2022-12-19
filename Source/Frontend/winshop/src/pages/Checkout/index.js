@@ -3,6 +3,7 @@ import CheckoutAside from './components/CheckoutAside';
 import CheckoutProgress from './components/CheckoutProgress';
 import saleOff from '../../assets/images/saleOff.png';
 import HandleImage from '../../utils/HandleImage';
+import {useSelector} from 'react-redux'
 import "./styles.scss"
 import CheckoutShipping from './components/CheckoutShipping';
 import CheckoutPayment from './components/CheckoutPayment';
@@ -11,13 +12,19 @@ function Checkout() {
     const [isCheckoutSuccess, setIsCheckoutSuccess] = useState(false);
     const [isPurchased, setIsPurchased] = useState(false);
     const [isPayment, setIsPayment] = useState(false);
+    const {darkTheme} = useSelector((state) => state.sidebar);
+    const ThemeInLocal = JSON.parse(localStorage.getItem("theme"))
+    let isTheme = darkTheme;
+    if(!darkTheme){
+        isTheme = ThemeInLocal
+    }
     const userInfo = JSON.parse(localStorage.getItem("user"))
   return (
     <>
      <section className='banner'>
           <img src={HandleImage(saleOff)} alt="Hinh anh" style={{marginTop: "3.5rem"}} width="100%" height="150"/>
     </section>
-    <div className='checkout-content' style={{overflowX: "hidden"}}>
+    <div className='checkout-content' style={{overflowX: "hidden", background: `${isTheme ? "#1A120B" : ""}`, color: `${isTheme ? "#fff": ""}`}}>
 
           <div className='checkout-content__left'>
                   {userInfo ? <>
