@@ -11,7 +11,7 @@ function AdminWidget(props) {
       <Link
         className="viewall"
         to={props.url}
-        style={{ textDecoration: "none !important" }}
+        style={{ textDecoration: "none" }}
       >
         {props.detail}
       </Link>

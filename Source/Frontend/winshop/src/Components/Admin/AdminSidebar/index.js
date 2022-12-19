@@ -32,7 +32,7 @@ function AdminSidebar() {
           <Link to="/admin/products">
             <li>
               <ion-icon name="storefront-outline"></ion-icon>
-              <span>Product</span>
+              <span>Products</span>
             </li>
           </Link>
           <Link to="/admin/orders">

@@ -3,9 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import axiosClient from "../../../services/axiosClient";
 import "./style.css";
 import AdminWidget from '../AdminWidget'
+import AdminFeature from '../AdminFeature';
 
 function Dashboard() {
   const orders = useSelector((state) => state.AdminOrder);
+  console.log(orders)
   const users = useSelector((state) => state.AdminUser);
   const products = useSelector((state) => state.AdminProduct);
   const dispatch = useDispatch();
@@ -43,7 +45,7 @@ function Dashboard() {
             url="admin/products"
           ></AdminWidget>
         </div>
-        <div className="totalRevenue">{orders.length * 50}</div>
+        <AdminFeature orders={orders} products={products}/>
       </div>
     </>
   )
