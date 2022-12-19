@@ -4,10 +4,11 @@ import axiosClient from "../../../services/axiosClient";
 import "./style.css";
 import AdminWidget from '../AdminWidget'
 import AdminFeature from '../AdminFeature';
+import Chart from '../Chart';
+import {userData} from '../../../utils/userData'
 
 function Dashboard() {
   const orders = useSelector((state) => state.AdminOrder);
-  console.log(orders)
   const users = useSelector((state) => state.AdminUser);
   const products = useSelector((state) => state.AdminProduct);
   const dispatch = useDispatch();
@@ -30,22 +31,23 @@ function Dashboard() {
             title="USERS"
             value={users.length}
             detail="See all users"
-            url="admin/users"
+            url="/admin/users"
           ></AdminWidget>
           <AdminWidget
             title="ORDERS"
             value={orders.length}
             detail="See all orders"
-            url="admin/orders"
+            url="/admin/orders"
           ></AdminWidget>
           <AdminWidget
             title="PRODUCTS"
             value={products.length}
             detail="See all products"
-            url="admin/products"
+            url="/admin/products"
           ></AdminWidget>
         </div>
         <AdminFeature orders={orders} products={products}/>
+        <Chart data={userData} title="User Analytics" grid dataKey="Active User"/>
       </div>
     </>
   )

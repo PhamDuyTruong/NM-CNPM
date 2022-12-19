@@ -25,6 +25,7 @@ import ProductDetailPage from "./pages/Admin/ProductsManagement/ProductDetailPag
 import ProductCreatePage from "./pages/Admin/ProductsManagement/ProductCreatePage";
 import OrdersPage from "./pages/Admin/OrdersManagement/OrdersPage";
 import OrderDetail from "./pages/Admin/OrdersManagement/OrderDetail";
+import  Calendar  from "./pages/Admin/Calendar/Calendar";
 
 
 function App() {
@@ -137,7 +138,11 @@ function App() {
                            <OrdersPage />
                       </AdminLayout>
                   </AdminRoute>
-              
+                  <AdminRoute path="/admin/calendar" exact>
+                      <AdminLayout>
+                           <Calendar />
+                      </AdminLayout>
+                  </AdminRoute>
                 </Route>
                 <Route path="*">
                   <PageNotFound />

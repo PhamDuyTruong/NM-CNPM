@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import "./AdminHeader.css";
 import ProfileDropdown from './ProfileDropdown';
-import SettingDropdown from './SettingDropdown'
 
 function AdminHeader() {
     const [isActive, setStatus] = useState("none");
@@ -48,7 +47,7 @@ function AdminHeader() {
             className="settingdropdown"
             style={{ display: isActive === "setting" ? "block" : "none" }}
           >
-            <SettingDropdown></SettingDropdown>
+          
           </div>
         </div>
       </div>

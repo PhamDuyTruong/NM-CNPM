@@ -8,7 +8,9 @@ function AdminSidebar() {
     <div className="sidebar">
       <div className="top">
         <div>
-          <span className="logo">Winshop</span>
+          <span className="logo">
+            <Link to="/" style={{textDecoration:"none"}}>Winshop</Link>
+          </span>
         </div>
       </div>
       <div className="mainSidebar">
@@ -18,6 +20,11 @@ function AdminSidebar() {
             <li>
               <ion-icon name="home-outline"></ion-icon>
               <span>Dashboard</span>
+            </li>
+          </Link>
+          <Link to="/admin/calendar">
+            <li>
+              <span>Calendar</span>
             </li>
           </Link>
         </ul>

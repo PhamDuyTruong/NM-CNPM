@@ -54,6 +54,7 @@ function Profile() {
     }
     const newUser = {
       ...updatedUser,
+      isAdmin: userInfo.isAdmin,
       accessToken: userInfo.accessToken
     }
     localStorage.setItem("user", JSON.stringify(newUser))
