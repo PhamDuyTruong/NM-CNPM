@@ -11,7 +11,6 @@ function ProfileDropdown() {
       </div>
       <div>
         <Link to="/logout" style={{textDecoration: "none"}}> Log out</Link>
-       
       </div>
     </div>
   </>

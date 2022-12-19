@@ -44,7 +44,15 @@ function ShopHandle() {
 
     useEffect(() => {
         dispatch(searchProduct(keyWord))
-    }, [searchProduct, keyWord])
+    }, [searchProduct, keyWord]);
+
+    const {darkTheme} = useSelector((state) => state.sidebar);
+  const ThemeInLocal = JSON.parse(localStorage.getItem("theme"))
+  let isTheme = darkTheme;
+  if(!darkTheme){
+      isTheme = ThemeInLocal
+  }
+
 
       const handleClickDrop = (e) =>{
         const el = ref.current;
@@ -91,7 +99,7 @@ function ShopHandle() {
                  className={
                     isDrop ? 'shop-handle__drop-list drop' : 'shop-handle__drop-list'
                   }
-                  style={{listStyleType: "none"}}
+                  style={{listStyleType: "none", color: `${isTheme ? "#000": ""}`}}
             >
                 {dataFake.map((item, index) =>(
                     <li

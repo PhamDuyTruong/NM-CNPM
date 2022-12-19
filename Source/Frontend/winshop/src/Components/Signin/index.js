@@ -116,7 +116,7 @@ function Signin(props) {
             </div>
             <a href='#' style={{textDecoration: "none", marginTop: "20px"}}>Forget Password ?</a>
             <div>
-               <p>Don't have account ? <span><a href='/sign-up' style={{textDecoration: "none"}}>Sign in</a></span></p>
+               <p >Don't have account ? <span><a href='/sign-up' style={{textDecoration: "none"}}>Sign in</a></span></p>
             </div>
           </Form>
         )}

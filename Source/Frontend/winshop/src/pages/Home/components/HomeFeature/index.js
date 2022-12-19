@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import "./styles.scss";
 import "./Feature.css";
+import {useSelector} from 'react-redux'
 import gsap from "gsap";
 import AOS from "aos";
 import {FeatureData} from '../../../../utils/fakeData';
@@ -19,6 +20,12 @@ function HomeFeature() {
     const [image, setImage] = useState(Apple);
     const [circleColor, setCircleColor] = useState("#47B5FF");
 
+    const {darkTheme} = useSelector((state) => state.sidebar);
+    const ThemeInLocal = JSON.parse(localStorage.getItem("theme"))
+    let isTheme = darkTheme;
+    if(!darkTheme){
+        isTheme = ThemeInLocal
+    }
     let leftCards = [cardOneRef, cardTwoRef, cardThreeRef];
     useEffect(() =>{
         const cardsLine = gsap.timeline({
@@ -64,7 +71,7 @@ function HomeFeature() {
 
   return (
     <section ref={(el) => containerRef = el} className="home-ingredients">
-        <div className='home-ingredients__thumb' style={{backgroundImage: "linear-gradient(90deg, #7DE5ED 50%, #fff 50%)"}}>
+        <div className='home-ingredients__thumb' style={{backgroundImage: `${isTheme  ? "linear-gradient(90deg, #7DE5ED 50%, #1A120B 50%)" : "linear-gradient(90deg, #7DE5ED 50%, #fff 50%)"}`}}>
             <div className='home-ingredients__card-left'>
                 {FeatureData.map(({title, content, order}, index) =>(
                     <div ref={(el) => leftCards[index] = el}  className="home-ingredients__card-wrapper" key={`${title}-${index}`}>

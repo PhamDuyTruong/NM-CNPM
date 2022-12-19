@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import gsap from 'gsap'
 import { Container } from "@material-ui/core";
+import {useSelector} from 'react-redux'
 import HandleImage from '../../../../utils/HandleImage';
 import {WorkData} from '../../../../utils/fakeData'
 import Grid from "@material-ui/core/Grid";
@@ -16,6 +17,13 @@ function HomeWork() {
     let stepTwoRef = useRef(null);
     let stepThreeRef = useRef(null);
     let stepFourRef = useRef(null);
+
+    const {darkTheme} = useSelector((state) => state.sidebar);
+    const ThemeInLocal = JSON.parse(localStorage.getItem("theme"))
+    let isTheme = darkTheme;
+    if(!darkTheme){
+        isTheme = ThemeInLocal
+    }
     let stepRef = [stepOneRef, stepTwoRef, stepThreeRef, stepFourRef];
 
     useEffect(() =>{
@@ -44,7 +52,7 @@ function HomeWork() {
             <div ref={(el) => captionRef = el} className="primary-yellow-text">
                 Shop Now
             </div>
-            <h2 ref={(el) => headingRef = el} className="primary-heading-text">
+            <h2 ref={(el) => headingRef = el} className="primary-heading-text" style={{color: `${isTheme ? "#fff" : ""}`}}>
                 How it works
             </h2>
 
@@ -64,7 +72,7 @@ function HomeWork() {
                                         ></div>
                                     </div>
                                 </div>
-                                <div className="home-work__content">{content}</div>
+                                <div className="home-work__content" style={{color: `${isTheme ? "#fff" : ""}`}}>{content}</div>
                             </div>
                            
                         </Grid>

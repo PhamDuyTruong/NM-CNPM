@@ -13,15 +13,21 @@ import DetailImage from './DetailImage'
 import DetailReview from './DetailReview';
 
 function DetailProduct() {
-    const {detailProduct, isLoading} = useSelector((state) => state.getDetailProduct);
     const {id} = useParams();
+    const {detailProduct, isLoading} = useSelector((state) => state.getDetailProduct);
+    const {darkTheme} = useSelector((state) => state.sidebar);
+    const ThemeInLocal = JSON.parse(localStorage.getItem("theme"))
+    let isTheme = darkTheme;
+    if(!darkTheme){
+        isTheme = ThemeInLocal
+    }
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getProductDetail(id));
     }, [getProductDetail, id])
     
   return (
-    <div className='detail'>
+    <div className='detail' style={{background: `${isTheme ? "#1A120B" : ""}`, color: `${isTheme ? "#fff": ""}`}}>
         <section className='banner'>
           <img src={HandleImage(bannerImg)} alt="Hinh anh" style={{marginTop: "3.5rem"}} width="100%" height="200"/>
        </section>

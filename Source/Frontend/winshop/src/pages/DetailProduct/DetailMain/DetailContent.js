@@ -1,7 +1,7 @@
 import React from 'react';
 import "./DetailContent.scss";
 import Checkbox from '../../../Components/Checkbox';
-import {useDispatch} from 'react-redux'
+import {useDispatch,  useSelector} from 'react-redux'
 import { Button } from "@material-ui/core";
 import StarIcon from "@material-ui/icons/Star";
 import AddIcon from "@material-ui/icons/Add";
@@ -16,6 +16,12 @@ import {addToCart} from '../../../actions/CartAction'
 
 function DetailContent(props) {
   const dispatch = useDispatch();
+  const {darkTheme} = useSelector((state) => state.sidebar);
+  const ThemeInLocal = JSON.parse(localStorage.getItem("theme"))
+  let isTheme = darkTheme;
+  if(!darkTheme){
+      isTheme = ThemeInLocal
+  }
   const {
     product,
     dataOptions,
@@ -62,13 +68,13 @@ function DetailContent(props) {
 
       <div className="detail-content__tags">
         <div className="detail-content__tag">
-          <span className="detail-content__tag-label">Size:</span>
+          <span className="detail-content__tag-label" style={{color: `${isTheme ? "#fff" : ""}`}}>Size:</span>
           <span className="detail-content__tag-detail category">
             {size}
           </span>
         </div>
         <div className="detail-content__tag">
-          <span className="detail-content__tag-label">Color: </span>
+          <span className="detail-content__tag-label"  style={{color: `${isTheme ? "#fff" : ""}`}}>Color: </span>
           <span className="detail-content__tag-detail">{color}</span>
         </div>
       </div>
@@ -95,6 +101,7 @@ function DetailContent(props) {
           <Button
             onClick={handleDecreaseQnt}
             className="detail-content__btn-inc btn-circle"
+            style={{color: `${isTheme ? "#fff" : ""}`}}
           >
             <RemoveIcon />
           </Button>
@@ -102,6 +109,7 @@ function DetailContent(props) {
           <Button
             onClick={handleIncreaseQnt}
             className="detail-content__btn-dec btn-circle"
+            style={{color: `${isTheme ? "#fff" : ""}`}}
           >
             <AddIcon />
           </Button>

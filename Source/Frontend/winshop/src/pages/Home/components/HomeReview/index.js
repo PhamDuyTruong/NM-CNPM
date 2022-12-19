@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import "./styles.scss";
 import gsap from "gsap";
 import { Container } from "@material-ui/core";
+import {useSelector} from 'react-redux'
 import HandleImage from '../../../../utils/HandleImage';
 import SwiperCore, { Autoplay, Pagination } from "swiper/core";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -12,6 +13,8 @@ import {ReviewData} from '../../../../utils/fakeData';
 SwiperCore.use([Autoplay, Pagination]);
 
 function HomeReview() {
+    const {darkTheme} = useSelector((state) => state.sidebar);
+  
     let containerRef = useRef(null);
     useEffect(() =>{
         const line = gsap.timeline({
@@ -24,6 +27,11 @@ function HomeReview() {
         line.from(containerRef, { y: -20, opacity: 0, duration: 0.8 });
     }, []);
 
+    const ThemeInLocal = JSON.parse(localStorage.getItem("theme"))
+    let isTheme = darkTheme;
+    if(!darkTheme){
+      isTheme = ThemeInLocal
+    }
     
 
   return (
@@ -42,7 +50,7 @@ function HomeReview() {
             >   
                 {ReviewData.map(({img, name, role, comment}, index)=>(
                     <SwiperSlide key={index}>
-                        <div className='home-reviews__content'>
+                        <div className='home-reviews__content'  style={{color: `${isTheme ? "#fff": ""}`}}>
                             <div className='home-reviews__img-wrapper'>
                                 <img 
                                    src={HandleImage(img)}
@@ -50,8 +58,8 @@ function HomeReview() {
                                    className='home-reviews__img'
                                 />
                             </div>
-                            <div className="home-reviews__name">{name}</div>
-                            <div className="home-reviews__role">{role}</div>
+                            <div className="home-reviews__name" style={{color: `${isTheme ? "#fff": ""}`}}>{name}</div>
+                            <div className="home-reviews__role"  style={{color: `${isTheme ? "#fff": ""}`}}>{role}</div>
                             <p className="home-reviews__comment">{comment}</p>
                         </div>
                     </SwiperSlide>
