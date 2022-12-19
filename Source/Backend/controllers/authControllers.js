@@ -30,7 +30,7 @@ const authControllers = {
             }, 
             process.env.MY_SECRETKEY,
             {
-                expiresIn: "1d"
+                expiresIn: "30d"
             }
             );
         },

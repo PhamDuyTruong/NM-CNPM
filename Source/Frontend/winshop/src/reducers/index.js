@@ -11,6 +11,7 @@ import {getUserProfile, updateProfile} from "./UserProfileReducer";
 import { loginReducer, logoutReducer, registerReducer } from "./AuthReducer";
 import UsersReducer from "./AdminUserReducer";
 import AdminProductReducer from "./AdminProductReducer";
+import AdminOrdersReducer from "./AdminOrderReducer";
 
 
 const rootReducer = combineReducers({
@@ -30,7 +31,7 @@ const rootReducer = combineReducers({
    myOrder: myOrderList,
    AdminUser: UsersReducer,
    AdminProduct: AdminProductReducer,
-   
+   AdminOrder: AdminOrdersReducer,
 });
 
 

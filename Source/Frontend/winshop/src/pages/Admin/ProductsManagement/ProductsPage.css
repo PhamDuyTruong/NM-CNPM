@@ -3,3 +3,17 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
   }
+
+  .ProductPage-addButton {
+    right: 0px;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    background-color: #7de5ed;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 1px 1px 3px 1px grey;
+  }

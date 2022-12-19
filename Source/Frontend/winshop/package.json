@@ -21,6 +21,7 @@
     "clsx": "^1.2.1",
     "formik": "^2.2.9",
     "gsap": "^3.11.3",
+    "jwt-decode": "^3.1.2",
     "moment": "^2.29.4",
     "node-sass": "^7.0.1",
     "notistack": "^2.0.8",
