@@ -83,6 +83,7 @@ const userControllers = {
             const salt = await bcrypt.genSalt(10);
             req.body.password = await bcrypt.hash(req.body.password, salt);
           }
+          user.password = req.body.password || user.password
           const updatedUser = await user.save();
           res.status(200).json({
             username: updatedUser.username,
