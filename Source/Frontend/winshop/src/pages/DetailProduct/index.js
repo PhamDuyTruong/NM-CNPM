@@ -7,7 +7,7 @@ import HandleImage from '../../utils/HandleImage';
 import bannerImg from '../../assets/images/banner_detail.jpg';
 import { Container } from '@material-ui/core';
 import { Grid } from '@material-ui/core';
-
+import CircularProgress from '@material-ui/core/CircularProgress';
 import DetailMain from './DetailMain';
 import DetailImage from './DetailImage'
 import DetailReview from './DetailReview';
@@ -25,6 +25,14 @@ function DetailProduct() {
     useEffect(() => {
         dispatch(getProductDetail(id));
     }, [getProductDetail, id])
+
+    if (isLoading) {
+        return (
+          <div className='spinner'>
+            <CircularProgress thickness={5} style={{ color: "#E84C51"}} />
+          </div>
+        );
+      }
     
   return (
     <div className='detail' style={{background: `${isTheme ? "#1A120B" : ""}`, color: `${isTheme ? "#fff": ""}`}}>
