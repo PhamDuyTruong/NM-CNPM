@@ -6,6 +6,7 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import listPlugin from "@fullcalendar/list";
 import { Box, List, ListItem, ListItemText, Typography } from "@material-ui/core";
+
 function Calendar() {
     const [currentEvents, setCurrentEvents] = useState([]);
 
@@ -34,13 +35,14 @@ function Calendar() {
         selected.event.remove();
       }
     };
+    const COLOR_CONST = "#C0DEFF"
   return (
     <Box m="20px">
     <Box display="flex" justifyContent="space-between">
       {/* CALENDAR SIDEBAR */}
       <Box
         flex="1 1 20%"
-        backgroundColor={"#C0DEFF"}
+        backgroundColor= {COLOR_CONST}
         p="15px"
         borderRadius="4px"
       >

@@ -17,3 +17,18 @@
     cursor: pointer;
     box-shadow: 1px 1px 3px 1px grey;
   }
+
+  @media only screen and (max-width: 1200px) {
+    .ProductsPage {
+      grid-template-columns: 1fr 1fr;
+    }
+    .ProductPage-addButton {
+      font-size: 10px;
+      padding: 2px;
+    }
+  }
+  @media only screen and (max-width: 500px) {
+    .ProductsPage {
+      grid-template-columns: 1fr;
+    }
+  }

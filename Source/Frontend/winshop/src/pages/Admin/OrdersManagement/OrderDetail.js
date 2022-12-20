@@ -35,7 +35,7 @@ function OrderDetail() {
       const url = `/api/order/admin/${id}`;
       const method = "delete";
       await axios({ url, method, headers }).then(() => {
-        window.alert("deleted");
+        window.alert("Are you sure you want to delete this product ?");
         history.push("/admin/orders");
       });
     };
@@ -130,7 +130,7 @@ function OrderDetail() {
             <CheckCircleIcon></CheckCircleIcon>
             <button type="submit">SAVE</button>
           </div>
-          <div className="OrderDetailPage-deleteButton">
+          <div className="OrderDetailPage-deleteButton" style={{cursor: "pointer"}}>
             <DeleteIcon></DeleteIcon>
             <span onClick={handleDelete}>DELETE</span>
           </div>

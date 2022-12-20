@@ -31,6 +31,18 @@
     transform: translate(300px, 30px);
     cursor: pointer;
   }
+
+  .UpdateUser-Model-delete-button {
+    position: relative;
+    transform: translate(10px, -42px);
+    cursor: pointer;
+    z-index: 10;
+    background: orangered;
+    display: inline-block;
+    padding: 2px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px 2px grey;
+  }
   
   .UpdateUser-Model {
     display: flex;

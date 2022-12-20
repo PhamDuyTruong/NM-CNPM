@@ -3,6 +3,7 @@ import UserIcon from "@material-ui/icons/AccountCircle";
 import EmailIcon from "@material-ui/icons/Email";
 import "./UserBox.css";
 import CancelIcon from "@material-ui/icons/Cancel";
+import DeleteIcon from "@material-ui/icons/Delete";
 import axios from "../../../services/axios";
 import axiosClient from "../../../services/axiosClient";
 import { useDispatch } from "react-redux";
@@ -49,6 +50,28 @@ const UserBox = (props) => {
     setState(0);
   };
 
+  const handleDelete = async () => {
+    const url = `/user/admin/${props._id}`;
+    const method = "delete";
+    const userInfo = JSON.parse(localStorage.getItem("user"));
+    const headers = {
+      "Content-Type": "application/json",
+    };
+    if (userInfo) {
+      const { accessToken } = userInfo;
+      headers.token = `Bearer ${accessToken}`;
+    }
+    await axios({ headers, url, method }).then((res) => {
+      const fetchUsers = async () => {
+        const data = await axiosClient.get("/api/user/admin");
+        dispatch({ type: "USER_UPDATE", payload: data.data });
+      };
+      fetchUsers();
+      setState(0);
+      console.log(res);
+    });
+  };
+
   return (
     <>
       <div className="UserBox-container">
@@ -88,6 +111,12 @@ const UserBox = (props) => {
           className="UpdateUser-Model"
           style={{ display: state ? "block" : "none" }}
         >
+           <div
+            className="UpdateUser-Model-delete-button"
+            onClick={handleDelete}
+          >
+            <DeleteIcon></DeleteIcon>
+          </div>
           <div
             className="UpdateUser-Model-cancel-button"
             onClick={() => setState(0)}

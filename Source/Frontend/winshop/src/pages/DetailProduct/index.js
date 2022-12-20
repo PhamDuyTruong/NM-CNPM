@@ -26,13 +26,6 @@ function DetailProduct() {
         dispatch(getProductDetail(id));
     }, [getProductDetail, id])
 
-    if (isLoading) {
-        return (
-          <div className='spinner'>
-            <CircularProgress thickness={5} style={{ color: "#E84C51"}} />
-          </div>
-        );
-      }
     
   return (
     <div className='detail' style={{background: `${isTheme ? "#1A120B" : ""}`, color: `${isTheme ? "#fff": ""}`}}>
