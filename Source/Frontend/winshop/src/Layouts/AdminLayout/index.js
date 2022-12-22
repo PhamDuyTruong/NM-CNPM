@@ -6,7 +6,7 @@ import AdminSidebar from '../../Components/Admin/AdminSidebar'
 
 function AdminLayout({children}) {
   return (
-    <div className='adminpage'>
+    <div className='adminpage' style={{overflowX: "hidden"}}>
         <AdminSidebar />
         <div className='headerAndContent'>
             <AdminHeader />

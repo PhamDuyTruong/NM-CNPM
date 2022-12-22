@@ -16,7 +16,7 @@ const storage = multer.diskStorage({
 const upload = multer({
     storage: storage,
     fileFilter: function(req, file, cb){
-        const extensionImageList = [".png", ".jpg", "jpeg"];
+        const extensionImageList = [".png", ".jpg", ".jpeg"];
         const extension = file.originalname.slice(-4);
         const check = extensionImageList.includes(extension);
         if(check){
@@ -53,6 +53,6 @@ router.delete("/user/review", authMiddleware.verifyToken, productControllers.del
 router.get("/name/search", productControllers.searchProductByName);
 
 //upload image product
-router.post("/admin/upload-image/:id", authMiddleware.authorizeRole, upload.single('product'), productControllers.uploadImage);
+router.post("/admin/upload-image/", upload.single('product'), productControllers.uploadImage);
 
 module.exports = router;

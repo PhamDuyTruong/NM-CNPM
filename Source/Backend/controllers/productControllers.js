@@ -184,17 +184,13 @@ const productControllers = {
         const {file} = req;
         const urlImage = `http://localhost:5000/${file.path}`;
         try{
-          const productFound = await Product.findById(req.params.id)
-          if(!productFound){
-            return res.status(404).json("Product is not found !!!");
-         }
-          productFound.image = urlImage;
-          await productFound.save();
-          res.status(200).json(productFound);
+          res.status(200).json({
+            image: urlImage
+          });
         }catch(error){
             res.status(500).json(error);
          }
-    }
+      }
 };
 
 module.exports = productControllers;

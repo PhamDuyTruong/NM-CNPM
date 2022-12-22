@@ -1,11 +1,12 @@
-import React from "react";
+import React, {useState} from "react";
 import axios from "../../../services/axios";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const ProductCreatePage = () => {
   const history = useHistory();
-  const userInfo = JSON.parse(localStorage.getItem("user"))
+  const userInfo = JSON.parse(localStorage.getItem("user"));
+  let urlImage = "";
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -19,6 +20,25 @@ const ProductCreatePage = () => {
         const {accessToken} = userInfo
         headers.token = `Bearer ${accessToken}`
     }
+
+    let file = e.target[6].files[0];
+    const formData = new FormData();
+      // const filename = "avatar";
+      // data.append("name", filename);
+      formData.append("product", file);
+      try {
+        let url = `/product/admin/upload-image`;
+      
+        const headers = {
+          "Content-Type": "multipart/form-data",
+      };
+
+       const {data} = await axios.post(url, formData, headers);
+       urlImage = data.image
+      } catch (err) {
+        console.log(err)
+      }
+
     const data = {
       name: e.target[0].value,
       description: e.target[1].value,
@@ -26,9 +46,10 @@ const ProductCreatePage = () => {
       brand: e.target[3].value,
       price: e.target[4].value,
       countInStock: e.target[5].value,
-      image: e.target[6].value,
+      image: urlImage,
       user: userInfo._id,
     };
+    console.log(data)
     axios({ url, method, data, headers })
       .then((response) => {
         history.push("/admin/products");
@@ -46,23 +67,23 @@ const ProductCreatePage = () => {
   };
   return (
     <div>
-      <h1>Create product</h1>
+      <h1 style={{textAlign: "center"}}>Create product</h1>
       <form className="Admin-ProductDetailForm" onSubmit={handleSubmit}>
         <span>Name: </span>
-        <textarea className="ProductDetail-input-name"></textarea>
+        <textarea className="ProductDetail-input-name" required></textarea>
         <span>Description: </span>
-        <textarea className="ProductDetail-input-description"></textarea>
+        <textarea className="ProductDetail-input-description" required></textarea>
         <span>Category: </span>
-        <input className="ProductDetail-input-category"></input>
+        <input className="ProductDetail-input-category" placeholder="Input category" required></input>
         <span>Brand: </span>
-        <input className="ProductDetail-input-name-brand"></input>
+        <input className="ProductDetail-input-name-brand" placeholder="input genre" required></input>
         <span>Price:</span>
-        <input type="number" className="ProductDetail-input-price"></input>
+        <input type="number" className="ProductDetail-input-price" placeholder="Input price" required></input>
         <span>Numbers of remain: </span>
-        <input type="number" className="ProductDetail-input-reamin"></input>
+        <input type="number" className="ProductDetail-input-reamin" placeholder="Input remain" required></input>
         <span>Image: </span>
-        <input className="ProductDetail-input-image"></input>
-        <button type="submit">UPDATE</button>
+        <input type="file" className="ProductDetail-input-image" placeholder="Input image URL (jpg, jpeg, png)" required></input>
+        <button type="submit">Create</button>
       </form>
     </div>
   );
