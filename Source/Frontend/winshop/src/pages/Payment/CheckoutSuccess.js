@@ -48,7 +48,10 @@ function CheckoutSuccess() {
    <div className='checkout-content' style={{overflowX: "hidden",  background: `${isTheme ? "#1A120B" : ""}`, color: `${isTheme ? "#fff": ""}`}}>
          <div className='checkout-content__left'>
               {userInfo ? (
-                  <>
+              <>
+              <h2>Information</h2>
+              <p style={{fontSize: "1.3rem"}}>Email: {userInfo.email}</p>
+              <p style={{fontSize: "1.3rem"}}>Phone: {userInfo.phone}</p>
               <h2>Shipping address</h2>
             <p style={{fontSize: "1.3rem"}}>Address: {shippingAddress.address}, {shippingAddress.city}, {shippingAddress.pinCode}, {shippingAddress.country}</p>
             {orderList.isDelevered ? (<p  style={{fontSize: "1.3rem"}}>

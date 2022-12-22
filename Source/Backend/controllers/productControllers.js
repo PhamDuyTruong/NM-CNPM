@@ -27,7 +27,7 @@ const productControllers = {
     },
     searchProductByName: async(req, res) => {
         try {
-            const search = req.body.keyword || "";
+            const search = req.query.keyword || "";
             const product = await Product.find({name: {$regex: ".*"+search+".*", $options: "i"}});
             res.status(200).json(product);
         } catch (error) {

@@ -85,6 +85,7 @@ function ShopHandle() {
                 value={keyWord}
                 onChange={(e) => handleKeyWord(e.target.value)}
                 placeholder="Search your products"
+                name='keyword'
              />
              <button className='shop-handle__search-btn'>
                 <SearchIcon />
@@ -119,7 +120,7 @@ function ShopHandle() {
           {searchProducts.map((product) => (
             <Link
               key={product._id}
-              to={""}
+              to={`/shop/${product._id}`}
               className="shop-handle__searchLink"
               onClick={() => setShow(false)}
             >

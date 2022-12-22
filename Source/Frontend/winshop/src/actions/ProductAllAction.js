@@ -1,5 +1,6 @@
 import {GET_PRODUCTS_ALL_FAILURE, GET_PRODUCTS_ALL_SUCCESS, GET_PRODUCTS_ALL_REQUEST, SHOP_PRODUCTS_VIEW, FILTER_PRODUCT_SORT, SEARCH_PRODUCT} from '../constants/ProductAllConstant';
 import productApi from '../services/productApi';
+import axios from '../services/axios'
 
 export function getProductAll(brand="", price= "", ratings="", options=""){
     return async (dispatch) =>{

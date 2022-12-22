@@ -45,7 +45,7 @@ const productApi = {
     searchProduct: (keyword) => {
         let url;
         if(keyword){
-            url = "/api/product?keyword=" + keyword
+            url = "/api/product/name/search?keyword=" + keyword
         }
         return axiosClient.get(url);
     }
