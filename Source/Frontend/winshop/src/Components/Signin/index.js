@@ -114,7 +114,7 @@ function Signin(props) {
                   Sign in
                 </button>
             </div>
-            <a href='#' style={{textDecoration: "none", marginTop: "20px"}}>Forget Password ?</a>
+            <a href='/forgot' style={{textDecoration: "none", marginTop: "20px"}}>Forget Password ?</a>
             <div>
                <p >Don't have account ? <span><a href='/sign-up' style={{textDecoration: "none"}}>Sign up</a></span></p>
             </div>

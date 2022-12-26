@@ -9,7 +9,7 @@ import "../../../../assets/styles/_typography.scss";
 
 import Apple from '../../../../assets/images/apple-watch.png';
 import Jacket from '../../../../assets/images/Jacket.png';
-import Book from '../../../../assets/images/harry.png';
+import Book from '../../../../assets/images/book.jpg';
 
 
 function HomeFeature() {
@@ -121,6 +121,7 @@ function HomeFeature() {
                         handleCircleColor("#8D9EFF");
                     }}
                     alt="hinh anh"
+                    height="50"
                 />
                 </li>
             </ul>
