@@ -118,7 +118,7 @@ const authControllers = {
         }
         const resetToken = authControllers.getResetPasswordToken(user);
         await user.save();
-        const resetPasswordUrl = `${req.protocol}://3000/password/reset/${resetToken}`;
+        const resetPasswordUrl = `${req.protocol}://localhost:3000/password/reset/${resetToken}`;
           const message = `Your password reset token is :- \n\n ${resetPasswordUrl} \n\nIf you have not requested this email then, please ignore it.`;
           try {
             await sendEmail({

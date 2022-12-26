@@ -1,6 +1,7 @@
 import {REGISTER_FAILURE, REGISTER_SUCCESS, REGISTER_REQUEST, LOGIN_FAILURE, LOGIN_SUCCESS, LOGIN_REQUEST, LOG_OUT,
-FORGOT_PASSWORD_FAILURE, FORGOT_PASSWORD_SUCCESS, FORGOT_PASSWORD_REQUEST} from '../constants/AuthContstant';
+FORGOT_PASSWORD_FAILURE, FORGOT_PASSWORD_SUCCESS, FORGOT_PASSWORD_REQUEST, RESET_PASSWORD_FAILURE, RESET_PASSWORD_SUCCESS, RESET_PASSWORD_REQUEST} from '../constants/AuthContstant';
 import authApi from '../services/authApi';
+import axios from '../services/axios'
 import Swal from "sweetalert2";
 
 
@@ -72,4 +73,29 @@ export const forgetPassword = (email) => {
       dispatch({type: FORGOT_PASSWORD_FAILURE, payload: error})
     }
   }
+};
+
+export const resetPassword = (token, passwords) => {
+  return async(dispatch) => {
+    dispatch({type: RESET_PASSWORD_REQUEST});
+    try {
+      const data = {
+        password: passwords.password,
+        confirmPassword: passwords.confirmPassword,
+    }
+    const method = "put";
+    let url = `/auth/password/reset/${token}`;
+    const headers = {
+        "Content-Type": "application/json",
+    };
+    
+    await axios({ url, method, data, headers }).then((response) => {
+        dispatch({type: RESET_PASSWORD_SUCCESS, payload: "Success"})
+    })
+    } catch (error) {
+      dispatch({type: RESET_PASSWORD_FAILURE, payload: error})
+    }
+   
+  }
+ 
 }

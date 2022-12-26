@@ -8,7 +8,7 @@ import cartReducer from "./CartReducer";
 import  addSidebarReducer from './SidebarReducer'
 import {myOrderList, orderReducer} from './OrderReducer'
 import {getUserProfile, updateProfile} from "./UserProfileReducer";
-import { forgotReducer, loginReducer, logoutReducer, registerReducer } from "./AuthReducer";
+import { forgotReducer, loginReducer, logoutReducer, registerReducer, resetReducer } from "./AuthReducer";
 import UsersReducer from "./AdminUserReducer";
 import AdminProductReducer from "./AdminProductReducer";
 import AdminOrdersReducer from "./AdminOrderReducer";
@@ -30,6 +30,7 @@ const rootReducer = combineReducers({
    updateProfile: updateProfile,
    myOrder: myOrderList,
    forgot: forgotReducer,
+   reset: resetReducer,
    AdminUser: UsersReducer,
    AdminProduct: AdminProductReducer,
    AdminOrder: AdminOrdersReducer,

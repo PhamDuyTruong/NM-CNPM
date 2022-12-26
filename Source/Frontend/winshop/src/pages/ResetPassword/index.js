@@ -1,13 +1,36 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {useParams} from 'react-router-dom'
+import {useParams} from 'react-router-dom';
+import {resetPassword} from '../../actions/AuthAction'
 import Swal from "sweetalert2";
 function ResetPassword() {
+    const {token} = useParams();
     const [password, setPassword] = useState("");
     const [confirm, setConfirm] = useState("");
+    const {resetData, error} = useSelector((state) => state.reset);
+    console.log(resetData);
+    const dispatch = useDispatch();
     const handleResetPassword = (e) => {
         e.preventDefault();
-    }
+        const data = {
+            password: password,
+            confirmPassword: confirm
+        };
+        dispatch(resetPassword(token, data))
+    };
+
+    useEffect(() => {
+        if(error){
+            Swal.fire(error)
+        }
+        if(resetData){
+            Swal.fire("Password is updated successfully !!!").then((result) => {
+            if (result.isConfirmed) {
+                  window.location.href = "/";
+                }
+            });
+        }
+    }, [error, resetData])
   return (
     <div className="container-fluid d-flex flex-column" style={{background: "#BFEAF5"}}>
     <div
