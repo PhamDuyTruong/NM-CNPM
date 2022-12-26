@@ -3,6 +3,7 @@ import "./styles.css";
 import { useDispatch, useSelector } from "react-redux";
 import zxcvbn from 'zxcvbn';
 import * as Yup from 'yup';
+import {Link} from 'react-router-dom'
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import SignupImage from '../../assets/images/registration-form.jpg';
 import {registerUser} from '../../actions/AuthAction'
@@ -273,7 +274,7 @@ function Signup(props) {
                     onKeyUp={handleChange}
                     style={{marginRight: "5px"}}
                   />
-                  I have read and agree to <a href="/term" style={{textDecoration: "none"}}>Terms & Conditions</a>
+                  I have read and agree to <Link to="/term" style={{textDecoration: "none"}}>Terms & Conditions</Link>
                   <span className="singup-checkmark"></span>
                   <ErrorMessage
                     name="acceptTerms"
@@ -298,7 +299,7 @@ function Signup(props) {
               </div>
 
               <div className='redirect'>
-                <p>Already Have account? <a href="/sign-in"  style={{textDecoration: "none"}}>Login</a></p>
+                <p>Already Have account? <Link to="/sign-in"  style={{textDecoration: "none"}}>Login</Link></p>
               </div>
             </div>
           </Form>

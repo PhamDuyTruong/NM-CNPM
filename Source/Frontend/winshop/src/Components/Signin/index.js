@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import "./styles.css";
-import {useHistory} from 'react-router-dom'
+import {useHistory, Link} from 'react-router-dom'
 import bgSignin from '../../assets/images/bgsignin.jpg';
 import * as Yup from 'yup';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
@@ -114,9 +114,9 @@ function Signin(props) {
                   Sign in
                 </button>
             </div>
-            <a href='/forgot' style={{textDecoration: "none", marginTop: "20px"}}>Forget Password ?</a>
+            <Link to='/forgot' style={{textDecoration: "none", marginTop: "20px"}}>Forget Password ?</Link>
             <div>
-               <p >Don't have account ? <span><a href='/sign-up' style={{textDecoration: "none"}}>Sign up</a></span></p>
+               <p >Don't have account ? <span><Link to='/sign-up' style={{textDecoration: "none"}}>Sign up</Link></span></p>
             </div>
           </Form>
         )}

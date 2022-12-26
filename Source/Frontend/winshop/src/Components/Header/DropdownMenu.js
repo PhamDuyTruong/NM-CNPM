@@ -57,7 +57,11 @@ const useStyles = makeStyles((theme) => ({
     padding: "5px",
     fontSize: "1.2rem",
     marginRight: "20px",
+    fontWeight: "700",
     cursor: "pointer",
+    "&:hover": {
+      color: "#F05454",
+    },
   },
   qnt: {
     position: "absolute",
@@ -171,7 +175,7 @@ const renderMenu =  userInfo ?   (
                 </div>
                ): (
                 <div className={classes.cart} onClick={toggleCart} style={{fontWeight: "600"}}>
-                  <ShoppingCartIcon style={{fontSize: "1.2rem", color: "#47B5FF", paddingTop: "5px"}}/>
+                  <ShoppingCartIcon style={{lineHeight: "1.2rem", color: "#47B5FF", paddingTop: "5px"}}/>
                      Cart
                 </div>
                )}
@@ -184,7 +188,7 @@ const renderMenu =  userInfo ?   (
               style={{ textDecoration: "none" }}
             >
               <div className={classes.cart} style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
-                 <LocalMallOutlinedIcon style={{fontSize: "1.2rem", color: "#47B5FF", paddingTop: "5px"}}/>
+                 <LocalMallOutlinedIcon style={{lineHeight: "1.2rem", color: "#47B5FF", paddingTop: "5px"}}/>
                  Shop
               </div>
             </a>
@@ -221,7 +225,7 @@ const renderMenu =  userInfo ?   (
         <ul style={{ listStyleType: "none", textAlign: "center"}}>
           <li>
                 <div className={classes.cart} onClick={toggleCart}>
-                    <ShoppingCartIcon style={{fontSize: "1.2rem", color: "#47B5FF", paddingTop: "5px"}}/>
+                    <ShoppingCartIcon style={{lineHeight: "1.2rem", color: "#47B5FF", paddingTop: "5px"}}/>
                      Cart
                 </div>
           </li>
@@ -232,7 +236,7 @@ const renderMenu =  userInfo ?   (
               style={{ textDecoration: "none" }}
             >
               <div className={classes.cart} style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
-                 <LocalMallOutlinedIcon style={{fontSize: "1.2rem", color: "#47B5FF", paddingTop: "5px"}}/>
+                 <LocalMallOutlinedIcon style={{lineHeight: "1.2rem", color: "#47B5FF", paddingTop: "5px"}}/>
                  Shop
               </div>
             </a>
@@ -240,7 +244,7 @@ const renderMenu =  userInfo ?   (
         </ul>
       </Box>
       <Box m={match ? 0 : 1}>
-        <DarkmodeButton />
+          <DarkmodeButton />
       </Box>
       <ButtonGroup disableElevation variant="contained" size="medium">
         <Button

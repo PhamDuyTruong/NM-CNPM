@@ -1,5 +1,6 @@
 import React from "react";
 import "./styles.scss";
+import {Link} from 'react-router-dom'
 import banner1 from '../../../../assets/images/shop_banner_img1.jpg';
 import banner2 from '../../../../assets/images/shop_banner_img2.jpg';
 
@@ -21,9 +22,9 @@ function HomeSale() {
         <div className="content-sale">
             <span>Special offer</span>
           <h3>Upto 50% off</h3>
-          <a href="/shop" className="btn">
+          <Link to="/shop" className="btn">
             Shop now
-          </a>
+          </Link>
         </div>
       </div>
     </section>

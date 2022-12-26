@@ -37,7 +37,7 @@ function ForgotPassword() {
                   </button>
                 </div>
                 <span>
-                  Don't have an account? <a href="/sign-in"  style={{textDecoration: "none"}}>Sign in</a>
+                  Don't have an account? <Link to="/sign-in"  style={{textDecoration: "none"}}>Sign in</Link>
                 </span>
               </form>
             </div>
