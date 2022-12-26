@@ -1,7 +1,34 @@
-import React from "react";
-import {Link} from 'react-router-dom'
+import React, {useEffect, useState} from "react";
+import {useDispatch, useSelector} from 'react-redux'
+import {Link} from 'react-router-dom';
+import {forgetPassword} from '../../actions/AuthAction'
+import Swal from "sweetalert2";
 
 function ForgotPassword() {
+  const [email, setEmail] = useState("");
+  const {loading, message, error} = useSelector((state)=> state.forgot);
+  const dispatch = useDispatch();
+  const handleForgotPasswordSubmit = (e) => {
+    e.preventDefault();
+    const data = {
+      email: email
+    };
+    dispatch(forgetPassword(data));
+    setEmail("");
+  };
+
+  useEffect(() => {
+    if(error){
+      setEmail("");
+      Swal.fire(
+        "Error !!!"
+      )
+    }
+    if(message){
+      Swal.fire(message)
+    }
+  }, [message, error])
+
   return (
     <div className="container-fluid d-flex flex-column" style={{background: "#BFEAF5"}}>
       <div
@@ -17,7 +44,7 @@ function ForgotPassword() {
                   Enter your registered email ID to reset the password
                 </p>
               </div>
-              <form>
+              <form onSubmit={handleForgotPasswordSubmit}>
                 <div className="mb-3">
                   <label htmlFor="email" className="form-label">
                     Email
@@ -28,6 +55,8 @@ function ForgotPassword() {
                     className="form-control"
                     name="email"
                     placeholder="Enter Your Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     required
                   />
                 </div>

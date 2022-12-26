@@ -1,4 +1,5 @@
-import {REGISTER_FAILURE, REGISTER_SUCCESS, REGISTER_REQUEST, LOGIN_FAILURE, LOGIN_SUCCESS, LOGIN_REQUEST, LOG_OUT} from '../constants/AuthContstant';
+import {REGISTER_FAILURE, REGISTER_SUCCESS, REGISTER_REQUEST, LOGIN_FAILURE, LOGIN_SUCCESS, LOGIN_REQUEST, LOG_OUT,
+FORGOT_PASSWORD_FAILURE, FORGOT_PASSWORD_SUCCESS, FORGOT_PASSWORD_REQUEST} from '../constants/AuthContstant';
 import authApi from '../services/authApi';
 import Swal from "sweetalert2";
 
@@ -59,4 +60,16 @@ export const logout = () => {
         }
       });
    }
+};
+
+export const forgetPassword = (email) => {
+  return async (dispatch) => {
+    dispatch({type: FORGOT_PASSWORD_REQUEST});
+    try {
+       const {data} = await authApi.forgotPassword(email);
+       dispatch({type: FORGOT_PASSWORD_SUCCESS, payload: data.message});
+    } catch (error) {
+      dispatch({type: FORGOT_PASSWORD_FAILURE, payload: error})
+    }
+  }
 }

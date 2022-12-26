@@ -27,6 +27,7 @@ import OrdersPage from "./pages/Admin/OrdersManagement/OrdersPage";
 import OrderDetail from "./pages/Admin/OrdersManagement/OrderDetail";
 import  Calendar  from "./pages/Admin/Calendar/Calendar";
 import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 
 
 function App() {
@@ -106,6 +107,11 @@ function App() {
                 <Route path="/forgot" exact>
                   <AppLayout>
                       <ForgotPassword />
+                  </AppLayout>
+                </Route>
+                <Route path="/password/reset/:token" exact>
+                  <AppLayout>
+                      <ResetPassword />
                   </AppLayout>
                 </Route>
                 <Route path="/admin">

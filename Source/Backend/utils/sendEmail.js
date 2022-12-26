@@ -2,9 +2,6 @@ const nodeMailer = require("nodemailer");
 const {OAuth2Client} = require('google-auth-library');
 
 
-
-
-
 const sendEmail = async (options) => {
   const myOAuth2Client = new OAuth2Client(
     process.env.GOOGLE_MAILER_CLIENT_ID,

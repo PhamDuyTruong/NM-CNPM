@@ -6,6 +6,9 @@ const authApi = {
     },
     registerUser: (value) => {
         return axiosClient.post("/api/auth/register", value)
+    },
+    forgotPassword: (value) => {
+        return axiosClient.post("/api/auth/password/forgot", value)
     }
 };
 

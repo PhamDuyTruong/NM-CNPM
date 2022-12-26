@@ -1,4 +1,5 @@
-import {REGISTER_FAILURE, REGISTER_SUCCESS, REGISTER_REQUEST, LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, LOG_OUT} from '../constants/AuthContstant';
+import {REGISTER_FAILURE, REGISTER_SUCCESS, REGISTER_REQUEST, LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, LOG_OUT,
+FORGOT_PASSWORD_FAILURE, FORGOT_PASSWORD_SUCCESS, FORGOT_PASSWORD_REQUEST} from '../constants/AuthContstant';
 
 const registerState = {
     registerUser: [],
@@ -14,6 +15,12 @@ const loginState = {
 
 const initialState = {
     success: null,
+};
+
+const forgotState = {
+    loading: false,
+    message: "",
+    error: null
 }
 
 export function registerReducer(state = registerState, action){
@@ -54,5 +61,21 @@ export function loginReducer(state = loginState, action){
             return {...state, success: "Log out successfully"}
         default:
             return state;
+    }
+ };
+
+ export function forgotReducer(state = forgotState, action){
+    switch(action.type){
+        case FORGOT_PASSWORD_REQUEST: {
+            return {...state, loading: true, error: null}
+        }
+        case FORGOT_PASSWORD_SUCCESS: {
+            return {...state, message: action.payload, loading: false}
+        }
+        case FORGOT_PASSWORD_FAILURE: {
+            return {...state, loading: false, error: action.payload}
+        }
+        default: 
+         return state
     }
  }
