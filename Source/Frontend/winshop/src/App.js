@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import { BrowserRouter, Route, Switch} from "react-router-dom";
 import PrevFilterContext from "./context/PrevFilterContext";
 import DetailProduct from "./pages/DetailProduct";
@@ -26,6 +26,7 @@ import ProductCreatePage from "./pages/Admin/ProductsManagement/ProductCreatePag
 import OrdersPage from "./pages/Admin/OrdersManagement/OrdersPage";
 import OrderDetail from "./pages/Admin/OrdersManagement/OrderDetail";
 import  Calendar  from "./pages/Admin/Calendar/Calendar";
+import ForgotPassword from "./pages/ForgotPassword";
 
 
 function App() {
@@ -47,7 +48,7 @@ function App() {
                     <DetailProduct />
                   </AppLayout>
                 </Route>
-                <Route path="/shop">
+                <Route path="/shop" exact>
                   <AppLayout>
                       <Shop />
                   </AppLayout>
@@ -57,7 +58,7 @@ function App() {
                       <Signup />
                   </AppLayout>
                 </Route>
-                <Route path="/sign-in">
+                <Route path="/sign-in" exact>
                   <AppLayout>
                       <Signin />
                   </AppLayout>
@@ -100,6 +101,11 @@ function App() {
                 <Route path="/logout">
                   <AppLayout>
                       <LogOut />
+                  </AppLayout>
+                </Route>
+                <Route path="/forgot" exact>
+                  <AppLayout>
+                      <ForgotPassword />
                   </AppLayout>
                 </Route>
                 <Route path="/admin">
