@@ -1,0 +1,140 @@
+@import "../../../assets/styles/color";
+@import "../../../assets/styles/mixins";
+
+
+.primary-btn{
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2) !important;
+    letter-spacing: 0.5px !important;
+    font-family: "Roboto", sans-serif !important;
+    border-radius: 999px !important;
+    width: max-content;
+    font-size: 1.3rem !important;
+    padding: 8px 15px !important;
+  
+    @include respond(mobile) {
+      padding: 8px 13px !important;
+      font-size: 1.1rem !important;
+    }
+    & svg{
+      font-size: 1.75rem !important;
+      margin-right: 3px;
+
+    @include respond(mobile) {
+      font-size: 1.6rem !important;
+    }
+  }
+  &:hover {
+    box-shadow: 0px 5px 13px rgba(0, 0, 0, 0.25) !important;
+  }
+
+  &.red {
+    color: $white-color !important;
+    background-color: #ff514e !important;
+  }
+  @media (hover: hover) {
+    &.red:hover {
+      background-color: #c33d3b !important;
+    }
+  }
+}
+
+.cart-handle{
+    position: relative;
+    padding: 0 25px 25px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.05);
+    background-color: $white-color;
+    @include respond(phone) {
+        padding: 0 15px 25px;
+      }
+    &__dropup{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 5px;
+        padding-top: 3px;
+        height: 2.5rem;
+        cursor: pointer;   
+    }
+    &__dropup:before{
+        content: "";
+        position: absolute;
+        top: 8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20%;
+        height: 5px;
+        border-radius: 999px;
+    
+        background-color: rgba(0, 0, 0, 0.25);
+    }  
+    &__total{
+        display: flex;
+        justify-content: space-between;
+        padding: 0 10px;
+        margin-bottom: 10px;
+    } 
+    &__txt{
+        font-size: 1.8rem;
+        text-transform: capitalize;
+        font-weight: bold;
+        color: black !important;
+        
+        @include respond(phone) {
+          font-size: 1.65rem;
+        }
+    } 
+    &__price{
+        font-size: 2.2rem;
+        font-weight: bold;
+        color: $red-color !important;
+        @include respond(phone) {
+            font-size: 1.8rem;
+        }
+    }
+    &__btns{
+        flex: 1;
+    }
+    &__btn:first-child {
+        margin-right: 20px;
+      }
+    
+    &__detail {
+        width: 100%;
+        height: 0;
+        padding: 0 10px;
+        opacity: 0;
+        visibility: hidden;
+        overflow: hidden;
+    
+        transition: all 0.5s ease-in-out;
+    }
+    &__detail.active{
+        height: 16rem;
+        opacity: 1;
+        visibility: hidden;
+    }
+    &__detail-title{
+        font-size: 1.8rem;
+       margin-bottom: 12px;
+       color: $black-color !important;
+      @include respond(phone) {
+      font-size: 1.65rem;
+      }
+    }
+    &__row{
+       display: flex;
+       justify-content: space-between;
+       margin-bottom: 20px;
+    }
+    &__label{
+        font-size: 1.4rem;
+        color: black !important;
+    }
+    &__content{
+        font-size: 1.4rem;
+        font-weight: 500;
+        color: $black-color !important;
+    }
+}

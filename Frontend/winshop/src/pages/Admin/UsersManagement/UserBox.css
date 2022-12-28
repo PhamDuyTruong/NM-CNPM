@@ -1,0 +1,112 @@
+.UserBox-avatar-img {
+  max-width: 100px;
+  min-width: 100px;
+  max-height: 100px;
+  min-height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.UserBox-container {
+  border-radius: 5px;
+  padding: 5px;
+  height: 200px;
+  box-shadow: 1px 1px 3px 3px grey;
+  display: flex;
+}
+
+.UserBox-content {
+  padding-left: 10%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.UserBox-left p {
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.UpdateUser-Model-cancel-button {
+  position: relative;
+  transform: translate(300px, -70px);
+  cursor: pointer;
+  z-index: 10;
+}
+.UpdateUser-Model-delete-button {
+  position: relative;
+  transform: translate(10px, -42px);
+  cursor: pointer;
+  z-index: 10;
+  background: orangered;
+  display: inline-block;
+  padding: 2px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px 2px grey;
+}
+
+.UpdateUser-Model {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  left: calc(50vw-30px);
+  z-index: 10;
+}
+.UpdateUser-Modal-layout {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: grey;
+  z-index: -1;
+  opacity: 0.5;
+}
+
+.UpdateUser-Form {
+  padding: 20px;
+  background-color: white;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  padding-top: 35px;
+  padding-bottom: 10px;
+  border-radius: 10px;
+  grid-row-gap: 10px;
+  transform: translateY(-100px);
+}
+
+.UpdateUser-Modal-Submit-Button {
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  margin: 10px;
+  transform: translateX(-40px);
+  box-shadow: 1px 1px 2px 2px grey;
+  transition: background-color 0.1s ease;
+}
+
+.UpdateUser-Modal-Submit-Button:hover {
+  background-color: green;
+  color: white;
+}
+.UserBox-update-button {
+  margin: 15px;
+  width: 100px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 1px 1px 5px 1px grey;
+  transition: 0.2s ease;
+}
+.UserBox-update-button:hover {
+  background-color: rgb(246, 105, 29);
+  color: white;
+  font-size: bold;
+}
+.UserBox-content {
+  min-width: 200px;
+}
+.isAdmin {
+  font-size: 20px;
+  font-weight: bolder;
+}

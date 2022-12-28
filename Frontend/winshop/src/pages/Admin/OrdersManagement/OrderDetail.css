@@ -1,0 +1,129 @@
+.OrderDetailPage {
+}
+
+.OrderDetailPage-General {
+  border-radius: 10px;
+  background-color: white;
+  margin: 20px;
+  background-color: #c0deff;
+}
+.GeneralInfo-form {
+  display: inline-block;
+  background-color: white;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 15px;
+  margin-left: 50px;
+}
+.GeneralInfo-form span {
+  display: block;
+  margin-left: 3vw;
+  font-weight: bold;
+}
+.GeneralInfo-form input,
+select {
+  margin-left: 5vw;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  border: none;
+  background-color: #efe7e7;
+  padding: 5px 10px;
+}
+.OrderDetailPage-shippingInfo {
+  border-radius: 10px;
+  background-color: white;
+  margin: 20px;
+  background-color: #c0deff;
+}
+.ShippingInfo-form {
+  display: inline-block;
+  background-color: white;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 15px;
+  margin-left: 50px;
+}
+.OrderDetailPage-shippingInfo span {
+  display: block;
+  margin-left: 3vw;
+  font-weight: bold;
+}
+.OrderDetailPage-shippingInfo input {
+  margin-left: 5vw;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  border: none;
+  background-color: #efe7e7;
+  padding: 5px 10px;
+}
+.OrderDetailPage h2 {
+  font-weight: 1000;
+  margin-left: 40px;
+  margin-bottom: -10px;
+}
+.OrderDetailPage-Cart {
+  background-color: #c0deff;
+  padding: 20px;
+  border-radius: 20px;
+  margin-left: 20px;
+}
+.CartDetail-Form {
+  padding: 10px;
+  display: flex;
+  margin: 10px;
+}
+.CartDetail-Form-img {
+  width: 20vw;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+}
+.CartDetail-Form-img img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: cover;
+}
+.CartDetail-Form-Lable {
+  font-weight: bold;
+  margin-left: 20px;
+}
+.CartDetail-Edit {
+  margin-left: 10vw;
+  background-color: #ffebad;
+  height: fit-content;
+  padding: 8px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px 2px grey;
+  cursor: pointer;
+}
+.OrderDetailPage-actionButton {
+  margin: 5px 10px 50px 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.OrderDetailPage-submmit {
+  margin: 10px;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #ade792;
+  box-shadow: 1px 1px 2px 2px grey;
+  font-size: 30px;
+}
+.OrderDetailPage-actionButton button {
+  background-color: #ade792;
+  border: none;
+  font-weight: bold;
+}
+.OrderDetailPage-deleteButton {
+  height: fit-content;
+  font-weight: bold;
+  margin: 10px;
+  font-size: 20px;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: #ff4a4a;
+  box-shadow: 1px 1px 2px 2px grey;
+}

@@ -1,0 +1,19 @@
+@import "../../assets/styles/color";
+@import "../../assets/styles/mixins";
+
+.banner{
+    width: 100%;
+    margin-bottom: 80px;
+    @include respond(mobile) {
+        margin-bottom: 30px;
+    }
+}
+
+.shop {
+    margin-bottom: 80px;
+  
+    &__container {
+      display: flex;
+      margin-bottom: 30px;
+    }
+  }

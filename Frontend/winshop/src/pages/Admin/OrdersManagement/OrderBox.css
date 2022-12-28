@@ -1,0 +1,71 @@
+.orderBox-container {
+  height: 280px;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0px 0px 10px 2px grey;
+  position: relative;
+  cursor: pointer;
+  padding-bottom: 90px;
+}
+
+.orderBox-content-container {
+  margin-bottom: 7px;
+  cursor: default;
+}
+
+.orderBox-status-title {
+  margin-left: 10px;
+}
+.orderBox-top {
+  display: flex;
+  justify-content: space-between;
+}
+.orderBox-status {
+  border-radius: 8px;
+  display: inline;
+  padding: 7px;
+  font-weight: bold;
+  background: white;
+}
+.ordrBox-time {
+  font-weight: bold;
+}
+.orderBox-bottom {
+  position: absolute;
+  display: flex;
+  flex-direction: row-reverse;
+  bottom: 5%;
+  right: 3%;
+}
+
+.orderBox-price {
+  border-radius: 7px;
+  padding: 3px;
+  font-weight: bold;
+  background: white;
+  display: flex;
+  align-items: center;
+}
+.orderBox-price-title {
+  font-size: 13px;
+}
+.orderBox-price-value {
+  font-size: 20px;
+}
+
+.orderBox-center {
+  margin: 5px 12px 5px 12px;
+  background-color: white;
+  height: fit-content;
+  border-radius: 3px;
+  background-color: aliceblue;
+  padding: 10px;
+  padding-bottom: 20px;
+  padding-top: 5%;
+}
+
+.orderBox-center-title {
+  font-weight: bold;
+  margin-left: 5px;
+  margin-right: 5px;
+}

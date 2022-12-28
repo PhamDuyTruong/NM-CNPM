@@ -1,0 +1,110 @@
+@import "../../assets/styles/color";
+@import "../../assets/styles/mixins";
+
+.cart{
+    position: relative;
+    z-index: 999;
+    &__overlay{
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 998;
+        width: 6rem;
+        height: 6rem;
+        opacity: 0;
+        visibility: hidden;
+        border-radius: 50%;
+        transform: scale(0);
+        background-color: rgba(0, 0, 0, 0.65);
+        transition: all 0.85s linear 0.15s;
+    }
+    &.active &__overlay {
+        visibility: visible;
+        opacity: 1;
+        transform: scale(80);
+        transition-delay: 0s;
+    }
+    &__heading{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 30px 20px 20px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+    &__title {
+        font-size: 2.5rem;
+        text-transform: uppercase;
+    
+        @include respond(phone) {
+          font-size: 2rem;
+        }
+    }
+    &__close{
+        position: relative;
+        width: 2.8rem;
+        height: 2.8rem;
+        cursor: pointer;
+        @include respond(phone) {
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+    }
+    &__close:before,
+    &__close:after {
+      content: "";
+      position: absolute;
+      top: 45%;
+      height: 0.5rem;
+      width: 100%;
+      border-radius: 999px;
+      display: inline-block;
+      opacity: 1;
+      visibility: visible;
+  
+      background-color: #404040;
+    }
+    &__close:before{
+        transform: rotate(45deg);
+    }
+    &__close:after{
+       transform: rotate(-45deg);
+    }
+    &__close.active:before,
+    &__close.active:after {
+        animation: collapse 1s cubic-bezier(0.77, 0.2, 0.05, 1) forwards;
+    }
+    &__container{
+        position: fixed;
+        right: 0;
+        top: 0;
+        z-index: 999;
+        width: 45rem;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        box-shadow: -2px 0 15px rgba(0, 0, 0, 0.1);
+        opacity: 0.85;
+        transform: translateX(100%);
+        background-color: $white-color;
+        transition: all 0.45s ease-in-out 0.9s;
+        @include respond(mobile) {
+          width: 100%;
+        }
+    }
+    &.active &__container {
+        opacity: 1;
+        transform: translateX(0);
+        transition-delay: 0.35s;
+    }
+}
+@keyframes collapse {
+    40% {
+      transform: rotate(0);
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(10px);
+    }
+}

@@ -1,0 +1,147 @@
+@import "../../../../assets/styles/color";
+@import "../../../../assets/styles/mixins";
+
+.home-ingredients{
+    overflow-x: hidden;
+    &__thumb{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 15px;
+        background-position-y: -50px;
+        background-repeat: no-repeat;
+        background-size: cover;
+    
+        @include respond(tablet) {
+          padding: 0 20px;
+    
+          background-position: center;
+        }
+        @include respond(phone) {
+            flex-direction: column;
+      
+            background-image: none;
+          }
+      
+          @include respond(mobile) {
+            background-image: none !important;
+        }
+    }
+
+    &__cards-left, &__cards-right{
+        @include respond(tablet) {
+            width: 45%;
+          }
+      
+          @include respond(phone) {
+            width: 100%;
+          }
+    }
+    &__cards-left &__card-wrapper:nth-child(2) {
+        transform: translateX(60px);
+    
+        @include respond(mobile) {
+          transform: translateX(0);
+        }
+      }
+      &__cards-left &__card-wrapper:last-child {
+        @include respond(phone) {
+          margin-bottom: 0;
+        }
+      }
+    
+      &__cards-right &__card-wrapper:nth-child(2) {
+        transform: translateX(-60px);
+    
+        @include respond(mobile) {
+          transform: translateX(0);
+        }
+      }
+      &__cards-left &__card-wrapper:nth-child(2):hover {
+        transform: translate(60px, -10px);
+    
+        @include respond(mobile) {
+          transform: translateY(-10px);
+        }
+      }
+    
+      &__cards-right &__card-wrapper:nth-child(2):hover {
+        transform: translate(-60px, -10px);
+    
+        @include respond(mobile) {
+          transform: translateY(-10px);
+        }
+      }
+      &__card{
+        position: relative;
+        flex: 1;
+        max-width:20rem;
+        min-height: 7rem;
+        padding: 20px;
+        margin: 55px 0;
+        border-radius: 4px;
+        box-shadow: 1px 0 20px rgba(0, 0, 0, 0.2);
+        background-color: $white-color;
+        transition: all 0.25s ease-in-out;
+        @include respond(tablet) {
+            min-height: 7rem;
+            padding: 40px 30px;
+          }
+      
+          @include respond(phone) {
+            max-width: 100%;
+            min-height: 7rem;
+            padding: 40px 30px;
+          }
+      } 
+      &__card span{
+        position: absolute;
+        top: -25%;
+        left: 20px;
+        font-size: 2.2rem;
+        width: 4.5rem;
+        height: 4.5rem;
+        margin: 10px 0;
+        padding: 12px;
+        text-align: center;
+        border-radius: 50%;
+        box-shadow: 1px 0 20px rgba(0, 0, 0, 0.12);
+        color: $black-color;
+        background-color: $white-color;
+      }
+      @include respond(mobile) {
+        &__cards-right span {
+          right: 20px;
+          left: unset;
+        }
+      }
+      &__card:hover{
+        transform: translateY(-10px);
+        box-shadow: 1px 3px 20px rgba(0, 0, 0, 0.3);
+        background-color: $red-color;
+      }
+      &__card:hover :is(&__card-title, &__card-content) {
+        color: $white-color;
+      }
+     &__card-title{
+        font-size: 2.2rem;
+        margin-bottom: 8px;
+        color: $black-color;
+        transition: all 0.2s ease-in-out;
+     }
+     &__card-content{
+        font-size: 1.4rem;
+        line-height: 1.6;
+        color: $grey-color;
+        transition: all 0.2s ease-in-out;
+        @include respond(mobile) {
+            overflow: hidden;
+            display: block;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+          };
+     }
+}

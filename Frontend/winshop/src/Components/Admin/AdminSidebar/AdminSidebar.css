@@ -1,0 +1,58 @@
+.mainSidebar li {
+  list-style: none;
+}
+.sidebar {
+  min-width: 15vw;
+  height: 100vh;
+  border-right: 0.5px solid rgb(230, 227, 227);
+}
+.mainSidebar ul {
+  padding: 0;
+  margin: 15px 0px 10px 0px;
+}
+.top {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo {
+  font-size: 25px;
+  font-weight: 1000;
+  color: #6439ff;
+}
+.mainSidebar {
+  padding-left: 10px;
+}
+.title {
+  font-size: 17px;
+  font-weight: bold;
+  color: #999;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+.mainSidebar li {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  cursor: pointer;
+  transition: 0.25s ease;
+  margin: 5px 0px 5px 0px;
+}
+.mainSidebar li:hover {
+  background-color: #ece8ff;
+}
+ion-icon {
+  font-size: 25px;
+  color: #7451f8;
+  font-weight: bold;
+}
+.mainSidebar span {
+  font-size: 20px;
+  font-weight: 600;
+  color: #888;
+  margin-left: 10px;
+}
+.mainSidebar a {
+  text-decoration: none;
+}

@@ -1,0 +1,33 @@
+.ProductsPage {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 15px;
+}
+.ProductPage-addButton {
+  right: 0px;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  background-color: #7de5ed;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 1px 1px 3px 1px grey;
+}
+@media only screen and (max-width: 1200px) {
+  .ProductsPage {
+    grid-template-columns: 1fr 1fr;
+  }
+  .ProductPage-addButton {
+    font-size: 10px;
+    padding: 2px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .ProductsPage {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,87 @@
+.Admin-ProductsDetailPage {
+  padding: 20px;
+  padding-left: 60px;
+  display: flex;
+}
+.ProductsDetailPage-img {
+  object-fit: contain;
+  max-width: 250px;
+  max-height: 400px;
+  margin-right: 30px;
+}
+
+.Admin-ProductDetailForm {
+  padding: 30px;
+}
+
+.Admin-ProductDetailForm span {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.Admin-ProductDetailForm input {
+  background-color: #efe7e7;
+  border: none;
+  padding: 5px;
+  margin-left: 30px;
+  display: block;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 1px 1px grey;
+}
+.ProductDetail-input-name {
+  background-color: #efe7e7;
+  border-radius: 10px;
+  width: 20vw;
+  display: block;
+  margin-left: 30px;
+  border: none;
+  box-shadow: 0px 0px 1px 1px grey;
+  margin-bottom: 10px;
+}
+.ProductDetail-input-description {
+  margin-bottom: 10px;
+  display: block;
+  margin-left: 30px;
+  width: 25vw;
+  height: 100px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  background-color: #efe7e7;
+  border-radius: 10px;
+  border: none;
+  padding: 5px;
+  box-shadow: 0px 0px 1px 1px grey;
+}
+
+.Admin-ProductDetailForm button {
+  border: none;
+  display: block;
+  background-color: #1a94ff;
+  font-weight: bold;
+  height: 70px;
+  border-radius: 15px;
+  padding: 5px 60px 5px 60px;
+  margin: 0 auto;
+  box-shadow: 1px 1px 1px 1px grey;
+}
+.Admin-ProductDetailForm button:hover {
+  background-color: green;
+  color: white;
+}
+.Admin-ProductDetail-delete {
+  margin-left: 100px;
+  margin-top: 50px;
+  padding: 10px;
+  height: 5vh;
+  background-color: orangered;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  font-size: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 1px 1px 2px 2px grey;
+}
