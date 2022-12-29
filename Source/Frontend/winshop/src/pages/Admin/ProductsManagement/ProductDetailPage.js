@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import axiosClient from "../../../services/axiosClient";
-import axios from "axios";
+import axios from "../../../services/axios";
 import "./ProductDetailPage.css";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { useDispatch } from "react-redux";
@@ -32,7 +32,7 @@ const ProductDetailPage = () => {
     dataTemplate.image = e.target[6].value;
 
     //--------------
-    const url = `/api/product/admin/${id}`;
+    const url = `/product/admin/${id}`;
     const method = "put";
     const headers = {
       "Content-Type": "application/json",
@@ -62,7 +62,7 @@ const ProductDetailPage = () => {
   };
   const handleDelete = (e) => {
     e.preventDefault();
-    const url = `/api/product/admin/${id}`;
+    const url = `/product/admin/${id}`;
     const method = "delete";
     const headers = {
         "Content-Type": "application/json",
