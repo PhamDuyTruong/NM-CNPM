@@ -34,7 +34,7 @@ const ProductCreatePage = () => {
       };
 
        const {data} = await axios.post(url, formData, headers);
-       urlImage = data.image
+       urlImage = "https://winshop-server.onrender.com/" + data.image
       } catch (err) {
         console.log(err)
       }

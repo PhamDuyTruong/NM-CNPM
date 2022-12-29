@@ -52,8 +52,8 @@ function Profile() {
       };
 
        const {data} = await axios.post(url, formData, headers);
-       setFile(data.profilePic);
-       updatedUser.profilePic = data.profilePic || userInfo.profilePic
+       setFile("https://winshop-server.onrender.com/" + data.profilePic);
+       updatedUser.profilePic = "https://winshop-server.onrender.com/" + data.profilePic || userInfo.profilePic
       } catch (err) {
         console.log(err)
       }

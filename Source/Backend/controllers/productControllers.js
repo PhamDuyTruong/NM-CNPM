@@ -182,7 +182,7 @@ const productControllers = {
     },
     uploadImage: async(req, res) => {
         const {file} = req;
-        const urlImage = `https://winshop-server.onrender.com/${file.path}`;
+        const urlImage = `${file.path}`;
         try{
           res.status(200).json({
             image: urlImage
