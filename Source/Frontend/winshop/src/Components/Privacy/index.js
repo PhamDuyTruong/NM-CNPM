@@ -1,14 +1,21 @@
 import React from 'react';
-
+import {useSelector} from 'react-redux'
 import BgImage from '../FAQ/BgImage';
 
 const Privacy = () => {
+    const {darkTheme} = useSelector((state) => state.sidebar);
+    const ThemeInLocal = JSON.parse(localStorage.getItem("theme"))
+    let isTheme = darkTheme;
+    if(!darkTheme){
+        isTheme = ThemeInLocal
+    }
+
   return (
     <>
             <BgImage>
                 PRIVACY POLICY
             </BgImage>
-            <div className="container my-5 py-2" style={{fontSize: "20px"}}>
+            <div className="container my-5 py-2" style={{fontSize: "20px", background: `${isTheme ? "#1A120B" : ""}`, color: `${isTheme ? "#fff" : ""}` }}>
                 <h4>
                     <strong>
                         Welcome Winshop we recognize that privacy is important!!

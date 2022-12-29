@@ -1,13 +1,21 @@
 import React from 'react';
 import BgImage from '../FAQ/BgImage';
+import {useSelector} from 'react-redux'
 
 const Disclaimer = () => {
+    const {darkTheme} = useSelector((state) => state.sidebar);
+    const ThemeInLocal = JSON.parse(localStorage.getItem("theme"))
+    let isTheme = darkTheme;
+    if(!darkTheme){
+        isTheme = ThemeInLocal
+    }
+
   return (
     <>
     <BgImage>
         DISCLAIMER
     </BgImage>
-    <div className="container my-5 py-2" style={{fontSize: "20px"}}>
+    <div className="container my-5 py-2" style={{fontSize: "20px",  background: `${isTheme ? "#1A120B" : ""}`, color: `${isTheme ? "#fff" : ""}`}}>
         <h4>
             <strong>
                 Copyrights

@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import "./AdminHeader.css";
 import ProfileDropdown from './ProfileDropdown';
+import Brightness2Icon from '@material-ui/icons/Brightness2';
 
 function AdminHeader() {
     const [isActive, setStatus] = useState("none");
@@ -22,7 +23,7 @@ function AdminHeader() {
       </div>
       <div className="mainAreaHeader">
         <div className="itemAdminHeader">
-          <ion-icon name="moon-outline"></ion-icon>
+           <Brightness2Icon></Brightness2Icon>
         </div>
         <div className="itemAdminHeader avatarContainer">
           <img
