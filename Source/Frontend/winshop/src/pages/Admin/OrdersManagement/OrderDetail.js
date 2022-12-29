@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import "./OrderDetail.css";
 import EditIcon from "@material-ui/icons/Edit";
 import { useParams, useHistory, Link } from "react-router-dom";
+import {useSelector} from 'react-redux'
 import axiosClient from "../../../services/axiosClient";
 import axios from "axios";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
@@ -17,6 +18,12 @@ function OrderDetail() {
       cart: [],
       user: {},
     });
+    const {darkTheme} = useSelector((state) => state.sidebar);
+    const ThemeInLocal = JSON.parse(localStorage.getItem("theme"))
+    let isTheme = darkTheme;
+    if(!darkTheme){
+        isTheme = ThemeInLocal
+    }
     useEffect(() => {
       const fetchData = async () => {
         const { data } = await axiosClient.get(`/api/order/admin/${id}`);
@@ -56,7 +63,7 @@ function OrderDetail() {
     };
   return (
     <>
-    <div className="OrderDetailPage">
+    <div className="OrderDetailPage" style={{color: `${isTheme ? "#000" : ""}`}}>
       <form onSubmit={handleSubmit}>
         <div className="OrderDetailPage-General">
           <h2>Order Information</h2>

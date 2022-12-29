@@ -1,7 +1,7 @@
 import React from 'react';
 import "./OrderBox.css";
 import { Link, useHistory } from "react-router-dom";
-
+import {useSelector} from 'react-redux'
 import DeliveringIcon from "@material-ui/icons/LocalShipping";
 import ShippedIcon from "@material-ui/icons/CheckCircle";
 import StoreIcon from '@material-ui/icons/Store';
@@ -12,6 +12,14 @@ import CartIcon from "@material-ui/icons/ShoppingCart";
 
 
 function OrderBox(props) {
+    
+  const {darkTheme} = useSelector((state) => state.sidebar);
+  const ThemeInLocal = JSON.parse(localStorage.getItem("theme"))
+  let isTheme = darkTheme;
+  if(!darkTheme){
+      isTheme = ThemeInLocal
+  }
+
     const history = useHistory();
     const handleToDetail = (e) => {
       history.push(`/admin/orders/${props.id}`);
@@ -28,6 +36,7 @@ function OrderBox(props) {
             : props.status === "Delivering"
             ? "linear-gradient(90deg, rgba(218,193,89,1) 0%, rgba(241,202,41,1) 100%)"
             : "linear-gradient(90deg, rgba(130,192,228,1) 0%, rgba(56,182,255,1) 100%)",
+        color: `${isTheme ? "#000" : ""}`
       }}
     >
       <div className="orderBox-top">

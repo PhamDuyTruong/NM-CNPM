@@ -3,11 +3,20 @@ import "./ProductBox.css";
 import StarIcon from "@material-ui/icons/Star";
 import EditIcon from "@material-ui/icons/Edit";
 import { Link } from "react-router-dom";
+import {useSelector} from 'react-redux'
 
 const ProductBox = (props) => {
+    
+  const {darkTheme} = useSelector((state) => state.sidebar);
+  const ThemeInLocal = JSON.parse(localStorage.getItem("theme"))
+  let isTheme = darkTheme;
+  if(!darkTheme){
+      isTheme = ThemeInLocal
+  }
+
   return (
     <>
-       <div className="ProductBox-container">
+       <div className="ProductBox-container" style={{background: `${isTheme ? "#1A120B" : ""}`, color: `${isTheme ? "#fff" : ""}`}}>
         <div className="ProductBox-img-container">
           <img src={props.img}></img>
           <Link

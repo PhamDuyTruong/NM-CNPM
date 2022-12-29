@@ -6,7 +6,7 @@ import CancelIcon from "@material-ui/icons/Cancel";
 import DeleteIcon from "@material-ui/icons/Delete";
 import axios from "../../../services/axios";
 import axiosClient from "../../../services/axiosClient";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const UserBox = (props) => {
   const [state, setState] = useState(0);
@@ -16,6 +16,13 @@ const UserBox = (props) => {
   const [role, setRole] = useState(false);
 
   const dispatch = useDispatch();
+
+  const {darkTheme} = useSelector((state) => state.sidebar);
+  const ThemeInLocal = JSON.parse(localStorage.getItem("theme"))
+  let isTheme = darkTheme;
+  if(!darkTheme){
+      isTheme = ThemeInLocal
+  }
 
   const handleSubmitUpdate = async (e) => {
     e.preventDefault();
@@ -109,7 +116,7 @@ const UserBox = (props) => {
         {/* ----------------------------------------------- */}
         <div
           className="UpdateUser-Model"
-          style={{ display: state ? "block" : "none" }}
+          style={{ display: state ? "block" : "none", color: `${isTheme ? "#000" : ""}` }}
         >
            <div
             className="UpdateUser-Model-delete-button"

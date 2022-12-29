@@ -8,6 +8,7 @@ import "./ProductsPage.css";
 const ProductsPage = () => {
   const dispatch = useDispatch();
   const productsData = useSelector((state) => state.AdminProduct);
+
   useEffect(() => {
     const fetchData = async () => {
       const data = await axiosClient.get("/api/product");
