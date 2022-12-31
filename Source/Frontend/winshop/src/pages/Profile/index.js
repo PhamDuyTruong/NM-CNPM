@@ -125,36 +125,33 @@ function Profile() {
   </div>
   <div className='container-fluid' style={{ background: `${isTheme ? "#1A120B" : ""}`, color: `${isTheme ? "#fff": ""}`}}>
       <h2 style={{color: "lightcoral"}}>My Order</h2>
-      <table className="table table-hover" style={{ background: `${isTheme ? "#1A120B" : ""}`, color: `${isTheme ? "#fff": ""}`}}>
-          <thead>
-             <tr>
-                 <th>ID</th>
-                 <th>Date</th>
-                 <th>Total</th>
-                 <th>Paid</th>
-                 <th>Deliveried</th>
-             </tr>
-          </thead>
-          <tbody style={{ background: `${isTheme ? "#1A120B" : ""}`, color: `${isTheme ? "#fff": ""}`}}>
-             {myOrder.map((item) => (
-              <tr key={item._id}>
-                    <td>{item._id}</td>
-                  <td>{new Date(item.createdAt).toLocaleDateString("en-US")}</td>
-                  <td>{item.totalPrice}</td>
-                  <td>
-                    {new Date(item.paidAt).toLocaleDateString('en-US')}
-                  </td>
-                  <td>
-                    {item.isDelevered ? (
+      {myOrder.map((item) => (
+        <div className='order_wrapper my-3' style={{border: "1px solid #ECE8DD", boxShadow: "5px 5px 8px #888888", background: `${isTheme ? "#1A120B" : ""}`, color: `${isTheme ? "#fff": ""}`}}>
+            <p>ID: {item._id}</p>
+            <p>Date: {new Date(item.createdAt).toLocaleDateString("en-US")}</p>
+            <p>Paid: {new Date(item.paidAt).toLocaleDateString('en-US')}</p>
+            <p>Deliveried: {item.isDelevered ? (
                       new Date(item.deliveredAt).toLocaleDateString('en-US')
                     ) : (
                       <i className="fas fa-times" style={{ color: "red" }}></i>
-                    )}
-                  </td>
-              </tr>
-             ))}
-          </tbody>
-      </table>
+                    )}</p>
+            <p>Shipping Info: {item.shippingInfo.address}, {item.shippingInfo.city}, {item.shippingInfo.country}</p>
+            <h3>Products</h3>
+            {item.cart.map((cart) => (
+              <div className='row'>
+                  <div className='col-12 col-md-3 col-lg-4'>
+                      <img src={cart.image} alt="product" width="60" height="60"/>
+                  </div>
+                  <div className='col-12 col-md-9 col-lg-8'>
+                      <p>Name: {cart.name}</p>
+                      <p>Quantity: {cart.qnt}</p>
+                      <p>Price: {cart.price}</p>
+                  </div>
+              </div>
+            ))}
+            <h3>Total: {item.totalPrice}</h3>
+        </div>
+      ))}
   </div>
   </>
   )
