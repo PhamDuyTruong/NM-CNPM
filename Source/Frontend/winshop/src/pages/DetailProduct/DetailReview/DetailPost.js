@@ -36,10 +36,10 @@ function DetailPost({colors}) {
     setAreaValue('');
     setSelectedStar(0);
 
-    // window.scrollTo({
-    //   top: commentRef.current.offsetTop - 200,
-    //   behavior: 'smooth',
-    // });
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   }
 
 
