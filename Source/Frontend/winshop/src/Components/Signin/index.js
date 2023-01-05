@@ -13,6 +13,7 @@ function Signin(props) {
     password: '',
   };
   const [user, setUser] = useState(props.user || {});
+  const [valid, setValid] = useState(false);
   const {userLogin} = useSelector((state) => state.login);
     const history = useHistory();
     const dispatch = useDispatch();
@@ -43,9 +44,8 @@ function Signin(props) {
           password: value.password
         }
         dispatch(loginUser(data));
-        history.push("/")
         if(userLogin.length === 0){
-          history.push("/sign-in")
+          setValid(true)
         }
     };
 
@@ -107,6 +107,8 @@ function Signin(props) {
                 className="invalid-feedback"
               />
             </div>
+            {valid ? (<p style={{color: "#DC0000"}}>Login is invalid</p>) : (<>
+            </>)}
             <div className="form-login">
                 <button
                 className='signup-submit'
