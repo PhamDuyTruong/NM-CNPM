@@ -28,7 +28,9 @@ function CheckoutSuccess() {
   };
 
   const handleCod = () => {
-    dispatch(updateStatusOrder(orderList, "Delivering"))
+    dispatch(updateStatusOrder(orderList, "Delivering"));
+    localStorage.removeItem("cart");
+    localStorage.removeItem("payment")
     Swal.fire(
       "Cart is being shipped! Thank you !!!",
       "Return back to shop page!",

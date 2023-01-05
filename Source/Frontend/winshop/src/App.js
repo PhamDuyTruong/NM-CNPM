@@ -1,9 +1,12 @@
-import React from "react";
+import React, {Suspense} from "react";
 import { BrowserRouter, Route, Switch} from "react-router-dom";
+import CircularProgress from '@material-ui/core/CircularProgress'
 import PrevFilterContext from "./context/PrevFilterContext";
+import AppLayout from "./Layouts/AppLayout";
+import AdminLayout from "./Layouts/AdminLayout";
 import DetailProduct from "./pages/DetailProduct";
 import Home from "./pages/Home";
-import Shop from "./pages/Shop";
+import Shop from "./pages/Shop"
 import FAQ from "./Components/FAQ";
 import Disclaimer from "./Components/Disclaimer";
 import Privacy from "./Components/Privacy";
@@ -15,8 +18,8 @@ import CheckoutSuccess from "./pages/Payment/CheckoutSuccess";
 import LogOut from "./pages/Logout";
 import Profile from "./pages/Profile";
 import PageNotFound from "./pages/PageNotFound";
-import AppLayout from "./Layouts/AppLayout";
-import AdminLayout from "./Layouts/AdminLayout";
+
+
 import AdminRoute from "./Route/AdminRoute";
 import Dashboard from "./Components/Admin/Dashboard";
 import UsersPage from "./pages/Admin/UsersManagement/UsersPage";
@@ -33,6 +36,11 @@ import ResetPassword from "./pages/ResetPassword";
 function App() {
 
   return (
+    <Suspense fallback={
+      <div className='spinner'>
+      <CircularProgress thickness={5} style={{ color: "#E84C51"}} />
+    </div>
+    }>
     <BrowserRouter>
       <Switch>
         <Route path="/">
@@ -165,6 +173,7 @@ function App() {
         </Route>
       </Switch>
     </BrowserRouter>
+    </Suspense>
   );
 }
 
