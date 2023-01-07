@@ -4,7 +4,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import { useParams, useHistory, Link } from "react-router-dom";
 import {useSelector} from 'react-redux'
 import axiosClient from "../../../services/axiosClient";
-import axios from "axios";
+import axios from "../../../services/axios";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import DeleteIcon from "@material-ui/icons/Delete";
 
@@ -39,7 +39,7 @@ function OrderDetail() {
         const {accessToken} = userInfo
         headers.token = `Bearer ${accessToken}`
         }
-      const url = `/api/order/admin/${id}`;
+      const url = `/order/admin/${id}`;
       const method = "delete";
       await axios({ url, method, headers }).then(() => {
         window.alert("Are you sure you want to delete this product ?");
@@ -48,7 +48,7 @@ function OrderDetail() {
     };
     const handleSubmit = async (e) => {
       e.preventDefault();
-      const url = `api/order/admin/${id}`;
+      const url = `/order/admin/${id}`;
       const method = "put";
       const headers = {
         "Content-Type": "application/json",
