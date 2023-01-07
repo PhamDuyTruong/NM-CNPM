@@ -35,8 +35,6 @@ function DetailPost({colors}) {
     dispatch(createReviewProduct(obj, id));
     setAreaValue('');
     setSelectedStar(0);
-
-    window.location.reload();
   }
 
 
