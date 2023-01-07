@@ -3,7 +3,7 @@ import qs from "query-string";
 import { Redirect } from "react-router-dom";
 // https://winshop-server.onrender.com/
 const axiosClient = axios.create({
-  baseURL: "http://localhost:5000/",
+  baseURL: "https://winshop-server.onrender.com/",
   headers: {
     "Content-Type": "application/json"
   }
