@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import "./styles.css";
 import {useHistory, Link} from 'react-router-dom'
 import bgSignin from '../../assets/images/bgsignin.jpg';
@@ -14,7 +14,10 @@ function Signin(props) {
   };
   const [user, setUser] = useState(props.user || {});
   const [valid, setValid] = useState(false);
-  const {userLogin} = useSelector((state) => state.login);
+  const [inValid, setInValid] = useState("");
+  const {error} = useSelector((state) => state.login);
+  console.log(error)
+  // console.log(userLogin)
     const history = useHistory();
     const dispatch = useDispatch();
     const userInfo = JSON.parse(localStorage.getItem("user"))
@@ -37,16 +40,15 @@ function Signin(props) {
         ...user,
         [name]: value
       }));
-    }
+    };
+
     const handleSubmit = (value)   => {
         const data = {
           username: value.username,
           password: value.password
         }
-        dispatch(loginUser(data));
-        if(userLogin.length === 0){
-          setValid(true)
-        }
+        dispatch(loginUser(data))
+        
     };
 
     if(userInfo){
@@ -107,7 +109,7 @@ function Signin(props) {
                 className="invalid-feedback"
               />
             </div>
-            {valid ? (<p style={{color: "#DC0000"}}>Login is invalid</p>) : (<>
+            {error ? (<p style={{color: "#DC0000"}}>{error.response.data}</p>) : (<>
             </>)}
             <div className="form-login">
                 <button
