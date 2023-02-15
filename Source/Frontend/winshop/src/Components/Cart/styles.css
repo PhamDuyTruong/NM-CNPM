@@ -1,0 +1,110 @@
+.cart {
+  position: relative;
+  z-index: 999;
+}
+.cart__overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 998;
+  width: 6rem;
+  height: 6rem;
+  opacity: 0;
+  visibility: hidden;
+  border-radius: 50%;
+  transform: scale(0);
+  background-color: rgba(0, 0, 0, 0.65);
+  transition: all 0.85s linear 0.15s;
+}
+.cart.active .cart__overlay {
+  visibility: visible;
+  opacity: 1;
+  transform: scale(80);
+  transition-delay: 0s;
+}
+.cart__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 30px 20px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+.cart__title {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+}
+@media (max-width: 600px) {
+  .cart__title {
+    font-size: 2rem;
+  }
+}
+.cart__close {
+  position: relative;
+  width: 2.8rem;
+  height: 2.8rem;
+  cursor: pointer;
+}
+@media (max-width: 600px) {
+  .cart__close {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+.cart__close:before, .cart__close:after {
+  content: "";
+  position: absolute;
+  top: 45%;
+  height: 0.5rem;
+  width: 100%;
+  border-radius: 999px;
+  display: inline-block;
+  opacity: 1;
+  visibility: visible;
+  background-color: #404040;
+}
+.cart__close:before {
+  transform: rotate(45deg);
+}
+.cart__close:after {
+  transform: rotate(-45deg);
+}
+.cart__close.active:before, .cart__close.active:after {
+  animation: collapse 1s cubic-bezier(0.77, 0.2, 0.05, 1) forwards;
+}
+.cart__container {
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 999;
+  width: 45rem;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  box-shadow: -2px 0 15px rgba(0, 0, 0, 0.1);
+  opacity: 0.85;
+  transform: translateX(100%);
+  background-color: #fff;
+  transition: all 0.45s ease-in-out 0.9s;
+}
+@media (max-width: 960px) {
+  .cart__container {
+    width: 100%;
+  }
+}
+.cart.active .cart__container {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 0.35s;
+}
+
+@keyframes collapse {
+  40% {
+    transform: rotate(0);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+}/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,59 @@
+.checkout-progress {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.checkout-progress__node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.checkout-progress__icon {
+  position: relative;
+  z-index: 10;
+  width: 5.5rem;
+  height: 5.5rem;
+  border-radius: 50%;
+  transition: all 0.1s linear 0.4s;
+  background-color: #bfbfbf;
+}
+.checkout-progress__node:nth-of-type(1) .checkout-progress__icon, .checkout-progress__node:nth-of-type(2) .checkout-progress__icon, .checkout-progress__icon.active {
+  box-shadow: 0 1px 12px rgba(255, 81, 78, 0.15);
+  background-color: #ff514e;
+}
+.checkout-progress__icon svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 2.3rem;
+  transform: translate(-50%, -50%);
+  fill: #fff;
+}
+.checkout-progress__description {
+  font-size: 1.4rem;
+  margin-top: 10px;
+  font-weight: bold;
+}
+.checkout-progress__line {
+  position: relative;
+  height: 1rem;
+  width: 100%;
+  margin: -25px -5px 0;
+  background-color: #bfbfbf;
+}
+.checkout-progress__line:nth-of-type(1):before {
+  width: 100%;
+}
+.checkout-progress__line:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  width: 0;
+  height: 100%;
+  background-color: #ff514e;
+  transition: all 0.45s linear;
+}
+.checkout-progress__line.active:before {
+  width: 100%;
+}/*# sourceMappingURL=CheckoutProgress.css.map */

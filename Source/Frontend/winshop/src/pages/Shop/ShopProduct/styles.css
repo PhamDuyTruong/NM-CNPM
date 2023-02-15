@@ -1,0 +1,17 @@
+.shop-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.shop-content .spinner {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 50px;
+}
+@media (max-width: 960px) {
+  .shop-content .spinner {
+    margin-top: 100px;
+  }
+}/*# sourceMappingURL=styles.css.map */

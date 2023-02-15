@@ -1,0 +1,16 @@
+.shop-products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  grid-gap: 15px;
+  padding: 22px 0 20px 20px;
+}
+@media (max-width: 960px) {
+  .shop-products {
+    padding: 0;
+  }
+}
+@media (max-width: 600px) {
+  .shop-products {
+    grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  }
+}/*# sourceMappingURL=ProductList.css.map */

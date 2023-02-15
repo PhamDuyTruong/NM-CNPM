@@ -1,0 +1,101 @@
+.shop-filters {
+  width: 18%;
+}
+@media (max-width: 960px) {
+  .shop-filters {
+    display: none;
+  }
+}
+.shop-filters__title {
+  font-size: 1.5rem;
+  padding: 8px 0;
+  margin-bottom: 10px;
+  padding-left: 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+.shop-filters__item {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  margin: 3px 0;
+  border-radius: 6px;
+  transition: all 0.1s ease-out;
+}
+.shop-filters__item.active {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+.shop-filters__item:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+}
+.shop-filters__item-name {
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  margin-left: 10px;
+}
+.shop-filters__form {
+  padding: 0 12px;
+}
+.shop-filters__label {
+  position: relative;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  padding: 10px 30px;
+  margin: 3px 0;
+  cursor: pointer;
+}
+.shop-filters__input {
+  display: none;
+  margin-right: 5px;
+}
+.shop-filters .checkmark {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 3px solid rgba(0, 0, 0, 0.4);
+  transform: translateY(-50%);
+  transition: all 0.2s ease-out;
+}
+.shop-filters__input:checked ~ .checkmark {
+  border-color: #ff514e;
+}
+.shop-filters .checkmark:after {
+  position: absolute;
+  content: "";
+  top: 1px;
+  left: 1px;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background-color: transparent;
+  transition: all 0.1s ease-out;
+}
+.shop-filters__input:checked ~ .checkmark:after {
+  background-color: #ff514e;
+}
+.shop-filters__stars {
+  margin: 5px 0;
+  padding: 3px 12px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.shop-filters__stars svg {
+  font-size: 1.2rem;
+  margin-right: 3px;
+  fill: #fbb403;
+}
+.shop-filters__stars span {
+  font-size: 1.2rem;
+  margin-left: 4px;
+  font-weight: 500;
+  transition: all 0.12s ease-out;
+}
+.shop-filters__stars:hover span {
+  color: #ff514e;
+}/*# sourceMappingURL=styles.css.map */

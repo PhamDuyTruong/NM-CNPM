@@ -1,0 +1,200 @@
+.primary-btn {
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2) !important;
+  letter-spacing: 0.5px !important;
+  font-family: "Roboto", sans-serif !important;
+  border-radius: 999px !important;
+  width: -moz-max-content;
+  width: max-content;
+  font-size: 1.3rem !important;
+  padding: 8px 15px !important;
+}
+@media (max-width: 960px) {
+  .primary-btn {
+    padding: 8px 13px !important;
+    font-size: 1.1rem !important;
+  }
+}
+.primary-btn svg {
+  font-size: 1.75rem !important;
+  margin-right: 3px;
+}
+@media (max-width: 960px) {
+  .primary-btn svg {
+    font-size: 1.6rem !important;
+  }
+}
+.primary-btn:hover {
+  box-shadow: 0px 5px 13px rgba(0, 0, 0, 0.25) !important;
+}
+.primary-btn.red {
+  color: #fff !important;
+  background-color: #ff514e !important;
+}
+@media (hover: hover) {
+  .primary-btn.red:hover {
+    background-color: #c33d3b !important;
+  }
+}
+
+.detail-content__title {
+  font-size: 2.8rem;
+  text-transform: capitalize;
+  margin-bottom: 15px;
+}
+@media (max-width: 960px) {
+  .detail-content__title {
+    font-size: 2.5rem;
+  }
+}
+.detail-content__rate {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.detail-content__stars {
+  margin-right: 8px;
+}
+.detail-content__stars svg {
+  font-size: 1.8rem;
+  fill: #fbb403;
+}
+.detail-content__reviews span {
+  font-size: 1.4rem;
+}
+.detail-content__form-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 7px;
+}
+@media (max-width: 600px) {
+  .detail-content__form-title {
+    font-size: 1.6rem;
+  }
+}
+.detail-content__price {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+@media (max-width: 960px) {
+  .detail-content__price {
+    font-size: 2rem;
+  }
+}
+.detail-content__tags {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+@media (max-width: 600px) {
+  .detail-content__tags {
+    flex-wrap: wrap;
+    line-height: 1.7;
+  }
+}
+.detail-content__tag {
+  margin-right: 20px;
+  font-size: 1.4rem;
+}
+.detail-content__tag-label {
+  margin-right: 5px;
+  color: rgba(0, 0, 0, 0.4);
+}
+.detail-content__tag-detail.category {
+  text-transform: capitalize;
+}
+.detail-content__description {
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  line-height: 1.7;
+}
+.detail-content__form {
+  margin-bottom: 15px;
+}
+.detail-content__option-title {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+.detail-content__btns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+@media (max-width: 600px) {
+  .detail-content__btns {
+    flex-wrap: wrap;
+    padding: 15px 0;
+  }
+}
+.detail-content__btn-handle {
+  display: flex;
+  align-items: center;
+  min-width: 12rem;
+}
+@media (max-width: 600px) {
+  .detail-content__btn-handle {
+    margin-right: 100%;
+  }
+}
+.detail-content__btn-qnt {
+  font-size: 1.4rem;
+  min-width: 3.5rem;
+  text-align: center;
+}
+.detail-content :is(.detail-content__btn-dec, .detail-content__btn-inc) {
+  font-size: 1.8rem;
+}
+.detail-content__add {
+  flex: 1;
+  margin: 25px 18px 25px 15px;
+}
+@media (max-width: 600px) {
+  .detail-content__add {
+    margin: 15px 0 0;
+  }
+}
+.detail-content .primary-btn {
+  width: 100%;
+}
+.detail-content .detail-content__btn-like {
+  font-size: 1.9rem;
+}
+@media (max-width: 600px) {
+  .detail-content .detail-content__btn-like {
+    margin: 15px 0 0 20px;
+  }
+}
+.detail-content__btn-like svg {
+  font-size: 1.6rem;
+  fill: rgba(0, 0, 0, 0.55);
+}
+.detail-content .btn-circle {
+  min-width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.detail-content .btn-circle svg {
+  transition: all 0.25s ease-out;
+}
+.detail-content .btn-circle:hover svg {
+  fill: #ff514e;
+}
+.detail-content .btn-circle:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+.detail-content__commit {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  padding: 4px 7px;
+  border-left: 3.8px solid #ff514e;
+}
+.detail-content__commit svg {
+  font-size: 2.2rem;
+  margin-right: 8px;
+  fill: #ff514e;
+}/*# sourceMappingURL=DetailContent.css.map */

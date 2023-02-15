@@ -1,0 +1,60 @@
+.checkout-form-field {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.checkout-form-field > *:first-child {
+  margin-bottom: 5px;
+}
+.checkout-form-field__wrapper {
+  position: relative;
+  flex: 1;
+}
+.checkout-form-field__input {
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  outline: 0;
+  border-radius: 4px;
+  width: 100%;
+  transition: all 0.35s;
+}
+.checkout-form-field__input:focus {
+  border-color: rgba(0, 0, 0, 0.35);
+}
+.checkout-form-field__label {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  font-size: 1.3rem;
+  transform: translateY(-50%);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  pointer-events: none;
+  color: rgba(0, 0, 0, 0.4);
+  transition: all 0.25s ease-in-out;
+}
+@media (max-width: 960px) {
+  .checkout-form-field__label {
+    top: 0;
+    padding: 0 5px;
+    color: rgba(0, 0, 0, 0.55);
+    background-color: #fff;
+  }
+}
+.checkout-form-field__input:not(:-moz-placeholder-shown) + .checkout-form-field__label {
+  top: 0;
+  padding: 0 5px;
+  color: rgba(0, 0, 0, 0.55);
+  background-color: #fff;
+}
+.checkout-form-field__input:not(:placeholder-shown) + .checkout-form-field__label, .checkout-form-field__input:focus + .checkout-form-field__label {
+  top: 0;
+  padding: 0 5px;
+  color: rgba(0, 0, 0, 0.55);
+  background-color: #fff;
+}
+.checkout-form-field__error {
+  font-size: 1.3rem;
+  color: #ff0000;
+}/*# sourceMappingURL=CheckoutFromField.css.map */

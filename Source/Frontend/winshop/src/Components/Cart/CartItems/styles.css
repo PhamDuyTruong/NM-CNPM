@@ -1,0 +1,12 @@
+.cart-items {
+  padding: 20px 15px;
+  margin-bottom: auto;
+  overflow-y: auto;
+}
+.cart-items {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.cart-items::-webkit-scrollbar {
+  display: none;
+}/*# sourceMappingURL=styles.css.map */

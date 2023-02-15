@@ -1,0 +1,17 @@
+.banner {
+  width: 100%;
+  margin-bottom: 80px;
+}
+@media (max-width: 960px) {
+  .banner {
+    margin-bottom: 30px;
+  }
+}
+
+.shop {
+  margin-bottom: 80px;
+}
+.shop__container {
+  display: flex;
+  margin-bottom: 30px;
+}/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,104 @@
+.home-banner {
+  height: 50rem;
+  flex-shrink: 0;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.home-banner .container-ui {
+  height: 100%;
+}
+@media (max-width: 960px) {
+  .home-banner {
+    height: 30rem;
+  }
+}
+.home-banner__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 60%;
+  height: 100%;
+}
+@media (max-width: 960px) {
+  .home-banner__container {
+    text-align: center;
+    align-items: center;
+    width: 100%;
+  }
+}
+.home-banner__title {
+  font-size: 3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fff;
+}
+@media (max-width: 960px) {
+  .home-banner__title {
+    font-size: 1.4rem;
+  }
+}
+.home-banner__description {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 5px 0 15px;
+  color: #fff;
+}
+@media (max-width: 960px) {
+  .home-banner__description {
+    font-size: 1rem;
+  }
+}
+.pr-red-btn .home-banner__icon {
+  margin-right: 5px;
+  width: 1.8rem;
+  height: 1.8rem;
+  fill: #fff;
+}
+@media (max-width: 960px) {
+  .pr-red-btn .home-banner__icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 3px;
+  }
+}
+
+.primary-btn {
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2) !important;
+  letter-spacing: 0.5px !important;
+  font-family: "Roboto", sans-serif !important;
+  border-radius: 999px !important;
+  width: -moz-max-content;
+  width: max-content;
+  font-size: 1.3rem !important;
+  padding: 8px 15px !important;
+  cursor: pointer;
+}
+@media (max-width: 960px) {
+  .primary-btn {
+    padding: 8px 13px !important;
+    font-size: 1.1rem !important;
+  }
+}
+.primary-btn svg {
+  font-size: 1.75rem !important;
+  margin-right: 3px;
+}
+@media (max-width: 960px) {
+  .primary-btn svg {
+    font-size: 1.6rem !important;
+  }
+}
+.primary-btn:hover {
+  box-shadow: 0px 5px 13px rgba(0, 0, 0, 0.25) !important;
+}
+.primary-btn.red {
+  color: #fff !important;
+  background-color: #ff514e !important;
+}
+@media (hover: hover) {
+  .primary-btn.red:hover {
+    background-color: #c33d3b !important;
+  }
+}/*# sourceMappingURL=Banner.css.map */
